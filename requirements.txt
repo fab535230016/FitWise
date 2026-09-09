@@ -1,0 +1,35 @@
+# Vector database
+chromadb>=0.5.0
+
+# Embedding model (BGE-M3)
+FlagEmbedding>=1.2.10
+
+# LLM (Gemini) - SDK resmi terbaru
+google-genai>=0.3.0
+
+# Fallback perbaikan JSON kalau Gemini sesekali ngasih output JSON yang
+# nggak valid sintaksnya (mis. lupa koma antar field) walau sudah minta
+# response_mime_type="application/json"
+json-repair>=0.30.0
+
+# Baca PDF untuk ingest.py
+pypdf>=4.0.0
+
+# Load .env
+python-dotenv>=1.0.0
+
+# Evaluasi (faithfulness & groundedness, bandingin RAG vs baseline)
+# PENTING: ragas>=0.4.0 punya bug packaging (masih coba import ChatVertexAI dari
+# lokasi lama langchain_community.chat_models.vertexai yang udah dipindah ke
+# package langchain-google-vertexai) -> ModuleNotFoundError pas import. Pin ke
+# 0.3.9 sampai bug itu di-fix upstream.
+ragas==0.3.9
+# Jembatan biar Gemini bisa dipakai sebagai "juri" evaluasi RAGAs
+langchain-google-genai>=2.0.0
+
+# Testing
+pytest>=8.0.0
+
+# Antarmuka web
+fastapi>=0.115
+uvicorn[standard]>=0.30
