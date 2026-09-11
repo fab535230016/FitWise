@@ -38,7 +38,7 @@ class FakeResult:
     def __init__(self, status, message="", plan="", profile=None,
                  sources=None, compliance=None, warnings=None,
                  citations=None, documents=None, marked=0, total=0,
-                 revisions=0):
+                 revisions=0, exercises=None):
         self.status = status
         self.message = message
         self.plan = plan
@@ -51,6 +51,7 @@ class FakeResult:
         self.marked_sentences = marked
         self.total_sentences = total
         self.revision_attempts = revisions
+        self.exercises = exercises or []
 
 
 class FakePipeline:
@@ -157,6 +158,58 @@ def test_rencana_siap_mengirim_plan_dan_sumber():
     assert data["plan"].startswith("Rencana latihan")
     assert data["sources"] == ["acsm.pdf", "ijerph-19-12710.pdf"]
     print("  ok  status rencana_siap mengirim rencana beserta daftar sumber")
+
+
+def test_daftar_gerakan_dikirim_pada_rencana_siap():
+    from src.exercise_media import ExerciseMedia
+
+    gerakan = ExerciseMedia(
+        id="deadlift",
+        nama="Deadlift",
+        nama_id="Mengangkat barbel dari lantai",
+        pola_gerak="dominan pinggul",
+        alat="barbel",
+        kelompok_otot_utama=["punggung bawah"],
+        kelompok_otot_pendukung=[],
+        langkah=["Berdiri di depan barbel.", "Angkat dengan punggung lurus."],
+        poin_kunci="Punggung wajib tetap lurus.",
+        gambar=[{"url": "/static/gerakan/deadlift/0.jpg", "keterangan": "Posisi awal"}],
+        sumber_media={"nama": "free-exercise-db", "lisensi": "Unlicense (domain publik)"},
+        disebut_sebagai="deadlift",
+    )
+    script = [FakeResult(
+        "rencana_siap",
+        plan="Hari 1 deadlift 3 set [S1].",
+        profile=COMPLETE_PROFILE,
+        sources=["acsm.pdf"],
+        exercises=[gerakan],
+    )]
+    client, _ = build_client(script)
+    data = client.post("/api/chat", json={"message": "ya"}).json()
+
+    assert len(data["exercises"]) == 1
+    kartu = data["exercises"][0]
+    assert kartu["nama"] == "Deadlift"
+    assert kartu["langkah"]
+    assert kartu["gambar"][0]["keterangan"] == "Posisi awal"
+    assert kartu["sumber_media"]["lisensi"]
+    print("  ok  rencana_siap mengirim ilustrasi gerakan beserta tata caranya")
+
+
+def test_daftar_gerakan_kosong_saat_belum_ada_rencana():
+    script = [FakeResult("butuh_info", message="Boleh lengkapi dulu?")]
+    client, _ = build_client(script)
+    data = client.post("/api/chat", json={"message": "halo"}).json()
+    assert data["exercises"] == []
+    print("  ok  status butuh_info tidak melampirkan ilustrasi gerakan")
+
+
+def test_endpoint_katalog_gerakan_melaporkan_lisensi():
+    client, _ = build_client()
+    data = client.get("/api/katalog-gerakan").json()
+    assert "total_gerakan" in data
+    assert "lisensi_media" in data
+    print("  ok  /api/katalog-gerakan melaporkan isi katalog dan lisensinya")
 
 
 def test_profil_dikirim_sebagai_label_dan_nilai():

@@ -14,6 +14,7 @@ from pydantic import BaseModel, Field
 
 from src.config import config, validate_config
 from src.dialogue_state import FIELD_LABELS, REQUIRED_FIELDS, format_field
+from src.exercise_media import ringkasan_katalog
 from web.feedback import FeedbackStore
 from web.session import SessionStore
 
@@ -148,6 +149,12 @@ def knowledge_base():
     }
 
 
+@app.get("/api/katalog-gerakan")
+def katalog_gerakan():
+    """Ringkasan katalog ilustrasi gerakan beserta rujukan lisensinya."""
+    return ringkasan_katalog()
+
+
 @app.get("/api/health")
 def health() -> dict:
     return {
@@ -205,6 +212,7 @@ def chat(request: ChatRequest):
         "revision_attempts": result.revision_attempts,
         "compliance": result.compliance,
         "warnings": result.warnings,
+        "exercises": [e.to_dict() for e in result.exercises],
     }
 
 

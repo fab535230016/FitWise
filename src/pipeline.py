@@ -11,6 +11,7 @@ from src.retriever import (
 )
 from src.citations import build_citation_map, count_sentences_with_marker
 from src.config import config
+from src.exercise_media import ExerciseMedia, kumpulkan_media
 from src.generator import (
     analyze_dialogue,
     generate_plan,
@@ -44,6 +45,7 @@ class PipelineResult:
     marked_sentences: int = 0
     total_sentences: int = 0
     revision_attempts: int = 0
+    exercises: list[ExerciseMedia] = field(default_factory=list)
 
 class TrainingPlanPipeline:
     """Alur utama sistem, dengan seluruh ketergantungan Gemini disuntikkan lewat konstruktor agar dapat diuji secara luring."""
@@ -57,6 +59,7 @@ class TrainingPlanPipeline:
         compliance_fn: Callable[[str, dict], dict] = check_compliance,
         revise_fn: Callable[[dict, str, str, list], str] = regenerate_plan_with_feedback,
         followup_fn: Callable[[dict, str, str, str], str] = answer_followup,
+        media_fn: Callable[[str], list[ExerciseMedia]] = kumpulkan_media,
     ):
         self.retriever = retriever or Retriever()
         self._analyze = analyze_fn
@@ -64,6 +67,7 @@ class TrainingPlanPipeline:
         self._check_compliance = compliance_fn
         self._revise = revise_fn
         self._followup = followup_fn
+        self._media = media_fn
         self.profile: dict = dict(INITIAL_PROFILE)
         self.plan_ready: bool = False
         self.awaiting_confirmation: bool = False
@@ -164,6 +168,7 @@ class TrainingPlanPipeline:
                 citations=build_citation_map(answer, sources),
                 marked_sentences=marked,
                 total_sentences=total,
+                exercises=self._media(answer),
             )
 
         self.awaiting_confirmation = True
@@ -221,6 +226,12 @@ class TrainingPlanPipeline:
         sources = [d.source for d in retrieved_docs]
         marked, total = count_sentences_with_marker(plan)
 
+        # Pemetaan ilustrasi dijalankan paling akhir, atas rencana yang sudah
+        # lolos compliance checker, sehingga gerakan yang sempat ditolak pada
+        # tahap revisi tidak ikut ditampilkan gambarnya. Daftar kosong bukan
+        # kondisi galat: rencana boleh saja hanya menyebut pola gerak umum.
+        exercises = self._media(plan)
+
         self.plan_ready = True
         self.last_context = context
         self.last_plan = plan
@@ -239,6 +250,7 @@ class TrainingPlanPipeline:
             marked_sentences=marked,
             total_sentences=total,
             revision_attempts=revisions,
+            exercises=exercises,
         )
 
     @staticmethod

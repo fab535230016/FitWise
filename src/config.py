@@ -34,6 +34,14 @@ class Config:
     KNOWLEDGE_BASE_DIR: str = str(BASE_DIR / "data" / "knowledge_base")
     FEEDBACK_PATH: str = str(BASE_DIR / "data" / "feedback.jsonl")
 
+    # Ilustrasi gerakan. Katalog disusun oleh scripts/siapkan_gerakan.py;
+    # gambar disimpan lokal agar antarmuka tetap jalan tanpa internet, dan
+    # jatuh ke URL sumber bila berkas lokalnya belum diunduh.
+    EXERCISE_CATALOG_PATH: str = str(BASE_DIR / "data" / "gerakan" / "katalog_gerakan.json")
+    EXERCISE_MEDIA_DIR: str = str(BASE_DIR / "web" / "static" / "gerakan")
+    EXERCISE_MEDIA_URL_PREFIX: str = "/static/gerakan"
+    MAX_EXERCISE_MEDIA: int = 12
+
     GEMINI_MODEL: str = "gemini-3.1-flash-lite"
     GEMINI_FALLBACK_MODEL: str | None = None
     EVAL_JUDGE_MODEL: str | None = None
@@ -90,6 +98,13 @@ def validate_config() -> list[str]:
 
     if not Path(config.KNOWLEDGE_BASE_DIR).exists():
         warnings.append(f"Folder knowledge base belum ada: {config.KNOWLEDGE_BASE_DIR}")
+
+    if not Path(config.EXERCISE_CATALOG_PATH).exists():
+        warnings.append(
+            "Katalog ilustrasi gerakan belum ada. Jalankan "
+            "`python3 -m scripts.siapkan_gerakan` supaya rencana latihan bisa "
+            "dilengkapi gambar tata cara gerakan."
+        )
 
     unknown_arms = [a for a in config.EVAL_ARMS if a not in VALID_ARMS]
     if unknown_arms:

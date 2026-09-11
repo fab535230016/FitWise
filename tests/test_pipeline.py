@@ -55,9 +55,17 @@ def fake_analyzer(results_per_turn):
     return _fn
 
 
+class FakeMedia:
+    """Pengganti ExerciseMedia secukupnya untuk pengujian orkestrasi."""
+
+    def __init__(self, gerakan_id):
+        self.id = gerakan_id
+
+
 def build_pipeline(analyzer_results, *, compliant=True, retriever=None,
-                   compliance_sequence=None):
-    calls = {"generate": 0, "compliance": 0, "revise": 0, "followup": 0}
+                   compliance_sequence=None, media_hasil=None):
+    calls = {"generate": 0, "compliance": 0, "revise": 0, "followup": 0,
+             "media": 0, "media_teks": []}
     verdicts = iter(compliance_sequence or [])
 
     def generate_fn(profile, context):
@@ -79,6 +87,11 @@ def build_pipeline(analyzer_results, *, compliant=True, retriever=None,
             return {"patuh": patuh, "pelanggaran": [] if patuh else ["gerakan X"]}
         return {"patuh": compliant, "pelanggaran": [] if compliant else ["gerakan X"]}
 
+    def media_fn(teks):
+        calls["media"] += 1
+        calls["media_teks"].append(teks)
+        return list(media_hasil or [])
+
     p = TrainingPlanPipeline(
         retriever=retriever or FakeRetriever(),
         analyze_fn=fake_analyzer(analyzer_results),
@@ -86,6 +99,7 @@ def build_pipeline(analyzer_results, *, compliant=True, retriever=None,
         compliance_fn=compliance_fn,
         revise_fn=revise_fn,
         followup_fn=followup_fn,
+        media_fn=media_fn,
     )
     return p, calls
 
@@ -397,6 +411,53 @@ def test_hasil_memuat_pemetaan_sitasi():
     assert hasil.citations[0]["marker"] == "S1"
     assert hasil.citations[0]["source"] == "acsm_sports_medicine_position.pdf"
     print("  ok  hasil memuat pemetaan penanda sumber ke nama berkas")
+
+
+def test_ilustrasi_dilampirkan_pada_rencana():
+    p, calls = build_pipeline([COMPLETE_PROFILE], media_hasil=[FakeMedia("deadlift")])
+    p.run("hipertrofi, 3x seminggu, pemula, bahu nyeri")
+    hasil = confirm(p)
+    assert calls["media"] == 1, "pemeta ilustrasi harus dipanggil sekali"
+    assert [g.id for g in hasil.exercises] == ["deadlift"]
+    print("  ok  rencana dilampiri ilustrasi gerakan dari katalog")
+
+
+def test_ilustrasi_dipetakan_dari_rencana_akhir_bukan_versi_lama():
+    """Setelah revisi kepatuhan, gambar harus mengikuti rencana yang terakhir."""
+    p, calls = build_pipeline(
+        [COMPLETE_PROFILE],
+        compliance_sequence=[False, True],
+        media_hasil=[FakeMedia("squat")],
+    )
+    p.run("hipertrofi, 3x seminggu, pemula, bahu nyeri")
+    hasil = confirm(p)
+    assert calls["revise"] == 1
+    assert calls["media"] == 1, "pemetaan hanya dijalankan atas rencana akhir"
+    assert calls["media_teks"][0].startswith("RENCANA REVISI")
+    assert hasil.revision_attempts == 1
+    print("  ok  ilustrasi dipetakan dari rencana hasil revisi, bukan rencana awal")
+
+
+def test_ilustrasi_juga_dilampirkan_pada_jawaban_lanjutan():
+    p, calls = build_pipeline(
+        [COMPLETE_PROFILE, COMPLETE_PROFILE],
+        media_hasil=[FakeMedia("bench_press")],
+    )
+    p.run("hipertrofi, 3x seminggu, pemula, bahu nyeri")
+    confirm(p)
+    lanjutan = p.run("gimana cara melakukan bench press?")
+    assert lanjutan.status == "jawaban_lanjutan", lanjutan.status
+    assert [g.id for g in lanjutan.exercises] == ["bench_press"]
+    print("  ok  jawaban lanjutan ikut dilampiri ilustrasi gerakan")
+
+
+def test_rencana_tanpa_nama_gerakan_tidak_menghasilkan_peringatan():
+    p, calls = build_pipeline([COMPLETE_PROFILE], media_hasil=[])
+    p.run("hipertrofi, 3x seminggu, pemula, bahu nyeri")
+    hasil = confirm(p)
+    assert hasil.exercises == []
+    assert hasil.warnings == [], "daftar ilustrasi kosong bukan kondisi galat"
+    print("  ok  rencana tanpa nama gerakan tidak dianggap galat")
 
 
 if __name__ == "__main__":

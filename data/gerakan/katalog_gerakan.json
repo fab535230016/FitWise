@@ -1,0 +1,2206 @@
+{
+  "versi": 1,
+  "lisensi_media": "Unlicense (menurut pernyataan pengunggah)",
+  "sumber_media": "https://github.com/yuhonas/free-exercise-db",
+  "basis_url_media": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/",
+  "gerakan": [
+    {
+      "id": "squat",
+      "nama": "Barbell Back Squat",
+      "nama_id": "Squat dengan barbel di punggung",
+      "pola_gerak": "dominan lutut",
+      "alias": [
+        "barbell back squat",
+        "barbell squat",
+        "squat barbel",
+        "back squat",
+        "squat"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)",
+        "punggung bawah"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Letakkan barbel di otot punggung atas, tepat di bawah tulang leher yang menonjol, lalu berdiri dengan kaki selebar bahu dan ujung kaki sedikit menghadap keluar.",
+        "Tarik napas, kencangkan otot perut, lalu turun dengan menekuk pinggul dan lutut secara bersamaan seolah hendak duduk.",
+        "Turun sampai paha minimal sejajar lantai, sambil menjaga dada tetap terangkat dan punggung dalam posisi netral.",
+        "Dorong lantai memakai seluruh telapak kaki sampai kembali berdiri tegak, lalu buang napas di bagian akhir gerakan."
+      ],
+      "poin_kunci": "Arahkan lutut mengikuti arah ujung kaki dan jangan biarkan punggung membulat saat naik.",
+      "gambar": [
+        {
+          "berkas": "squat/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Squat/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "squat/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Squat/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Squat",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "front_squat",
+      "nama": "Front Squat",
+      "nama_id": "Squat dengan barbel di depan bahu",
+      "pola_gerak": "dominan lutut",
+      "alias": [
+        "squat depan",
+        "front squat"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "perut",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Sandarkan barbel pada bagian depan bahu, angkat kedua siku tinggi sampai lengan atas hampir sejajar lantai.",
+        "Berdiri dengan kaki selebar bahu, tarik napas, dan kencangkan otot perut.",
+        "Turun lurus ke bawah dengan menjaga badan tetap tegak dan siku tetap tinggi.",
+        "Dorong lantai sampai berdiri kembali tanpa membiarkan siku turun."
+      ],
+      "poin_kunci": "Siku yang turun membuat barbel meluncur ke depan; jaga siku tetap tinggi sepanjang gerakan.",
+      "gambar": [
+        {
+          "berkas": "front_squat/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Front_Squat_Clean_Grip/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "front_squat/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Front_Squat_Clean_Grip/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Front_Squat_Clean_Grip",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "goblet_squat",
+      "nama": "Goblet Squat",
+      "nama_id": "Squat dengan beban dipeluk di dada",
+      "pola_gerak": "dominan lutut",
+      "alias": [
+        "goblet squat"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)",
+        "bahu"
+      ],
+      "alat": "kettlebell",
+      "langkah": [
+        "Pegang satu dumbel atau kettlebell dengan kedua tangan, tahan di depan dada.",
+        "Berdiri dengan kaki sedikit lebih lebar dari bahu.",
+        "Turun sampai siku berada di sisi dalam lutut, jaga badan tetap tegak.",
+        "Dorong lantai untuk kembali berdiri sambil menjaga beban tetap menempel di dada."
+      ],
+      "poin_kunci": "Cocok sebagai gerakan pengantar sebelum barbell squat karena beban di depan membantu badan tetap tegak.",
+      "gambar": [
+        {
+          "berkas": "goblet_squat/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Goblet_Squat/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "goblet_squat/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Goblet_Squat/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Goblet_Squat",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "bodyweight_squat",
+      "nama": "Bodyweight Squat",
+      "nama_id": "Squat tanpa beban",
+      "pola_gerak": "dominan lutut",
+      "alias": [
+        "squat berat badan",
+        "squat tanpa beban",
+        "bodyweight squat",
+        "air squat"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Berdiri dengan kaki selebar bahu dan kedua tangan lurus ke depan sebagai penyeimbang.",
+        "Tarik napas, lalu turun dengan menekuk pinggul dan lutut bersamaan.",
+        "Turun sejauh yang masih terasa nyaman tanpa punggung membulat.",
+        "Dorong lantai untuk kembali berdiri, buang napas di bagian akhir."
+      ],
+      "poin_kunci": "Pakai variasi ini untuk melatih pola gerak dan pemanasan sebelum menambah beban.",
+      "gambar": [
+        {
+          "berkas": "bodyweight_squat/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Squat/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "bodyweight_squat/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Squat/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Bodyweight_Squat",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "leg_press",
+      "nama": "Leg Press",
+      "nama_id": "Menekan beban dengan kaki di mesin",
+      "pola_gerak": "dominan lutut",
+      "alias": [
+        "mesin leg press",
+        "leg press"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "mesin",
+      "langkah": [
+        "Duduk di mesin dan tempelkan seluruh punggung serta pinggul pada sandaran.",
+        "Letakkan telapak kaki selebar bahu di tengah papan pijakan.",
+        "Lepas pengunci, lalu turunkan beban perlahan sampai lutut menekuk kira-kira sembilan puluh derajat.",
+        "Dorong papan kembali tanpa mengunci lutut sepenuhnya di posisi akhir."
+      ],
+      "poin_kunci": "Jangan biarkan pinggul terangkat dari sandaran saat beban diturunkan, sebab punggung bawah akan membulat.",
+      "gambar": [
+        {
+          "berkas": "leg_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "leg_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Leg_Press",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "hack_squat",
+      "nama": "Hack Squat",
+      "nama_id": "Squat pada mesin hack",
+      "pola_gerak": "dominan lutut",
+      "alias": [
+        "hack squat"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "mesin",
+      "langkah": [
+        "Masuk ke mesin, sandarkan punggung dan bahu pada bantalan.",
+        "Letakkan kaki selebar bahu di tengah pijakan, lalu lepas pengunci.",
+        "Turun perlahan sampai paha mendekati sejajar dengan pijakan.",
+        "Dorong kembali ke posisi awal tanpa mengunci lutut."
+      ],
+      "poin_kunci": "Jalur gerak mesin sudah tetap, jadi fokus pada kedalaman yang nyaman dan tempo yang terkendali.",
+      "gambar": [
+        {
+          "berkas": "hack_squat/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hack_Squat/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "hack_squat/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hack_Squat/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Hack_Squat",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "split_squat",
+      "nama": "Split Squat",
+      "nama_id": "Squat satu kaki dengan posisi kaki depan-belakang",
+      "pola_gerak": "dominan lutut satu kaki",
+      "alias": [
+        "bulgarian split squat",
+        "split squat dumbel",
+        "split squat"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Berdiri dengan satu kaki di depan dan satu kaki di belakang, jaraknya kira-kira satu langkah panjang.",
+        "Pegang dumbel di kedua sisi badan, tegakkan badan.",
+        "Turun lurus ke bawah sampai lutut belakang mendekati lantai.",
+        "Dorong lantai dengan kaki depan untuk kembali ke posisi awal, selesaikan semua repetisi sebelum berganti kaki."
+      ],
+      "poin_kunci": "Turun lurus ke bawah, bukan maju ke depan, agar beban tetap pada kaki depan.",
+      "gambar": [
+        {
+          "berkas": "split_squat/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Split_Squat_with_Dumbbells/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "split_squat/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Split_Squat_with_Dumbbells/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Split_Squat_with_Dumbbells",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "lunge",
+      "nama": "Lunge",
+      "nama_id": "Melangkah dan menurunkan badan",
+      "pola_gerak": "dominan lutut satu kaki",
+      "alias": [
+        "dumbbell lunge",
+        "walking lunge",
+        "lunges",
+        "lunge"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Berdiri tegak sambil memegang dumbel di kedua sisi badan.",
+        "Melangkah ke depan satu langkah panjang dengan satu kaki.",
+        "Turunkan badan sampai kedua lutut menekuk kira-kira sembilan puluh derajat.",
+        "Dorong lantai dengan kaki depan untuk kembali berdiri, lalu ulangi dengan kaki yang lain."
+      ],
+      "poin_kunci": "Jaga badan tetap tegak; condong ke depan akan memindahkan beban ke punggung bawah.",
+      "gambar": [
+        {
+          "berkas": "lunge/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Lunges/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "lunge/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Lunges/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Dumbbell_Lunges",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "step_up",
+      "nama": "Step Up",
+      "nama_id": "Naik ke bangku satu kaki",
+      "pola_gerak": "dominan lutut satu kaki",
+      "alias": [
+        "step ups",
+        "step up"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Berdiri menghadap bangku setinggi kira-kira lutut sambil memegang dumbel.",
+        "Letakkan satu telapak kaki penuh di atas bangku.",
+        "Dorong dengan kaki yang di atas sampai berdiri penuh di bangku.",
+        "Turun perlahan dengan kaki yang sama menahan gerakan, lalu ulangi."
+      ],
+      "poin_kunci": "Hindari mendorong dengan kaki bawah; tenaga harus datang dari kaki yang berada di atas bangku.",
+      "gambar": [
+        {
+          "berkas": "step_up/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Step_Ups/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "step_up/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Step_Ups/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Dumbbell_Step_Ups",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "deadlift",
+      "nama": "Deadlift",
+      "nama_id": "Mengangkat barbel dari lantai",
+      "pola_gerak": "dominan pinggul",
+      "alias": [
+        "conventional deadlift",
+        "barbell deadlift",
+        "dead lift",
+        "deadlift"
+      ],
+      "kelompok_otot_utama": [
+        "punggung bawah"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "lengan bawah",
+        "gluteus (bokong)",
+        "hamstring (paha belakang)",
+        "latissimus (punggung samping)",
+        "punggung tengah",
+        "kuadrisep (paha depan)",
+        "trapezius"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Berdiri dengan pertengahan telapak kaki berada di bawah barbel, kaki selebar pinggul.",
+        "Tekuk pinggul dan lutut untuk meraih barbel dengan genggaman selebar bahu, jaga punggung tetap lurus dan dada terangkat.",
+        "Tarik napas, kencangkan perut, lalu angkat dengan mendorong lantai memakai kaki sambil menegakkan badan; barbel bergerak dekat dengan tulang kering.",
+        "Berdiri tegak penuh dengan bahu ditarik ke belakang, lalu turunkan barbel mengikuti jalur yang sama sampai menyentuh lantai."
+      ],
+      "poin_kunci": "Punggung wajib tetap lurus dari awal sampai akhir; punggung yang membulat adalah penyebab cedera paling umum pada gerakan ini.",
+      "gambar": [
+        {
+          "berkas": "deadlift/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "deadlift/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Deadlift",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "romanian_deadlift",
+      "nama": "Romanian Deadlift",
+      "nama_id": "Menurunkan barbel dengan pinggul mundur",
+      "pola_gerak": "dominan pinggul",
+      "alias": [
+        "stiff legged deadlift",
+        "stiff leg deadlift",
+        "romanian deadlift",
+        "rdl"
+      ],
+      "kelompok_otot_utama": [
+        "hamstring (paha belakang)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "gluteus (bokong)",
+        "punggung bawah"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Berdiri tegak memegang barbel di depan paha dengan genggaman selebar bahu.",
+        "Tekuk lutut sedikit saja dan pertahankan sudut itu selama gerakan.",
+        "Dorong pinggul ke belakang sambil menurunkan barbel menyusuri paha sampai terasa tarikan pada paha belakang.",
+        "Dorong pinggul ke depan untuk kembali berdiri tegak."
+      ],
+      "poin_kunci": "Gerakan berasal dari pinggul yang mundur, bukan dari punggung yang membungkuk.",
+      "gambar": [
+        {
+          "berkas": "romanian_deadlift/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Romanian_Deadlift/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "romanian_deadlift/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Romanian_Deadlift/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Romanian_Deadlift",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "hip_thrust",
+      "nama": "Hip Thrust",
+      "nama_id": "Mendorong pinggul ke atas dengan barbel",
+      "pola_gerak": "dominan pinggul",
+      "alias": [
+        "barbell hip thrust",
+        "hip thrust"
+      ],
+      "kelompok_otot_utama": [
+        "gluteus (bokong)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Duduk di lantai dengan punggung bagian atas bersandar pada bangku dan barbel di atas lipatan pinggul.",
+        "Tekuk lutut dan letakkan telapak kaki rata di lantai selebar pinggul.",
+        "Dorong pinggul ke atas sampai badan dari bahu ke lutut membentuk garis lurus.",
+        "Tahan sebentar di posisi atas, lalu turunkan pinggul perlahan."
+      ],
+      "poin_kunci": "Berhenti di garis lurus; melengkungkan punggung lebih jauh membebani punggung bawah, bukan otot bokong.",
+      "gambar": [
+        {
+          "berkas": "hip_thrust/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Hip_Thrust/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "hip_thrust/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Hip_Thrust/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Hip_Thrust",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "glute_bridge",
+      "nama": "Glute Bridge",
+      "nama_id": "Mengangkat pinggul dari posisi telentang",
+      "pola_gerak": "dominan pinggul",
+      "alias": [
+        "glute bridge",
+        "hip bridge"
+      ],
+      "kelompok_otot_utama": [
+        "gluteus (bokong)"
+      ],
+      "kelompok_otot_pendukung": [
+        "betis",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Berbaring telentang dengan lutut ditekuk dan telapak kaki rata di lantai.",
+        "Kencangkan otot perut dan bokong.",
+        "Angkat pinggul sampai badan dari bahu ke lutut lurus.",
+        "Turunkan pinggul perlahan sampai hampir menyentuh lantai, lalu ulangi."
+      ],
+      "poin_kunci": "Gerakan ini sering dipakai sebagai versi ringan sebelum hip thrust berbeban.",
+      "gambar": [
+        {
+          "berkas": "glute_bridge/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Glute_Bridge/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "glute_bridge/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Glute_Bridge/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Glute_Bridge",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "leg_curl",
+      "nama": "Leg Curl",
+      "nama_id": "Menekuk lutut melawan beban",
+      "pola_gerak": "isolasi paha belakang",
+      "alias": [
+        "hamstring curl",
+        "lying leg curl",
+        "leg curl"
+      ],
+      "kelompok_otot_utama": [
+        "hamstring (paha belakang)"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "mesin",
+      "langkah": [
+        "Berbaring telungkup di mesin dengan bantalan tepat di atas tumit.",
+        "Pegang pegangan mesin dan jaga pinggul tetap menempel pada bantalan.",
+        "Tekuk lutut untuk menarik bantalan ke arah bokong.",
+        "Turunkan beban perlahan sampai kaki hampir lurus."
+      ],
+      "poin_kunci": "Jangan mengangkat pinggul untuk membantu menarik beban.",
+      "gambar": [
+        {
+          "berkas": "leg_curl/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Lying_Leg_Curls/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "leg_curl/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Lying_Leg_Curls/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Lying_Leg_Curls",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "leg_extension",
+      "nama": "Leg Extension",
+      "nama_id": "Meluruskan lutut melawan beban",
+      "pola_gerak": "isolasi paha depan",
+      "alias": [
+        "leg extensions",
+        "leg extension"
+      ],
+      "kelompok_otot_utama": [
+        "kuadrisep (paha depan)"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "mesin",
+      "langkah": [
+        "Duduk di mesin dan atur bantalan agar berada tepat di atas pergelangan kaki.",
+        "Sandarkan punggung dan pegang pegangan di sisi kursi.",
+        "Luruskan lutut untuk mengangkat bantalan sampai kaki hampir lurus.",
+        "Turunkan beban perlahan sampai kembali ke posisi awal."
+      ],
+      "poin_kunci": "Gerakkan beban dengan tempo terkendali, jangan menghentak di posisi lurus.",
+      "gambar": [
+        {
+          "berkas": "leg_extension/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "leg_extension/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Leg_Extensions",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "calf_raise",
+      "nama": "Calf Raise",
+      "nama_id": "Mengangkat tumit",
+      "pola_gerak": "isolasi betis",
+      "alias": [
+        "standing calf raise",
+        "calf raises",
+        "calf raise"
+      ],
+      "kelompok_otot_utama": [
+        "betis"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "mesin",
+      "langkah": [
+        "Berdiri dengan bagian depan telapak kaki di atas pijakan dan tumit menggantung.",
+        "Turunkan tumit perlahan sampai terasa tarikan pada betis.",
+        "Angkat tumit setinggi mungkin sampai berdiri di ujung kaki.",
+        "Tahan sebentar di posisi atas, lalu turunkan lagi dengan terkendali."
+      ],
+      "poin_kunci": "Gunakan rentang gerak penuh dari tumit turun sampai ujung kaki agar hasilnya optimal.",
+      "gambar": [
+        {
+          "berkas": "calf_raise/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Calf_Raises/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "calf_raise/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Calf_Raises/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Standing_Calf_Raises",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "back_extension",
+      "nama": "Back Extension",
+      "nama_id": "Meluruskan badan dari posisi membungkuk",
+      "pola_gerak": "penguat punggung bawah",
+      "alias": [
+        "ekstensi punggung",
+        "hyperextensions",
+        "back extension",
+        "hyperextension"
+      ],
+      "kelompok_otot_utama": [
+        "punggung bawah"
+      ],
+      "kelompok_otot_pendukung": [
+        "gluteus (bokong)",
+        "hamstring (paha belakang)"
+      ],
+      "alat": "alat lain",
+      "langkah": [
+        "Atur bantalan alat tepat di lipatan pinggul, lalu kaitkan tumit pada penahan.",
+        "Silangkan tangan di dada dan luruskan badan sejajar dengan kaki.",
+        "Turunkan badan dengan menekuk pinggul, bukan punggung.",
+        "Naikkan badan sampai kembali sejajar, tanpa melengkung berlebihan."
+      ],
+      "poin_kunci": "Berhenti di posisi lurus; melengkungkan punggung ke belakang menambah tekanan pada punggung bawah.",
+      "gambar": [
+        {
+          "berkas": "back_extension/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hyperextensions_Back_Extensions/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "back_extension/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hyperextensions_Back_Extensions/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Hyperextensions_Back_Extensions",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "bench_press",
+      "nama": "Bench Press",
+      "nama_id": "Menekan barbel dari dada sambil berbaring",
+      "pola_gerak": "dorong horizontal",
+      "alias": [
+        "barbell bench press",
+        "flat bench press",
+        "bench press"
+      ],
+      "kelompok_otot_utama": [
+        "dada"
+      ],
+      "kelompok_otot_pendukung": [
+        "bahu",
+        "trisep"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Berbaring di bangku dengan mata tepat di bawah barbel, telapak kaki rata di lantai.",
+        "Genggam barbel sedikit lebih lebar dari bahu, tarik bahu ke belakang dan bawah agar menempel di bangku.",
+        "Turunkan barbel dengan terkendali sampai menyentuh bagian tengah dada, siku membentuk sudut sekitar empat puluh lima derajat terhadap badan.",
+        "Dorong barbel kembali ke atas sampai lengan hampir lurus, buang napas saat mendorong."
+      ],
+      "poin_kunci": "Selalu gunakan pengaman atau bantuan orang lain saat memakai beban berat.",
+      "gambar": [
+        {
+          "berkas": "bench_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "bench_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Bench_Press_-_Medium_Grip",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "incline_bench_press",
+      "nama": "Incline Bench Press",
+      "nama_id": "Menekan barbel pada bangku miring",
+      "pola_gerak": "dorong horizontal ke atas",
+      "alias": [
+        "incline barbell press",
+        "incline bench press",
+        "incline press"
+      ],
+      "kelompok_otot_utama": [
+        "dada"
+      ],
+      "kelompok_otot_pendukung": [
+        "bahu",
+        "trisep"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Atur bangku pada kemiringan sekitar tiga puluh derajat, lalu berbaring dengan punggung menempel.",
+        "Genggam barbel sedikit lebih lebar dari bahu.",
+        "Turunkan barbel sampai menyentuh bagian atas dada.",
+        "Dorong kembali ke atas sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Kemiringan yang terlalu tajam memindahkan beban ke bahu, bukan ke dada bagian atas.",
+      "gambar": [
+        {
+          "berkas": "incline_bench_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Incline_Bench_Press_-_Medium_Grip/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "incline_bench_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Incline_Bench_Press_-_Medium_Grip/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Incline_Bench_Press_-_Medium_Grip",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "dumbbell_bench_press",
+      "nama": "Dumbbell Bench Press",
+      "nama_id": "Menekan dumbel sambil berbaring",
+      "pola_gerak": "dorong horizontal",
+      "alias": [
+        "dumbbell bench press",
+        "dumbel bench press"
+      ],
+      "kelompok_otot_utama": [
+        "dada"
+      ],
+      "kelompok_otot_pendukung": [
+        "bahu",
+        "trisep"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Duduk di ujung bangku dengan dumbel di atas paha, lalu berbaring sambil mengangkat dumbel ke posisi dada.",
+        "Tarik bahu ke belakang dan bawah, telapak kaki rata di lantai.",
+        "Turunkan dumbel sampai sejajar dada dengan terkendali.",
+        "Dorong dumbel ke atas sampai hampir bertemu di atas dada."
+      ],
+      "poin_kunci": "Dumbel memberi rentang gerak lebih luas daripada barbel, jadi turunkan hanya sejauh yang masih nyaman untuk bahu.",
+      "gambar": [
+        {
+          "berkas": "dumbbell_bench_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Bench_Press/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "dumbbell_bench_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Bench_Press/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Dumbbell_Bench_Press",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "incline_dumbbell_press",
+      "nama": "Incline Dumbbell Press",
+      "nama_id": "Menekan dumbel pada bangku miring",
+      "pola_gerak": "dorong horizontal ke atas",
+      "alias": [
+        "incline dumbbell bench press",
+        "incline dumbbell press"
+      ],
+      "kelompok_otot_utama": [
+        "dada"
+      ],
+      "kelompok_otot_pendukung": [
+        "bahu",
+        "trisep"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Atur bangku pada kemiringan sekitar tiga puluh derajat.",
+        "Duduk dengan dumbel di atas paha, lalu bersandar sambil membawa dumbel ke posisi bahu.",
+        "Turunkan dumbel sampai sejajar dada bagian atas.",
+        "Dorong kembali ke atas sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Jaga siku sedikit menyempit ke arah badan agar bahu tidak tertekan.",
+      "gambar": [
+        {
+          "berkas": "incline_dumbbell_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Press/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "incline_dumbbell_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Press/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Incline_Dumbbell_Press",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "push_up",
+      "nama": "Push-up",
+      "nama_id": "Mendorong badan dari lantai",
+      "pola_gerak": "dorong horizontal",
+      "alias": [
+        "push ups",
+        "push up",
+        "pushups"
+      ],
+      "kelompok_otot_utama": [
+        "dada"
+      ],
+      "kelompok_otot_pendukung": [
+        "bahu",
+        "trisep"
+      ],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Ambil posisi telungkup bertumpu pada telapak tangan dan ujung kaki, tangan sedikit lebih lebar dari bahu.",
+        "Kencangkan perut dan bokong sehingga badan membentuk satu garis lurus dari kepala sampai tumit.",
+        "Turunkan badan sampai dada hampir menyentuh lantai, siku menyudut sekitar empat puluh lima derajat.",
+        "Dorong lantai sampai lengan hampir lurus tanpa membiarkan pinggul turun."
+      ],
+      "poin_kunci": "Kalau pinggul melorot atau naik, kurangi jumlah repetisi atau lakukan dengan tangan di atas bangku.",
+      "gambar": [
+        {
+          "berkas": "push_up/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "push_up/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Pushups",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "machine_chest_press",
+      "nama": "Machine Chest Press",
+      "nama_id": "Menekan beban dada pada mesin",
+      "pola_gerak": "dorong horizontal",
+      "alias": [
+        "machine bench press",
+        "machine chest press",
+        "chest press"
+      ],
+      "kelompok_otot_utama": [
+        "dada"
+      ],
+      "kelompok_otot_pendukung": [
+        "bahu",
+        "trisep"
+      ],
+      "alat": "mesin",
+      "langkah": [
+        "Atur ketinggian kursi sampai pegangan sejajar dengan pertengahan dada.",
+        "Duduk dengan punggung menempel penuh pada sandaran.",
+        "Dorong pegangan ke depan sampai lengan hampir lurus.",
+        "Kembalikan pegangan perlahan sampai terasa regangan di dada."
+      ],
+      "poin_kunci": "Mesin memberi jalur gerak terkendali, sehingga cocok untuk pemula atau saat berlatih tanpa pengaman.",
+      "gambar": [
+        {
+          "berkas": "machine_chest_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Bench_Press/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "machine_chest_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Bench_Press/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Machine_Bench_Press",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "chest_fly",
+      "nama": "Chest Fly",
+      "nama_id": "Merentangkan dan merapatkan lengan",
+      "pola_gerak": "isolasi dada",
+      "alias": [
+        "dumbbell flyes",
+        "dumbbell fly",
+        "chest flyes",
+        "chest fly",
+        "pec fly"
+      ],
+      "kelompok_otot_utama": [
+        "dada"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "dumbel",
+      "langkah": [
+        "Berbaring di bangku datar sambil memegang dumbel di atas dada dengan telapak saling berhadapan.",
+        "Tekuk siku sedikit dan pertahankan sudut itu sepanjang gerakan.",
+        "Rentangkan lengan ke samping sampai terasa regangan pada dada.",
+        "Rapatkan kembali kedua dumbel di atas dada seperti sedang memeluk."
+      ],
+      "poin_kunci": "Beban ringan sudah cukup; merentang terlalu dalam menekan sendi bahu.",
+      "gambar": [
+        {
+          "berkas": "chest_fly/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Flyes/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "chest_fly/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Flyes/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Dumbbell_Flyes",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "overhead_press",
+      "nama": "Overhead Press",
+      "nama_id": "Menekan barbel ke atas kepala",
+      "pola_gerak": "dorong vertikal",
+      "alias": [
+        "overhead press",
+        "standing press",
+        "military press",
+        "shoulder press",
+        "ohp"
+      ],
+      "kelompok_otot_utama": [
+        "bahu"
+      ],
+      "kelompok_otot_pendukung": [
+        "trisep"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Berdiri dengan kaki selebar pinggul, barbel bertumpu di depan bahu dengan genggaman selebar bahu.",
+        "Kencangkan perut dan bokong agar punggung tidak melengkung.",
+        "Dorong barbel lurus ke atas sambil sedikit menarik kepala ke belakang untuk memberi jalan.",
+        "Kunci lengan di atas kepala, lalu turunkan barbel kembali ke depan bahu dengan terkendali."
+      ],
+      "poin_kunci": "Kalau punggung bawah melengkung berlebihan, kurangi beban atau lakukan sambil duduk bersandar.",
+      "gambar": [
+        {
+          "berkas": "overhead_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Military_Press/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "overhead_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Military_Press/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Standing_Military_Press",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "dumbbell_shoulder_press",
+      "nama": "Dumbbell Shoulder Press",
+      "nama_id": "Menekan dumbel ke atas kepala",
+      "pola_gerak": "dorong vertikal",
+      "alias": [
+        "dumbbell overhead press",
+        "dumbbell shoulder press",
+        "seated dumbbell press"
+      ],
+      "kelompok_otot_utama": [
+        "bahu"
+      ],
+      "kelompok_otot_pendukung": [
+        "trisep"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Duduk di bangku bersandar tegak sambil memegang dumbel setinggi bahu.",
+        "Hadapkan telapak tangan ke depan dan jaga siku sedikit di depan badan.",
+        "Dorong dumbel ke atas sampai lengan hampir lurus.",
+        "Turunkan dumbel perlahan sampai kembali setinggi bahu."
+      ],
+      "poin_kunci": "Sandaran bangku membantu menjaga punggung tetap netral saat beban bertambah.",
+      "gambar": [
+        {
+          "berkas": "dumbbell_shoulder_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Dumbbell_Press/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "dumbbell_shoulder_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Dumbbell_Press/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Seated_Dumbbell_Press",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "machine_shoulder_press",
+      "nama": "Machine Shoulder Press",
+      "nama_id": "Menekan beban bahu pada mesin",
+      "pola_gerak": "dorong vertikal",
+      "alias": [
+        "machine shoulder press"
+      ],
+      "kelompok_otot_utama": [
+        "bahu"
+      ],
+      "kelompok_otot_pendukung": [
+        "trisep"
+      ],
+      "alat": "mesin",
+      "langkah": [
+        "Atur kursi sampai pegangan berada setinggi bahu.",
+        "Duduk dengan punggung menempel pada sandaran.",
+        "Dorong pegangan ke atas sampai lengan hampir lurus.",
+        "Turunkan perlahan sampai pegangan kembali setinggi bahu."
+      ],
+      "poin_kunci": "Pilihan yang aman ketika bahu masih dalam proses membiasakan diri dengan beban.",
+      "gambar": [
+        {
+          "berkas": "machine_shoulder_press/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Shoulder_Military_Press/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "machine_shoulder_press/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Shoulder_Military_Press/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Machine_Shoulder_Military_Press",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "lateral_raise",
+      "nama": "Lateral Raise",
+      "nama_id": "Mengangkat dumbel ke samping",
+      "pola_gerak": "isolasi bahu samping",
+      "alias": [
+        "side lateral raise",
+        "lateral raises",
+        "lateral raise"
+      ],
+      "kelompok_otot_utama": [
+        "bahu"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "dumbel",
+      "langkah": [
+        "Berdiri tegak dengan dumbel di kedua sisi badan dan siku sedikit ditekuk.",
+        "Angkat kedua lengan ke samping sampai setinggi bahu.",
+        "Tahan sebentar di posisi atas.",
+        "Turunkan dumbel perlahan sampai kembali ke sisi badan."
+      ],
+      "poin_kunci": "Jangan mengayun badan; kalau harus mengayun, bebannya terlalu berat.",
+      "gambar": [
+        {
+          "berkas": "lateral_raise/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Lateral_Raise/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "lateral_raise/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Lateral_Raise/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Side_Lateral_Raise",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "rear_delt_fly",
+      "nama": "Rear Delt Fly",
+      "nama_id": "Merentangkan lengan ke belakang",
+      "pola_gerak": "isolasi bahu belakang",
+      "alias": [
+        "rear delt raise",
+        "reverse flyes",
+        "rear delt fly",
+        "reverse fly"
+      ],
+      "kelompok_otot_utama": [
+        "bahu"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "mesin",
+      "langkah": [
+        "Duduk menghadap sandaran mesin dan pegang kedua pegangan di depan badan.",
+        "Jaga siku sedikit ditekuk dan bahu turun.",
+        "Rentangkan lengan ke belakang sampai sejajar bahu.",
+        "Kembalikan pegangan perlahan ke posisi awal."
+      ],
+      "poin_kunci": "Gerakan ini sering dipakai untuk menyeimbangkan latihan dada yang berlebih.",
+      "gambar": [
+        {
+          "berkas": "rear_delt_fly/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Machine_Flyes/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "rear_delt_fly/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Machine_Flyes/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Reverse_Machine_Flyes",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "face_pull",
+      "nama": "Face Pull",
+      "nama_id": "Menarik tali ke arah wajah",
+      "pola_gerak": "tarik horizontal atas",
+      "alias": [
+        "face pulls",
+        "face pull"
+      ],
+      "kelompok_otot_utama": [
+        "bahu"
+      ],
+      "kelompok_otot_pendukung": [
+        "punggung tengah"
+      ],
+      "alat": "katrol",
+      "langkah": [
+        "Atur katrol setinggi wajah dan pasang tali, lalu pegang dengan kedua tangan.",
+        "Mundur beberapa langkah sampai tali terasa tegang, kaki dibuka selebar pinggul.",
+        "Tarik tali ke arah wajah sambil merentangkan kedua tangan ke samping.",
+        "Kembalikan tali perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Fokus pada tulang belikat yang saling merapat, bukan pada besarnya beban.",
+      "gambar": [
+        {
+          "berkas": "face_pull/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "face_pull/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Face_Pull",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "dips",
+      "nama": "Dips",
+      "nama_id": "Menurunkan dan mengangkat badan di palang sejajar",
+      "pola_gerak": "dorong vertikal ke bawah",
+      "alias": [
+        "triceps dips",
+        "dips",
+        "dip"
+      ],
+      "kelompok_otot_utama": [
+        "trisep"
+      ],
+      "kelompok_otot_pendukung": [
+        "dada",
+        "bahu"
+      ],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Naik ke palang sejajar dengan lengan lurus menopang badan.",
+        "Sedikit tekuk lutut dan silangkan pergelangan kaki.",
+        "Turunkan badan dengan menekuk siku sampai lengan atas hampir sejajar lantai.",
+        "Dorong kembali ke atas sampai lengan lurus."
+      ],
+      "poin_kunci": "Turun terlalu dalam membebani sendi bahu; berhenti saat lengan atas sejajar lantai.",
+      "gambar": [
+        {
+          "berkas": "dips/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dips_-_Triceps_Version/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "dips/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dips_-_Triceps_Version/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Dips_-_Triceps_Version",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "triceps_pushdown",
+      "nama": "Triceps Pushdown",
+      "nama_id": "Menekan tali katrol ke bawah",
+      "pola_gerak": "isolasi trisep",
+      "alias": [
+        "triceps pushdown",
+        "tricep pushdown",
+        "cable pushdown",
+        "pushdown"
+      ],
+      "kelompok_otot_utama": [
+        "trisep"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "katrol",
+      "langkah": [
+        "Berdiri menghadap mesin katrol atas dan pegang batang atau tali.",
+        "Rapatkan siku ke sisi badan dan condongkan badan sedikit ke depan.",
+        "Luruskan siku untuk menekan beban ke bawah.",
+        "Kembalikan perlahan sampai lengan bawah sejajar lantai."
+      ],
+      "poin_kunci": "Siku harus tetap di sisi badan; siku yang bergerak memindahkan kerja ke bahu.",
+      "gambar": [
+        {
+          "berkas": "triceps_pushdown/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Triceps_Pushdown/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "triceps_pushdown/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Triceps_Pushdown/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Triceps_Pushdown",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "overhead_triceps_extension",
+      "nama": "Overhead Triceps Extension",
+      "nama_id": "Meluruskan lengan di atas kepala",
+      "pola_gerak": "isolasi trisep",
+      "alias": [
+        "overhead triceps extension",
+        "triceps extension",
+        "tricep extension"
+      ],
+      "kelompok_otot_utama": [
+        "trisep"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "dumbel",
+      "langkah": [
+        "Berdiri tegak sambil memegang satu dumbel dengan kedua tangan di atas kepala.",
+        "Jaga siku tetap rapat dan mengarah ke depan.",
+        "Turunkan dumbel ke belakang kepala dengan menekuk siku.",
+        "Luruskan siku untuk mengangkat dumbel kembali ke atas."
+      ],
+      "poin_kunci": "Kencangkan perut agar punggung bawah tidak melengkung saat lengan di atas kepala.",
+      "gambar": [
+        {
+          "berkas": "overhead_triceps_extension/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Dumbbell_Triceps_Extension/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "overhead_triceps_extension/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Dumbbell_Triceps_Extension/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Standing_Dumbbell_Triceps_Extension",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "pull_up",
+      "nama": "Pull-up",
+      "nama_id": "Menarik badan ke palang dengan telapak menghadap depan",
+      "pola_gerak": "tarik vertikal",
+      "alias": [
+        "pull ups",
+        "pullups",
+        "pull up"
+      ],
+      "kelompok_otot_utama": [
+        "latissimus (punggung samping)"
+      ],
+      "kelompok_otot_pendukung": [
+        "bisep",
+        "punggung tengah"
+      ],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Gantung pada palang dengan genggaman selebar bahu, telapak tangan menghadap ke depan.",
+        "Turunkan bahu menjauhi telinga dan kencangkan perut.",
+        "Tarik badan ke atas sampai dagu melewati palang.",
+        "Turunkan badan perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Kalau belum sanggup, pakai karet pembantu atau lakukan versi turun perlahan saja.",
+      "gambar": [
+        {
+          "berkas": "pull_up/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "pull_up/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Pullups",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "chin_up",
+      "nama": "Chin-up",
+      "nama_id": "Menarik badan ke palang dengan telapak menghadap badan",
+      "pola_gerak": "tarik vertikal",
+      "alias": [
+        "chin ups",
+        "chin up"
+      ],
+      "kelompok_otot_utama": [
+        "latissimus (punggung samping)"
+      ],
+      "kelompok_otot_pendukung": [
+        "bisep",
+        "lengan bawah",
+        "punggung tengah"
+      ],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Gantung pada palang dengan telapak tangan menghadap badan, selebar bahu.",
+        "Kencangkan perut dan turunkan bahu.",
+        "Tarik badan ke atas sampai dagu melewati palang.",
+        "Turunkan badan perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Genggaman menghadap badan melibatkan bisep lebih banyak, biasanya terasa lebih ringan daripada pull-up.",
+      "gambar": [
+        {
+          "berkas": "chin_up/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Chin-Up/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "chin_up/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Chin-Up/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Chin-Up",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "lat_pulldown",
+      "nama": "Lat Pulldown",
+      "nama_id": "Menarik batang katrol ke dada",
+      "pola_gerak": "tarik vertikal",
+      "alias": [
+        "lat pull down",
+        "lat pulldown",
+        "pulldown"
+      ],
+      "kelompok_otot_utama": [
+        "latissimus (punggung samping)"
+      ],
+      "kelompok_otot_pendukung": [
+        "bisep",
+        "punggung tengah",
+        "bahu"
+      ],
+      "alat": "katrol",
+      "langkah": [
+        "Duduk di mesin dan atur bantalan paha sampai menahan tubuh dengan mantap.",
+        "Genggam batang lebih lebar dari bahu.",
+        "Tarik batang ke arah dada bagian atas sambil merapatkan tulang belikat.",
+        "Kembalikan batang perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Tarik ke depan dada, bukan ke belakang leher, agar bahu tidak tertekan.",
+      "gambar": [
+        {
+          "berkas": "lat_pulldown/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Wide-Grip_Lat_Pulldown/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "lat_pulldown/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Wide-Grip_Lat_Pulldown/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Wide-Grip_Lat_Pulldown",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "barbell_row",
+      "nama": "Barbell Row",
+      "nama_id": "Menarik barbel dalam posisi membungkuk",
+      "pola_gerak": "tarik horizontal",
+      "alias": [
+        "bent over barbell row",
+        "bent over row",
+        "barbell row"
+      ],
+      "kelompok_otot_utama": [
+        "punggung tengah"
+      ],
+      "kelompok_otot_pendukung": [
+        "bisep",
+        "latissimus (punggung samping)",
+        "bahu"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Berdiri memegang barbel dengan genggaman selebar bahu.",
+        "Dorong pinggul ke belakang sampai badan condong sekitar empat puluh lima derajat, punggung tetap lurus.",
+        "Tarik barbel ke arah perut bagian bawah sambil merapatkan tulang belikat.",
+        "Turunkan barbel perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Jaga punggung tetap lurus; gerakan ini paling sering salah karena punggung ikut naik turun.",
+      "gambar": [
+        {
+          "berkas": "barbell_row/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bent_Over_Barbell_Row/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "barbell_row/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bent_Over_Barbell_Row/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Bent_Over_Barbell_Row",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "dumbbell_row",
+      "nama": "One-Arm Dumbbell Row",
+      "nama_id": "Menarik dumbel satu tangan bertumpu bangku",
+      "pola_gerak": "tarik horizontal",
+      "alias": [
+        "one arm dumbbell row",
+        "single arm row",
+        "dumbbell row"
+      ],
+      "kelompok_otot_utama": [
+        "punggung tengah"
+      ],
+      "kelompok_otot_pendukung": [
+        "bisep",
+        "latissimus (punggung samping)",
+        "bahu"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Letakkan satu lutut dan satu telapak tangan di atas bangku, kaki yang lain menapak di lantai.",
+        "Pegang dumbel dengan tangan yang bebas, biarkan lengan menggantung lurus.",
+        "Tarik dumbel ke arah pinggul sambil menjaga punggung tetap datar.",
+        "Turunkan dumbel perlahan sampai lengan lurus kembali, lalu ganti sisi setelah semua repetisi selesai."
+      ],
+      "poin_kunci": "Badan tidak boleh ikut berputar saat menarik; jaga bahu tetap sejajar.",
+      "gambar": [
+        {
+          "berkas": "dumbbell_row/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/One-Arm_Dumbbell_Row/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "dumbbell_row/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/One-Arm_Dumbbell_Row/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "One-Arm_Dumbbell_Row",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "seated_cable_row",
+      "nama": "Seated Cable Row",
+      "nama_id": "Menarik pegangan katrol sambil duduk",
+      "pola_gerak": "tarik horizontal",
+      "alias": [
+        "seated cable row",
+        "seated row",
+        "cable row"
+      ],
+      "kelompok_otot_utama": [
+        "punggung tengah"
+      ],
+      "kelompok_otot_pendukung": [
+        "bisep",
+        "latissimus (punggung samping)",
+        "bahu"
+      ],
+      "alat": "katrol",
+      "langkah": [
+        "Duduk menghadap mesin, letakkan kaki pada pijakan dengan lutut sedikit ditekuk.",
+        "Pegang gagang dan tegakkan badan sampai punggung lurus.",
+        "Tarik gagang ke arah perut sambil merapatkan tulang belikat.",
+        "Kembalikan gagang perlahan sampai lengan hampir lurus tanpa membungkuk."
+      ],
+      "poin_kunci": "Badan tetap tegak; jangan mengayun ke belakang untuk membantu tarikan.",
+      "gambar": [
+        {
+          "berkas": "seated_cable_row/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Cable_Rows/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "seated_cable_row/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Cable_Rows/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Seated_Cable_Rows",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "shrug",
+      "nama": "Shrug",
+      "nama_id": "Mengangkat bahu ke arah telinga",
+      "pola_gerak": "isolasi trapezius",
+      "alias": [
+        "barbell shrug",
+        "shrugs",
+        "shrug"
+      ],
+      "kelompok_otot_utama": [
+        "trapezius"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "barbel",
+      "langkah": [
+        "Berdiri tegak memegang barbel atau dumbel di depan paha.",
+        "Jaga lengan tetap lurus sepanjang gerakan.",
+        "Angkat bahu lurus ke atas ke arah telinga.",
+        "Turunkan bahu perlahan sampai kembali ke posisi awal."
+      ],
+      "poin_kunci": "Angkat lurus ke atas; memutar bahu tidak menambah manfaat dan menambah tekanan pada leher.",
+      "gambar": [
+        {
+          "berkas": "shrug/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Shrug/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "shrug/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Shrug/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Shrug",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "barbell_curl",
+      "nama": "Barbell Curl",
+      "nama_id": "Menekuk siku mengangkat barbel",
+      "pola_gerak": "isolasi bisep",
+      "alias": [
+        "barbell curl",
+        "biceps curl",
+        "bicep curl"
+      ],
+      "kelompok_otot_utama": [
+        "bisep"
+      ],
+      "kelompok_otot_pendukung": [
+        "lengan bawah"
+      ],
+      "alat": "barbel",
+      "langkah": [
+        "Berdiri tegak memegang barbel selebar bahu dengan telapak menghadap ke depan.",
+        "Rapatkan siku ke sisi badan.",
+        "Tekuk siku untuk mengangkat barbel sampai setinggi dada.",
+        "Turunkan barbel perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Badan tidak boleh mengayun; kalau mengayun, kurangi bebannya.",
+      "gambar": [
+        {
+          "berkas": "barbell_curl/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "barbell_curl/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Barbell_Curl",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "dumbbell_curl",
+      "nama": "Dumbbell Curl",
+      "nama_id": "Menekuk siku mengangkat dumbel",
+      "pola_gerak": "isolasi bisep",
+      "alias": [
+        "dumbbell biceps curl",
+        "dumbbell bicep curl",
+        "dumbbell curl"
+      ],
+      "kelompok_otot_utama": [
+        "bisep"
+      ],
+      "kelompok_otot_pendukung": [
+        "lengan bawah"
+      ],
+      "alat": "dumbel",
+      "langkah": [
+        "Berdiri tegak dengan dumbel di kedua sisi badan, telapak menghadap ke depan.",
+        "Rapatkan siku ke sisi badan.",
+        "Tekuk siku mengangkat dumbel sampai setinggi bahu.",
+        "Turunkan perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Bisa dikerjakan bergantian kiri-kanan agar tempo lebih terkendali.",
+      "gambar": [
+        {
+          "berkas": "dumbbell_curl/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Bicep_Curl/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "dumbbell_curl/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Bicep_Curl/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Dumbbell_Bicep_Curl",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "hammer_curl",
+      "nama": "Hammer Curl",
+      "nama_id": "Curl dengan telapak saling berhadapan",
+      "pola_gerak": "isolasi bisep dan lengan bawah",
+      "alias": [
+        "hammer curls",
+        "hammer curl"
+      ],
+      "kelompok_otot_utama": [
+        "bisep"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "dumbel",
+      "langkah": [
+        "Berdiri tegak dengan dumbel di kedua sisi badan, telapak tangan saling berhadapan.",
+        "Rapatkan siku ke sisi badan.",
+        "Tekuk siku mengangkat dumbel tanpa memutar pergelangan tangan.",
+        "Turunkan perlahan sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Posisi telapak seperti memegang palu memberi tekanan lebih pada lengan bawah.",
+      "gambar": [
+        {
+          "berkas": "hammer_curl/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hammer_Curls/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "hammer_curl/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hammer_Curls/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Hammer_Curls",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "external_rotation",
+      "nama": "Shoulder External Rotation",
+      "nama_id": "Memutar lengan ke luar",
+      "pola_gerak": "penguat rotator bahu",
+      "alias": [
+        "shoulder external rotation",
+        "rotasi eksternal bahu",
+        "external rotation"
+      ],
+      "kelompok_otot_utama": [
+        "bahu"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "dumbel",
+      "langkah": [
+        "Berbaring menyamping dengan lengan atas menempel di sisi badan dan siku ditekuk sembilan puluh derajat.",
+        "Pegang dumbel ringan dengan tangan yang berada di atas.",
+        "Putar lengan bawah ke atas sampai mengarah ke langit-langit, siku tetap menempel di sisi badan.",
+        "Turunkan perlahan sampai kembali ke posisi awal."
+      ],
+      "poin_kunci": "Gunakan beban sangat ringan; gerakan ini melatih otot kecil penstabil bahu.",
+      "gambar": [
+        {
+          "berkas": "external_rotation/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/External_Rotation/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "external_rotation/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/External_Rotation/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "External_Rotation",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "wrist_curl",
+      "nama": "Wrist Curl",
+      "nama_id": "Menekuk pergelangan tangan melawan beban",
+      "pola_gerak": "penguat lengan bawah",
+      "alias": [
+        "wrist curls",
+        "wrist curl"
+      ],
+      "kelompok_otot_utama": [
+        "lengan bawah"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "barbel",
+      "langkah": [
+        "Duduk dan sandarkan lengan bawah di atas paha atau bangku, telapak menghadap ke atas.",
+        "Pegang barbel ringan, biarkan pergelangan tangan menggantung di luar tumpuan.",
+        "Tekuk pergelangan tangan ke atas semampunya.",
+        "Turunkan perlahan sampai pergelangan tangan kembali menggantung."
+      ],
+      "poin_kunci": "Beban ringan dan repetisi lebih banyak biasanya lebih nyaman untuk siku dan pergelangan tangan.",
+      "gambar": [
+        {
+          "berkas": "wrist_curl/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Palms-Up_Barbell_Wrist_Curl_Over_A_Bench/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "wrist_curl/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Palms-Up_Barbell_Wrist_Curl_Over_A_Bench/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "plank",
+      "nama": "Plank",
+      "nama_id": "Menahan posisi badan lurus bertumpu siku",
+      "pola_gerak": "penstabil batang tubuh",
+      "alias": [
+        "planking",
+        "plank"
+      ],
+      "kelompok_otot_utama": [
+        "perut"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Ambil posisi telungkup bertumpu pada kedua siku dan ujung kaki.",
+        "Letakkan siku tepat di bawah bahu.",
+        "Kencangkan perut dan bokong sampai badan lurus dari kepala hingga tumit.",
+        "Tahan posisi itu sesuai waktu yang ditentukan sambil bernapas normal."
+      ],
+      "poin_kunci": "Kalau pinggul mulai turun, hentikan hitungan; menahan lebih lama dengan posisi rusak tidak menambah manfaat.",
+      "gambar": [
+        {
+          "berkas": "plank/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "plank/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Plank",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "side_plank",
+      "nama": "Side Plank",
+      "nama_id": "Menahan posisi menyamping bertumpu satu siku",
+      "pola_gerak": "penstabil batang tubuh",
+      "alias": [
+        "side bridge",
+        "side plank"
+      ],
+      "kelompok_otot_utama": [
+        "perut"
+      ],
+      "kelompok_otot_pendukung": [
+        "bahu"
+      ],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Berbaring menyamping bertumpu pada satu siku yang berada tepat di bawah bahu.",
+        "Tumpuk kedua kaki dan luruskan badan.",
+        "Angkat pinggul sampai badan lurus dari kepala sampai kaki.",
+        "Tahan sesuai waktu yang ditentukan, lalu ganti sisi."
+      ],
+      "poin_kunci": "Jaga pinggul tetap terangkat dan badan tidak berputar ke depan atau belakang.",
+      "gambar": [
+        {
+          "berkas": "side_plank/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Bridge/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "side_plank/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Bridge/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Side_Bridge",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "cable_crunch",
+      "nama": "Cable Crunch",
+      "nama_id": "Melipat badan melawan tarikan katrol",
+      "pola_gerak": "isolasi perut",
+      "alias": [
+        "cable crunch"
+      ],
+      "kelompok_otot_utama": [
+        "perut"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "katrol",
+      "langkah": [
+        "Berlutut menghadap mesin katrol atas sambil memegang tali di samping kepala.",
+        "Tekuk pinggul sedikit dan pertahankan posisi itu.",
+        "Lipat badan ke bawah dengan membulatkan tulang punggung atas, bukan dengan menekuk pinggul.",
+        "Kembali ke posisi awal perlahan melawan tarikan beban."
+      ],
+      "poin_kunci": "Pinggul harus tetap di tempat; kalau pinggul ikut bergerak, yang bekerja adalah otot pinggul, bukan perut.",
+      "gambar": [
+        {
+          "berkas": "cable_crunch/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crunch/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "cable_crunch/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crunch/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Cable_Crunch",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "hanging_leg_raise",
+      "nama": "Hanging Leg Raise",
+      "nama_id": "Mengangkat kaki sambil bergantung",
+      "pola_gerak": "isolasi perut",
+      "alias": [
+        "hanging knee raise",
+        "hanging leg raise"
+      ],
+      "kelompok_otot_utama": [
+        "perut"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Gantung pada palang dengan genggaman selebar bahu.",
+        "Kencangkan perut dan hentikan ayunan badan.",
+        "Angkat kedua kaki ke depan sampai paha minimal sejajar lantai.",
+        "Turunkan kaki perlahan tanpa mengayun."
+      ],
+      "poin_kunci": "Kalau masih berat, tekuk lutut terlebih dahulu sebelum berlatih dengan kaki lurus.",
+      "gambar": [
+        {
+          "berkas": "hanging_leg_raise/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hanging_Leg_Raise/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "hanging_leg_raise/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hanging_Leg_Raise/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Hanging_Leg_Raise",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "crunch",
+      "nama": "Crunch",
+      "nama_id": "Melipat badan tanpa alat",
+      "pola_gerak": "isolasi perut",
+      "alias": [
+        "crunches",
+        "crunch"
+      ],
+      "kelompok_otot_utama": [
+        "perut"
+      ],
+      "kelompok_otot_pendukung": [],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Berbaring telentang dengan lutut ditekuk dan telapak kaki rata di lantai.",
+        "Letakkan tangan di samping kepala tanpa menarik leher.",
+        "Angkat bahu dari lantai dengan melipat tulang punggung atas.",
+        "Turunkan bahu perlahan sampai hampir menyentuh lantai."
+      ],
+      "poin_kunci": "Leher tidak boleh ditarik dengan tangan; jaga dagu berjarak kira-kira satu kepalan dari dada.",
+      "gambar": [
+        {
+          "berkas": "crunch/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunches/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "crunch/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunches/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Crunches",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    },
+    {
+      "id": "bench_dips",
+      "nama": "Bench Dips",
+      "nama_id": "Menurunkan badan bertumpu bangku",
+      "pola_gerak": "dorong vertikal ke bawah",
+      "alias": [
+        "bench dips",
+        "bench dip"
+      ],
+      "kelompok_otot_utama": [
+        "trisep"
+      ],
+      "kelompok_otot_pendukung": [
+        "dada",
+        "bahu"
+      ],
+      "alat": "berat badan sendiri",
+      "langkah": [
+        "Duduk di tepi bangku, letakkan kedua telapak tangan di sisi pinggul.",
+        "Geser pinggul keluar dari bangku dan luruskan kaki ke depan.",
+        "Turunkan badan dengan menekuk siku sampai lengan atas hampir sejajar lantai.",
+        "Dorong kembali ke atas sampai lengan hampir lurus."
+      ],
+      "poin_kunci": "Versi yang lebih ringan daripada dips di palang sejajar, cocok untuk pemula.",
+      "gambar": [
+        {
+          "berkas": "bench_dips/0.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bench_Dips/0.jpg",
+          "keterangan": "Posisi awal"
+        },
+        {
+          "berkas": "bench_dips/1.jpg",
+          "asal": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bench_Dips/1.jpg",
+          "keterangan": "Posisi akhir"
+        }
+      ],
+      "sumber_media": {
+        "nama": "free-exercise-db",
+        "id_asal": "Bench_Dips",
+        "lisensi": "Unlicense (menurut pernyataan pengunggah)",
+        "url": "https://github.com/yuhonas/free-exercise-db"
+      }
+    }
+  ]
+}
