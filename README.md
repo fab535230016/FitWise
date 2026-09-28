@@ -1,21 +1,3 @@
-# RAG Conversational Agent — Penyusun Rencana Latihan
-
-Skeleton pipeline RAG sesuai skripsi: Dialogue Analyzer → Retrieval (BGE-M3 +
-ChromaDB) → Plan Generator (Gemini) → Compliance Checker.
-
-## ⚠️ Penting sebelum mulai
-
-1. **Model Gemini 2.0 Flash/Flash-Lite sudah shutdown per 1 Juni 2026.**
-   Kode ini pakai `gemini-3.1-flash-lite` (di `src/config.py`). Update
-   juga bagian Tech Stack di dokumen skripsimu biar konsisten.
-2. Kode ini ditulis di sandbox tanpa akses internet, jadi **belum pernah
-   di-run end-to-end dengan model beneran**. Logic chunking sudah ditest
-   (lihat `tests/`), tapi bagian embedding/LLM perlu kamu test sendiri di
-   lokal karena butuh download model + API key.
-3. File `data/knowledge_base/contoh_bonilla_2022.txt` isinya **ringkasan
-   contoh buatan sendiri**, bukan kutipan asli papernya (soal hak cipta).
-   Ganti dengan hasil ekstraksi dari PDF asli yang kamu download legal.
-
 ## Struktur Project
 
 ```
