@@ -6,8 +6,12 @@ Rancangan lengan dijelaskan pada src/config.py bagian EVAL_ARMS.
 from __future__ import annotations
 import asyncio
 import csv
+import hashlib
 import json
 import math
+import re
+import shutil
+import subprocess
 import statistics
 import sys
 import types
@@ -89,6 +93,85 @@ class ScenarioResult:
     arms: dict = field(default_factory=dict)
 
 
+class KuotaHarianHabis(Exception):
+    """Kuota harian model habis, sehingga evaluasi dihentikan dan dilanjutkan esok."""
+
+
+def cek_kuota_harian(e: Exception) -> None:
+    pesan = str(e).lower().replace(" ", "")
+    if "perday" in pesan:
+        raise KuotaHarianHabis(str(e)) from e
+
+
+_SIDIK: dict = {}
+_DILANJUTKAN: list[str] = []
+_RIWAYAT_SIDIK: list[dict] = []
+
+
+def sidik_kode() -> dict:
+    """Sidik kode dan basis pengetahuan yang dipakai, agar hasil dapat ditelusuri."""
+    root = Path(__file__).resolve().parent.parent
+    berkas = sorted((root / "src").glob("*.py")) + [root / "evaluation" / "scenarios.py"]
+    h = hashlib.sha256()
+    for p in berkas:
+        h.update(p.relative_to(root).as_posix().encode())
+        h.update(p.read_bytes().replace(b"\r\n", b"\n"))
+    for p in sorted(Path(config.KNOWLEDGE_BASE_DIR).glob("*.pdf")):
+        h.update(f"{p.name}:{p.stat().st_size}".encode())
+    try:
+        head = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"], cwd=root,
+            capture_output=True, text=True, timeout=15,
+        ).stdout.strip() or None
+        kotor = bool(subprocess.run(
+            ["git", "status", "--porcelain", "--", "src", "evaluation/scenarios.py"],
+            cwd=root, capture_output=True, text=True, timeout=15,
+        ).stdout.strip())
+    except (OSError, subprocess.SubprocessError):
+        head, kotor = None, None
+    return {"sha256": h.hexdigest()[:16], "git_head": head, "ada_perubahan_belum_commit": kotor}
+
+
+def muat_hasil_sebelumnya(out_dir: Path) -> dict[str, "ScenarioResult"]:
+    """Ambil skenario yang sudah tuntas pada run sebelumnya dengan kode yang sama."""
+    json_path = out_dir / "ragas_eval_results.json"
+    if not json_path.exists():
+        return {}
+    try:
+        with open(json_path, encoding="utf-8") as f:
+            lama = json.load(f)
+    except (OSError, ValueError):
+        lama = {}
+    konf = lama.get("konfigurasi", {})
+    cocok = (
+        konf.get("sidik_kode", {}).get("sha256") == _SIDIK["sha256"]
+        and konf.get("lengan") == list(config.EVAL_ARMS)
+    )
+    if not cocok:
+        waktu = datetime.fromtimestamp(json_path.stat().st_mtime)
+        arsip = out_dir / f"arsip_otomatis_{waktu:%Y%m%d_%H%M%S}"
+        arsip.mkdir(parents=True, exist_ok=True)
+        for nama in ("ragas_eval_results.json", "ragas_eval_summary.csv"):
+            if (out_dir / nama).exists():
+                shutil.copy2(out_dir / nama, arsip / nama)
+        print(
+            f"Hasil lama di folder results berasal dari kode yang berbeda. "
+            f"Salinannya disimpan di {arsip.name}, evaluasi dimulai dari awal."
+        )
+        return {}
+    _RIWAYAT_SIDIK[:] = konf.get("riwayat_sidik", [])
+    selesai = {}
+    for d in lama.get("hasil", []):
+        lengkap = all(
+            d.get("arms", {}).get(arm, {}).get("faithfulness") is not None
+            and d.get("arms", {}).get(arm, {}).get("groundedness") is not None
+            for arm in config.EVAL_ARMS
+        )
+        if lengkap:
+            selesai[d["scenario_id"]] = ScenarioResult(**d)
+    return selesai
+
+
 def build_evaluator_llm():
     """Bangun model penilai, terpisah dari model penyusun bila diatur demikian."""
     if not config.GEMINI_API_KEY:
@@ -115,7 +198,8 @@ def build_evaluator_llm():
 
 
 async def score_one(
-    evaluator_llm, question: str, response: str, contexts: list[str]
+    evaluator_llm, question: str, response: str, contexts: list[str],
+    hitung_faithfulness: bool = True, hitung_groundedness: bool = True,
 ) -> tuple[float | None, float | None]:
     if not response or not response.strip() or not contexts:
         return None, None
@@ -126,24 +210,89 @@ async def score_one(
         retrieved_contexts=contexts,
     )
 
-    faithfulness_scorer = Faithfulness(llm=evaluator_llm)
-    groundedness_scorer = ResponseGroundedness(llm=evaluator_llm)
+    faithfulness_score = None
+    groundedness_score = None
 
-    try:
-        faithfulness_score = await faithfulness_scorer.single_turn_ascore(sample)
-    except Exception as e:
-        print(f"    [warn] gagal hitung faithfulness: {e}")
-        faithfulness_score = None
+    if hitung_faithfulness:
+        try:
+            faithfulness_score = await Faithfulness(llm=evaluator_llm).single_turn_ascore(sample)
+        except Exception as e:
+            cek_kuota_harian(e)
+            print(f"    [warn] gagal hitung faithfulness: {e}")
 
-    await asyncio.sleep(config.API_PACING_DELAY_SECONDS)
+    if hitung_faithfulness and hitung_groundedness:
+        await asyncio.sleep(config.API_PACING_DELAY_SECONDS)
 
-    try:
-        groundedness_score = await groundedness_scorer.single_turn_ascore(sample)
-    except Exception as e:
-        print(f"    [warn] gagal hitung groundedness: {e}")
-        groundedness_score = None
+    if hitung_groundedness:
+        try:
+            groundedness_score = await ResponseGroundedness(llm=evaluator_llm).single_turn_ascore(sample)
+        except Exception as e:
+            cek_kuota_harian(e)
+            print(f"    [warn] gagal hitung groundedness: {e}")
 
     return faithfulness_score, groundedness_score
+
+
+def pertanyaan_penilai(profile: dict) -> str:
+    return (
+        f"Susun rencana latihan untuk profil: "
+        f"{json.dumps(profile, ensure_ascii=False)}"
+    )
+
+
+def konteks_tersimpan(pipeline, r: "ScenarioResult") -> list[str] | None:
+    """Susun ulang konteks penilaian dari basis pengetahuan; None bila tidak identik."""
+    teks = [pipeline.retriever.get_full_document(s) for s in r.retrieved_sources]
+    if sum(len(t) for t in teks) != r.context_chars:
+        return None
+    return teks
+
+
+async def perbaiki_skor_kosong(pipeline, evaluator_llm, results: list) -> None:
+    """Nilai ulang metrik yang kosong karena galat penilai, memakai rencana yang sama."""
+    for r in results:
+        for arm, a in r.arms.items():
+            metrik = [m for m in ("faithfulness", "groundedness") if not is_valid_score(a.get(m))]
+            if not metrik:
+                continue
+            contexts = konteks_tersimpan(pipeline, r)
+            if contexts is None:
+                print(
+                    f"    [warn] konteks {r.scenario_id} tidak bisa disusun ulang "
+                    f"persis, skor kosong pada lengan {arm} dibiarkan."
+                )
+                continue
+            print(f"\n[{r.scenario_id}] menilai ulang lengan {arm}: {', '.join(metrik)}")
+            await asyncio.sleep(config.API_PACING_DELAY_SECONDS)
+            faith, ground = await score_one(
+                evaluator_llm, pertanyaan_penilai(r.extracted_profile),
+                strip_source_markers(a["plan"]), contexts,
+                hitung_faithfulness="faithfulness" in metrik,
+                hitung_groundedness="groundedness" in metrik,
+            )
+            berhasil = []
+            if "faithfulness" in metrik and is_valid_score(faith):
+                a["faithfulness"] = faith
+                a["claims"] = reconstruct_claim_ratio(faith)
+                berhasil.append("faithfulness")
+            if "groundedness" in metrik and is_valid_score(ground):
+                a["groundedness"] = ground
+                berhasil.append("groundedness")
+            if berhasil:
+                a["dinilai_ulang"] = sorted(set(a.get("dinilai_ulang", [])) | set(berhasil))
+            if is_valid_score(a.get("faithfulness")) and is_valid_score(a.get("groundedness")):
+                a.pop("perlu_dinilai_ulang", None)
+            print(f"    {arm:<16} faithfulness={a.get('faithfulness')}  groundedness={a.get('groundedness')}")
+
+
+def jeda_ulang_skenario(e: Exception, attempt: int) -> float:
+    pesan = str(e)
+    saran = re.search(r"retry in ([0-9.]+)s", pesan)
+    if saran:
+        return min(float(saran.group(1)) + 5, 120)
+    if "UNAVAILABLE" in pesan or "high demand" in pesan:
+        return min(30 * attempt, 180)
+    return 15
 
 
 def run_until_plan(pipeline, message: str, max_turns: int = 3):
@@ -195,10 +344,7 @@ async def run_scenario(pipeline, evaluator_llm, scenario: dict) -> ScenarioResul
         f"{context_chars:,} karakter (mode {config.EVAL_CONTEXT_MODE})"
     )
 
-    question = (
-        f"Susun rencana latihan untuk profil: "
-        f"{json.dumps(profile, ensure_ascii=False)}"
-    )
+    question = pertanyaan_penilai(profile)
 
     arms: dict[str, dict] = {}
     for arm in config.EVAL_ARMS:
@@ -310,7 +456,10 @@ def save_results(results: list[ScenarioResult], failed: list[str], out_dir: Path
             "chunk_per_dokumen": config.EVAL_CHUNKS_PER_DOCUMENT,
             "seed": config.GENERATION_SEED,
             "temperature_generasi": config.GENERATION_TEMPERATURE,
+            "sidik_kode": _SIDIK,
+            **({"riwayat_sidik": _RIWAYAT_SIDIK} if _RIWAYAT_SIDIK else {}),
         },
+        "skenario_dari_run_sebelumnya": _DILANJUTKAN,
         "skenario_gagal": failed,
         "jumlah_skenario_total": len(SCENARIOS),
         "hasil": [asdict(r) for r in results],
@@ -343,20 +492,23 @@ def save_results(results: list[ScenarioResult], failed: list[str], out_dir: Path
 
 
 async def run_scenario_with_retry(
-    pipeline, evaluator_llm, scenario: dict,
-    max_retries: int = 2, retry_delay_seconds: int = 15,
+    pipeline, evaluator_llm, scenario: dict, max_retries: int = 5,
 ) -> ScenarioResult | None:
     for attempt in range(1, max_retries + 2):
         try:
             return await run_scenario(pipeline, evaluator_llm, scenario)
+        except KuotaHarianHabis:
+            raise
         except Exception as e:
+            cek_kuota_harian(e)
             is_last = attempt == max_retries + 1
             print(f"    [error] percobaan {attempt} gagal: {e}")
             if is_last:
                 print(f"    [SKIP] {scenario['id']} dilewati setelah {attempt} percobaan.")
                 return None
-            print(f"    [retry] nunggu {retry_delay_seconds} detik sebelum coba lagi...")
-            await asyncio.sleep(retry_delay_seconds)
+            jeda = jeda_ulang_skenario(e, attempt)
+            print(f"    [retry] nunggu {jeda:.0f} detik sebelum coba lagi...")
+            await asyncio.sleep(jeda)
     return None
 
 
@@ -364,9 +516,30 @@ async def main() -> None:
     for w in validate_config():
         print(f"Peringatan: {w}")
 
+    if config.GEMINI_FALLBACK_MODEL:
+        print(
+            f"Model cadangan '{config.GEMINI_FALLBACK_MODEL}' dinonaktifkan "
+            f"selama evaluasi. Seluruh lengan harus disusun oleh satu model "
+            f"yang sama ({config.GEMINI_MODEL}) agar hasilnya dapat "
+            f"dibandingkan."
+        )
+        config.GEMINI_FALLBACK_MODEL = None
+
     evaluator_llm = build_evaluator_llm()
     pipeline = TrainingPlanPipeline()
     out_dir = Path(__file__).resolve().parent / "results"
+
+    _SIDIK.update(sidik_kode())
+    print(
+        f"Sidik kode: {_SIDIK['sha256']} (git {_SIDIK['git_head'] or '-'}"
+        f"{', ada perubahan belum di-commit' if _SIDIK['ada_perubahan_belum_commit'] else ''})"
+    )
+    selesai = muat_hasil_sebelumnya(out_dir)
+    if selesai:
+        print(
+            f"Melanjutkan run sebelumnya: {len(selesai)} skenario sudah tuntas "
+            f"dengan kode yang sama dan tidak diulang."
+        )
 
     results: list[ScenarioResult] = []
     failed: list[str] = []
@@ -383,13 +556,39 @@ async def main() -> None:
         )
 
     for scenario in scenarios:
-        r = await run_scenario_with_retry(pipeline, evaluator_llm, scenario)
+        if scenario["id"] in selesai:
+            print(f"\n[{scenario['id']}] sudah tuntas pada run sebelumnya, dilewati.")
+            results.append(selesai[scenario["id"]])
+            _DILANJUTKAN.append(scenario["id"])
+            continue
+        try:
+            r = await run_scenario_with_retry(pipeline, evaluator_llm, scenario)
+        except KuotaHarianHabis:
+            save_results(results, failed, out_dir)
+            print(
+                f"\nKuota harian model habis saat menjalankan {scenario['id']}. "
+                f"{len(results)} skenario yang sudah tuntas tersimpan. Jalankan "
+                f"perintah yang sama lagi setelah kuota pulih (sekitar pukul "
+                f"14.00 WIB); evaluasi melanjutkan dari skenario ini tanpa "
+                f"mengulang yang sudah tuntas."
+            )
+            return
         if r is None:
             failed.append(scenario["id"])
         else:
             results.append(r)
         save_results(results, failed, out_dir)
         await asyncio.sleep(config.API_PACING_DELAY_SECONDS)
+
+    try:
+        await perbaiki_skor_kosong(pipeline, evaluator_llm, results)
+    except KuotaHarianHabis:
+        save_results(results, failed, out_dir)
+        print(
+            "\nKuota harian model habis saat menilai ulang skor yang kosong. "
+            "Jalankan perintah yang sama lagi setelah kuota pulih."
+        )
+        return
 
     summarize(results, failed)
     save_results(results, failed, out_dir)

@@ -1,0 +1,576 @@
+{
+  "dijalankan_pada": "2026-09-23T04:03:23",
+  "konfigurasi": {
+    "model": "gemini-3.1-flash-lite",
+    "model_penilai": "gemini-3.1-flash-lite",
+    "lengan": [
+      "rag",
+      "baseline",
+      "context_only"
+    ],
+    "mode_konteks": "full_document",
+    "chunk_per_dokumen": 8,
+    "seed": 42,
+    "temperature_generasi": 0.2
+  },
+  "skenario_gagal": [],
+  "jumlah_skenario_total": 12,
+  "hasil": [
+    {
+      "scenario_id": "S01_hipertrofi_tanpa_cedera",
+      "message": "Aku mau program buat nambah otot (hipertrofi), levelku menengah, bisa latihan 4 hari seminggu, gak ada riwayat cedera, umur aku 26 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 4,
+        "level_pengalaman": "menengah",
+        "riwayat_cedera": [],
+        "usia": 26,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "s10926-023-10124-4.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 2,
+      "context_chars": 161557,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan frekuensi empat kali seminggu, kamu perlu melakukan latihan beban minimal dua sesi per minggu dengan melibatkan semua kelompok otot utama [S1]. Karena kamu berada di level menengah, kamu bisa membagi jadwal latihan menjadi empat hari dengan pola tubuh bagian atas dan bawah untuk memastikan volume latihan mencapai minimal 10 set per kelompok otot setiap minggunya [S1].\n\nHari 1, tubuh bagian atas:\n- Latihan mendorong, misalnya bench press, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan menarik, misalnya barbell row, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan bahu, misalnya overhead press, 2 set dengan 8 sampai 12 repetisi [S1].\n- Latihan tambahan, misalnya bicep curl, 2 set dengan 10 sampai 15 repetisi [S1].\n\nHari 2, tubuh bagian bawah:\n- Latihan menekuk lutut, misalnya squat, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan engsel pinggul, misalnya deadlift, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan kaki tambahan, misalnya leg press, 2 set dengan 10 sampai 15 repetisi [S1].\n- Latihan betis, misalnya calf raise, 2 set dengan 10 sampai 15 repetisi [S1].\n\nHari 3, istirahat.\n\nHari 4, tubuh bagian atas:\n- Latihan mendorong, misalnya incline dumbbell press, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan menarik, misalnya lat pulldown, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan bahu, misalnya lateral raise, 2 set dengan 10 sampai 15 repetisi [S1].\n- Latihan tambahan, misalnya tricep extension, 2 set dengan 10 sampai 15 repetisi [S1].\n\nHari 5, tubuh bagian bawah:\n- Latihan menekuk lutut, misalnya lunges, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan engsel pinggul, misalnya romanian deadlift, 3 set dengan 8 sampai 12 repetisi [S1].\n- Latihan kaki tambahan, misalnya leg extension, 2 set dengan 10 sampai 15 repetisi [S1].\n- Latihan betis, misalnya seated calf raise, 2 set dengan 10 sampai 15 repetisi [S1].\n\nHari 6 dan 7, istirahat.\n\nSusunan ini menjaga tiap kelompok otot terlatih minimal dua kali seminggu [S1]. Kamu tidak perlu melakukan repetisi sampai gagal total karena hal tersebut tidak secara konsisten meningkatkan hasil hipertrofi [S1]. Cukup lakukan latihan dengan intensitas yang cukup, misalnya dengan menyisakan 2 sampai 3 repetisi di dalam cadangan sebelum mencapai titik gagal [S1]. Untuk istirahat antar set, kamu bisa menggunakan durasi 1 sampai 2 menit, namun perlu diingat bahwa durasi istirahat yang lebih pendek atau panjang tidak secara konsisten berdampak pada hasil hipertrofi [S1]. Pastikan kamu melakukan gerakan dengan rentang gerak penuh untuk mengoptimalkan adaptasi otot [S1]. Karena kamu tidak memiliki riwayat cedera, kamu bisa melakukan gerakan-gerakan di atas dengan beban yang menantang, namun tetap prioritaskan teknik yang benar untuk menjaga keamanan [S1]. Jika kamu merasakan nyeri punggung bawah yang menetap, kamu bisa mempertimbangkan untuk menyisipkan latihan motor control atau latihan aerobik ringan karena keduanya terbukti dapat membantu mengurangi nyeri dan keterbatasan fungsi pada area tersebut [S2].",
+          "faithfulness": 0.4,
+          "groundedness": 0.75,
+          "claims": "2/5"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan frekuensi empat kali seminggu, kita akan menggunakan metode upper lower split. Pola ini sangat efektif untuk level menengah karena memungkinkan kamu melatih setiap kelompok otot dua kali dalam seminggu dengan volume yang cukup untuk memicu pertumbuhan otot.\n\nPada hari pertama, kita fokus pada upper body kekuatan. Kamu bisa melakukan gerakan berikut:\n- Bench press 3 set dengan 8 sampai 10 repetisi\n- Bent over row 3 set dengan 8 sampai 10 repetisi\n- Overhead press 3 set dengan 10 sampai 12 repetisi\n- Lat pulldown 3 set dengan 10 sampai 12 repetisi\n- Bicep curl dan tricep extension masing-masing 3 set dengan 12 sampai 15 repetisi\n\nHari kedua adalah lower body kekuatan. Fokus kita di sini adalah membangun fondasi kaki yang solid:\n- Barbell squat 3 set dengan 6 sampai 8 repetisi\n- Romanian deadlift 3 set dengan 8 sampai 10 repetisi\n- Leg press 3 set dengan 10 sampai 12 repetisi\n- Leg curl 3 set dengan 12 sampai 15 repetisi\n- Standing calf raise 4 set dengan 15 repetisi\n\nHari ketiga adalah upper body hipertrofi dengan fokus pada volume dan kontraksi otot:\n- Incline dumbbell press 3 set dengan 10 sampai 12 repetisi\n- Seated cable row 3 set dengan 10 sampai 12 repetisi\n- Dumbbell lateral raise 4 set dengan 12 sampai 15 repetisi\n- Face pull 3 set dengan 15 repetisi\n- Hammer curl dan skull crusher masing-masing 3 set dengan 12 repetisi\n\nHari keempat adalah lower body hipertrofi untuk menyempurnakan bentuk kaki:\n- Goblet squat 3 set dengan 12 sampai 15 repetisi\n- Walking lunge 3 set dengan 12 repetisi per kaki\n- Leg extension 3 set dengan 12 sampai 15 repetisi\n- Seated leg curl 3 set dengan 12 sampai 15 repetisi\n- Seated calf raise 4 set dengan 15 sampai 20 repetisi\n\nKarena kamu tidak memiliki riwayat cedera, kamu bisa melakukan semua gerakan ini dengan intensitas tinggi, namun pastikan kamu selalu menjaga teknik yang benar sebelum menambah beban. Fokuslah pada progressive overload dengan menambah beban atau repetisi secara bertahap setiap minggunya agar otot terus terstimulasi untuk berkembang. Istirahatlah di antara hari latihan agar tubuh memiliki waktu untuk pemulihan yang optimal.",
+          "faithfulness": 0.02857142857142857,
+          "groundedness": 0.0,
+          "claims": "1/35"
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Mengingat tujuan kamu adalah hipertrofi dengan ketersediaan waktu empat hari dalam seminggu, kita akan menggunakan pola latihan yang membagi fokus otot agar volume latihan per kelompok otot bisa mencapai target minimal sepuluh set per minggu. Karena kamu berada di level menengah, kita akan menerapkan prinsip beban progresif dengan fokus pada gerakan yang melibatkan banyak sendi untuk memaksimalkan pertumbuhan otot.\n\nUntuk sesi pertama, fokuskan pada otot dada dan trisep. Lakukan latihan berikut dengan beban yang menantang namun tetap menjaga teknik yang benar:\n- Bench press 3 set\n- Incline dumbbell press 3 set\n- Chest fly 3 set\n- Tricep pushdown 3 set\n- Overhead tricep extension 2 set\n\nPada sesi kedua, kita akan melatih otot punggung dan bisep. Fokuslah pada kontraksi otot saat menarik beban:\n- Pull up atau lat pulldown 3 set\n- Seated cable row 3 set\n- Face pull 3 set\n- Barbell curl 3 set\n- Hammer curl 2 set\n\nSesi ketiga dikhususkan untuk otot kaki. Mengingat kamu tidak memiliki riwayat cedera, kita bisa melakukan gerakan yang cukup intens:\n- Barbell squat 3 set\n- Leg press 3 set\n- Leg extension 3 set\n- Leg curl 3 set\n- Calf raise 3 set\n\nSesi keempat difokuskan pada bahu dan pengulangan volume untuk otot yang ingin kamu tonjolkan. Ini adalah kesempatan untuk menambah volume mingguan agar mencapai target sepuluh set per kelompok otot:\n- Overhead press 3 set\n- Lateral raise 3 set\n- Rear delt fly 3 set\n- Goblet squat atau lunge 3 set\n- Plank atau gerakan inti lainnya 3 set\n\nDalam setiap sesi, pastikan kamu melakukan gerakan dengan rentang gerak penuh untuk hasil yang optimal. Kamu tidak perlu selalu mencapai kegagalan otot di setiap set, cukup pastikan ada sisa dua sampai tiga repetisi di setiap akhir set. Karena kamu tidak memiliki riwayat cedera, kamu bisa melakukan latihan ini dengan intensitas tinggi, namun tetap perhatikan kondisi tubuh jika merasa ada nyeri yang tidak biasa. Jika suatu saat kamu merasa lelah berlebih, kamu bisa menyesuaikan volume set menjadi lebih rendah namun tetap menjaga intensitas beban yang diangkat. Fokuslah pada konsistensi penambahan beban atau repetisi dari minggu ke minggu sebagai bentuk progresif beban yang akan memicu hipertrofi secara berkelanjutan.",
+          "faithfulness": 0.045454545454545456,
+          "groundedness": 1.0,
+          "claims": "1/22"
+        }
+      }
+    },
+    {
+      "scenario_id": "S02_kekuatan_pemula_tanpa_cedera",
+      "message": "Aku pemula banget baru mulai angkat beban, tujuannya nambah kekuatan, bisa latihan 3 hari seminggu, sehat gak ada cedera apa-apa, umur aku 21 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "kekuatan",
+        "frekuensi_tersedia": 3,
+        "level_pengalaman": "pemula",
+        "riwayat_cedera": [],
+        "usia": 21,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": "baru mulai angkat beban"
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "ijerph-19-12710.pdf",
+        "s10926-023-10124-4.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 3,
+      "context_chars": 265230,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Kamu bisa memulai perjalanan angkat bebanmu dengan tiga sesi latihan per minggu untuk meningkatkan kekuatan, karena frekuensi minimal dua sesi per minggu sudah terbukti efektif untuk meningkatkan fungsi otot [S1]. Karena kamu masih pemula, fokuslah pada gerakan yang melibatkan banyak sendi untuk efisiensi dan keamanan [S2]. Lakukan setiap sesi dengan effort tinggi, namun tidak perlu sampai ke titik gagal total karena hal tersebut tidak memberikan keuntungan tambahan untuk kekuatan [S1]. Kamu bisa menargetkan 2 sampai 3 set per latihan untuk setiap sesi [S1]. Istirahat antar-set bisa dilakukan selama 2 sampai 3 menit untuk mendukung performa angkatan [S1].\n\nHari 1, tubuh bagian atas:\n- Pola mendorong, misalnya bench press, 3 set dengan 8 sampai 12 repetisi.\n- Pola menarik, misalnya lat pulldown, 3 set dengan 8 sampai 12 repetisi.\n- Pola mendorong vertikal, misalnya overhead press, 2 set dengan 8 sampai 12 repetisi.\n\nHari 2 dipakai untuk istirahat.\n\nHari 3, tubuh bagian bawah:\n- Pola menekuk lutut, misalnya squat, 3 set dengan 8 sampai 12 repetisi.\n- Pola engsel pinggul, misalnya deadlift, 3 set dengan 8 sampai 12 repetisi.\n- Pola dorongan kaki, misalnya leg press, 2 set dengan 10 sampai 15 repetisi.\n\nHari 4 dipakai untuk istirahat.\n\nHari 5, seluruh tubuh:\n- Pola mendorong, misalnya chest press machine, 3 set dengan 8 sampai 12 repetisi.\n- Pola menarik, misalnya seated row, 3 set dengan 8 sampai 12 repetisi.\n- Pola menekuk lutut, misalnya lunges, 2 set dengan 10 sampai 15 repetisi.\n\nHari 6 dan 7 dipakai untuk istirahat.\n\nSusunan ini menjaga tiap kelompok otot terlatih minimal dua kali seminggu [S1]. Pastikan kamu melakukan setiap gerakan dengan teknik yang benar untuk menghindari cedera, terutama pada bahu, siku, tulang belakang, dan lutut yang merupakan area paling sering mengalami cedera di pusat kebugaran [S2]. Hindari posisi bahu yang terlalu tertekan ke belakang atau posisi high-five saat melakukan gerakan bahu karena berisiko tinggi menyebabkan cedera [S2]. Jika kamu merasakan nyeri saat melakukan gerakan tertentu, segera ganti dengan gerakan lain yang memiliki tujuan serupa [S2]. Selalu lakukan sesi pemanasan dan familiarisasi untuk mempelajari teknik yang tepat sebelum menggunakan beban yang lebih berat [S2]. Kamu perlu menerapkan prinsip beban progresif dengan meningkatkan stimulus secara bertahap seiring berjalannya waktu agar adaptasi kekuatan terus berlanjut [S1].",
+          "faithfulness": 0.43478260869565216,
+          "groundedness": 1.0,
+          "claims": "10/23"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Untuk membangun kekuatan sebagai pemula dengan jadwal tiga kali seminggu, kita akan menggunakan metode full body workout agar setiap otot mendapatkan stimulasi yang cukup namun tetap punya waktu untuk pemulihan. Kamu akan berlatih di hari Senin, Rabu, dan Jumat, atau hari lain dengan jeda satu hari istirahat di antaranya. Fokus utama kita adalah mempelajari pola gerakan dasar dengan beban yang bisa kamu kontrol agar teknik kamu benar sejak awal.\n\nPada setiap sesi, lakukan pemanasan selama 5 sampai 10 menit dengan jalan cepat atau gerakan mobilitas sendi sebelum masuk ke latihan inti. Berikut adalah daftar gerakan yang harus kamu lakukan di setiap sesi latihan:\n\n- Goblet squat 3 set dengan 8 sampai 10 repetisi\n- Push up 3 set sampai batas kemampuan maksimal kamu\n- Dumbbell row 3 set dengan 10 repetisi per sisi\n- Romanian deadlift menggunakan dumbbell 3 set dengan 10 repetisi\n- Overhead press menggunakan dumbbell 3 set dengan 8 sampai 10 repetisi\n- Plank 3 set dengan durasi 30 sampai 45 detik\n\nKarena kamu baru mulai angkat beban, jangan terburu-buru menambah beban yang berat. Prioritaskan kualitas gerakan di setiap repetisi agar otot kamu terbiasa dengan pola yang benar. Jika kamu merasa gerakan tertentu terasa tidak nyaman atau nyeri di sendi, segera turunkan beban atau ganti dengan variasi yang lebih ringan. Kamu bisa menambah beban secara bertahap sebanyak 1 sampai 2 kilogram setiap dua minggu jika kamu sudah merasa gerakan tersebut terlalu mudah dilakukan. Pastikan kamu mencatat beban yang kamu gunakan di setiap sesi agar kamu bisa memantau perkembangan kekuatan kamu dari waktu ke waktu. Istirahatlah selama 90 sampai 120 detik di antara setiap set agar otot kamu punya cukup waktu untuk pulih sebelum melakukan set berikutnya.",
+          "faithfulness": 0.2,
+          "groundedness": 0.0,
+          "claims": "1/5"
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Karena kamu baru memulai angkat beban dan punya target kekuatan dengan frekuensi tiga kali seminggu, kita akan menggunakan program latihan seluruh tubuh atau full body workout. Pendekatan ini sangat efektif untuk pemula karena memberikan frekuensi latihan yang cukup untuk setiap kelompok otot tanpa membuat tubuh terlalu lelah. Kamu akan berlatih tiga hari dalam seminggu, misalnya Senin, Rabu, dan Jumat, dengan memberikan jeda satu hari istirahat di antara sesi untuk pemulihan otot.\n\nUntuk setiap sesi, fokus utama kita adalah melakukan gerakan dasar yang melibatkan banyak sendi agar kekuatanmu meningkat secara menyeluruh. Kamu perlu melakukan dua sampai tiga set untuk setiap latihan dengan beban yang menantang namun tetap memungkinkanmu menjaga teknik yang benar. Karena kamu tidak memiliki riwayat cedera, kamu bisa melakukan gerakan standar, namun tetap perhatikan posisi tubuh agar tetap stabil.\n\nBerikut adalah susunan latihan yang bisa kamu lakukan di setiap sesi:\n\n- Goblet squat sebanyak 2 sampai 3 set dengan 8 sampai 12 repetisi\n- Push up atau bench press sebanyak 2 sampai 3 set dengan 8 sampai 12 repetisi\n- Barbell row atau dumbbell row sebanyak 2 sampai 3 set dengan 8 sampai 12 repetisi\n- Overhead press dengan dumbbell sebanyak 2 sampai 3 set dengan 8 sampai 12 repetisi\n- Romanian deadlift sebanyak 2 sampai 3 set dengan 8 sampai 12 repetisi\n- Plank sebanyak 2 sampai 3 set dengan durasi 30 sampai 60 detik\n\nDalam setiap sesi, pastikan kamu melakukan pemanasan yang cukup sebelum mulai mengangkat beban. Fokuslah pada kualitas gerakan daripada sekadar menambah beban yang berat. Jika kamu merasa teknik gerakan mulai berantakan karena beban terlalu berat, segera turunkan bebannya. Kamu tidak perlu melakukan latihan sampai otot benar-benar gagal berfungsi atau sampai tidak bisa bergerak sama sekali, karena yang terpenting adalah konsistensi dan progresifitas beban secara bertahap dari minggu ke minggu.\n\nKarena kamu baru memulai, sangat disarankan untuk meluangkan waktu di beberapa sesi awal untuk benar-benar menguasai teknik setiap gerakan. Jika kamu merasa ada bagian tubuh yang terasa nyeri yang tidak wajar, segera hentikan gerakan tersebut dan evaluasi posisi tubuhmu. Mengingat kamu tidak memiliki riwayat cedera, kamu bisa melakukan semua gerakan di atas, namun selalu ingat untuk menjaga punggung tetap lurus dan posisi bahu yang stabil saat melakukan gerakan menarik maupun mendorong. Kamu bisa menambah beban secara perlahan setiap kali kamu merasa sudah bisa menyelesaikan target repetisi dengan teknik yang sempurna.",
+          "faithfulness": 0.5882352941176471,
+          "groundedness": NaN,
+          "claims": "10/17"
+        }
+      }
+    },
+    {
+      "scenario_id": "S03_penurunan_bb_tanpa_cedera",
+      "message": "Mau program buat nurunin berat badan, levelku menengah, sanggup latihan 5 hari seminggu, gak ada cedera, umur aku 34 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "penurunan berat badan",
+        "frekuensi_tersedia": 5,
+        "level_pengalaman": "menengah",
+        "riwayat_cedera": [],
+        "usia": 34,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "s10926-023-10124-4.pdf",
+        "s13102-025-01297-x.pdf",
+        "fbioe-13-1560597.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 4,
+      "context_chars": 261765,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Untuk mencapai tujuan penurunan berat badan, kamu perlu melakukan latihan beban progresif minimal dua sesi per minggu [S1]. Karena kamu memiliki waktu lima hari, kita akan membagi latihan agar setiap kelompok otot utama terlatih secara optimal dengan volume minimal 10 set per kelompok otot setiap minggunya [S1]. Latihan ini aman untuk orang dewasa sehat dan tidak perlu dilakukan sampai gagal total untuk mendapatkan manfaatnya [S1].\n\nHari 1, tubuh bagian bawah:\n- squat, 3 sampai 4 set dengan 8 sampai 12 repetisi\n- leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi\n- lunges, 3 set dengan 10 sampai 12 repetisi\nIstirahat antar-set bisa dilakukan selama 1 sampai 3 menit [S1].\n\nHari 2, tubuh bagian atas:\n- bench press, 3 sampai 4 set dengan 8 sampai 12 repetisi\n- row, 3 sampai 4 set dengan 8 sampai 12 repetisi\n- overhead press, 3 set dengan 8 sampai 12 repetisi\n- lat pulldown, 3 set dengan 8 sampai 12 repetisi\n\nHari 3 dipakai untuk istirahat.\n\nHari 4, tubuh bagian bawah:\n- deadlift, 3 sampai 4 set dengan 5 sampai 8 repetisi\n- leg extension, 3 set dengan 10 sampai 12 repetisi\n- leg curl, 3 set dengan 10 sampai 12 repetisi\n- calf raise, 3 set dengan 12 sampai 15 repetisi\n\nHari 5, tubuh bagian atas:\n- incline dumbbell press, 3 set dengan 8 sampai 12 repetisi\n- seated cable row, 3 set dengan 8 sampai 12 repetisi\n- lateral raise, 3 set dengan 12 sampai 15 repetisi\n- bicep curl dan tricep extension, masing-masing 3 set dengan 10 sampai 12 repetisi\n\nHari 6, latihan fungsional dan mobilitas:\n- plank, 3 set selama 45 sampai 60 detik\n- bird dog, 3 set dengan 10 repetisi per sisi\n- gerakan mobilitas bahu atau peregangan dinamis, 3 set dengan 10 sampai 15 repetisi\n\nHari 7 dipakai untuk istirahat.\n\nSusunan ini memastikan kamu melatih kelompok otot utama minimal dua kali seminggu [S1]. Untuk meningkatkan kekuatan, gunakan beban yang cukup berat, setidaknya 80 persen dari kemampuan maksimalmu, dan lakukan gerakan dengan rentang gerak penuh [S1]. Jika kamu merasa nyeri pada bahu, fokuslah pada latihan stabilisasi skapula dan mobilitas bahu karena latihan spesifik tersebut terbukti membantu mengurangi nyeri dan memperbaiki fungsi bahu [S4]. Jika kamu mengalami nyeri lutut, latihan penguatan otot paha dan pinggul sangat disarankan karena terbukti efektif mengurangi nyeri patellofemoral [S3]. Karena usiamu 34 tahun, pastikan untuk selalu melakukan pemanasan yang cukup sebelum memulai sesi latihan untuk menjaga keamanan sendi dan otot.",
+          "faithfulness": 0.15789473684210525,
+          "groundedness": 1.0,
+          "claims": "3/19"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Karena kamu punya waktu lima hari dalam seminggu dan sudah berada di level menengah, kita akan menggunakan metode push pull legs upper lower untuk memaksimalkan pembakaran kalori sekaligus menjaga massa otot. Karena tidak ada riwayat cedera, kita bisa fokus pada intensitas yang cukup tinggi dengan durasi istirahat antar set sekitar 60 sampai 90 detik.\n\nPada hari pertama, kita fokus pada gerakan push untuk melatih dada, bahu, dan trisep.\n- Barbell bench press 4 set 8 sampai 10 repetisi\n- Overhead press 3 set 10 repetisi\n- Incline dumbbell flyes 3 set 12 repetisi\n- Lateral raises 3 set 15 repetisi\n- Tricep pushdowns 3 set 12 repetisi\n\nHari kedua adalah sesi pull untuk punggung dan bisep.\n- Pull ups atau lat pulldown 4 set 8 sampai 10 repetisi\n- Bent over barbell row 3 set 10 repetisi\n- Face pulls 3 set 15 repetisi\n- Dumbbell bicep curls 3 set 12 repetisi\n- Hammer curls 3 set 12 repetisi\n\nHari ketiga kita fokus pada kaki atau legs.\n- Barbell squat 4 set 8 sampai 10 repetisi\n- Romanian deadlift 3 set 10 repetisi\n- Leg press 3 set 12 repetisi\n- Leg curls 3 set 15 repetisi\n- Standing calf raises 4 set 15 repetisi\n\nHari keempat adalah sesi upper body untuk melatih otot tubuh bagian atas secara menyeluruh.\n- Dumbbell chest press 3 set 10 repetisi\n- Seated cable row 3 set 10 repetisi\n- Arnold press 3 set 12 repetisi\n- Dips 3 set sampai gagal\n- Plank 3 set selama 60 detik\n\nHari kelima kita tutup dengan sesi lower body dan fokus pada pembakaran lemak.\n- Goblet squat 3 set 12 repetisi\n- Walking lunges 3 set 12 langkah per kaki\n- Leg extension 3 set 15 repetisi\n- Kettlebell swings 4 set 20 repetisi\n- Mountain climbers 3 set 45 detik\n\nUntuk mendukung tujuan penurunan berat badan, pastikan kamu menjaga defisit kalori yang moderat dan tetap aktif bergerak di luar jam latihan seperti berjalan kaki minimal 8000 langkah setiap hari. Jika merasa kelelahan yang berlebihan, kamu bisa mengurangi volume set pada hari keempat dan kelima agar pemulihan otot tetap terjaga dengan baik.",
+          "faithfulness": 0.0,
+          "groundedness": 0.0,
+          "claims": null
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Untuk mencapai tujuan penurunan berat badan dengan frekuensi lima kali seminggu, kita akan menggunakan pendekatan latihan beban progresif yang berfokus pada peningkatan fungsi otot dan pembakaran kalori. Karena kamu berada di level menengah, kita akan membagi jadwal latihan menjadi sesi yang melibatkan kelompok otot besar untuk memaksimalkan volume latihan mingguan sesuai dengan standar kebugaran terbaru.\n\nJadwal latihan mingguan kamu adalah sebagai berikut:\n\nSenin: Latihan tubuh bagian atas (fokus pada dada, bahu, dan trisep)\n- Bench press atau chest press dengan beban yang menantang\n- Overhead press untuk bahu\n- Lateral raise\n- Tricep pushdown atau overhead extension\n- Push up sampai mendekati kelelahan otot\n\nSelasa: Latihan tubuh bagian bawah (fokus pada kaki dan glutes)\n- Squat dengan beban\n- Leg press\n- Romanian deadlift untuk hamstring\n- Leg extension\n- Calf raise\n\nRabu: Latihan tubuh bagian atas (fokus pada punggung dan bisep)\n- Lat pulldown atau pull up\n- Seated row atau bent over row\n- Face pull untuk kesehatan bahu\n- Bicep curl dengan barbell atau dumbbell\n- Hammer curl\n\nKamis: Latihan tubuh bagian bawah dan inti\n- Lunges dengan beban\n- Leg curl\n- Hip thrust\n- Plank dengan variasi durasi\n- Russian twist\n\nJumat: Latihan seluruh tubuh (fokus pada gerakan majemuk)\n- Goblet squat\n- Dumbbell row\n- Push up\n- Kettlebell swing untuk meningkatkan power\n- Mountain climber\n\nSesuai dengan prinsip latihan beban yang efektif, kamu disarankan untuk melakukan setidaknya dua sampai tiga set untuk setiap latihan. Fokuslah pada rentang gerak yang penuh untuk memastikan otot bekerja secara optimal. Untuk beban, gunakan intensitas yang cukup tinggi, setidaknya 80 persen dari kemampuan maksimalmu untuk latihan kekuatan, namun tetap jaga agar teknik gerakan tetap terjaga. Kamu tidak perlu memaksakan diri sampai gagal otot di setiap set, karena target utama kita adalah konsistensi dan volume latihan yang mencapai minimal 10 set per kelompok otot setiap minggunya.\n\nKarena kamu tidak memiliki riwayat cedera, kamu bisa melakukan semua gerakan ini dengan aman. Namun, pastikan untuk selalu melakukan pemanasan yang cukup sebelum memulai sesi inti dan lakukan pendinginan setelahnya. Jika di tengah jalan kamu merasa ada gerakan yang menyebabkan nyeri sendi yang tidak biasa, segera ganti dengan variasi gerakan lain yang lebih nyaman bagi tubuhmu. Kamu bisa menyesuaikan beban secara bertahap seiring dengan peningkatan kekuatanmu dari minggu ke minggu untuk terus memberikan tantangan pada otot.",
+          "faithfulness": 0.2916666666666667,
+          "groundedness": 0.25,
+          "claims": "7/24"
+        }
+      }
+    },
+    {
+      "scenario_id": "S04_hipertrofi_cedera_lutut",
+      "message": "Tujuan aku hipertrofi, level menengah, latihan 4x seminggu, ada riwayat cedera lutut kanan (patellofemoral pain), umur aku 29 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 4,
+        "level_pengalaman": "menengah",
+        "riwayat_cedera": [
+          "lutut kanan (patellofemoral pain)"
+        ],
+        "usia": 29,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "s13102-025-01297-x.pdf",
+        "ijerph-19-12710.pdf",
+        "journal.pone.0262023.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 4,
+      "context_chars": 285049,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan empat hari latihan per minggu sambil tetap menjaga kesehatan lutut kanan, kita akan membagi jadwal menjadi dua hari fokus tubuh bagian atas dan dua hari fokus tubuh bagian bawah dengan modifikasi gerakan yang lebih ramah terhadap sendi patellofemoral. Fokus utama untuk lutut adalah memperkuat otot pinggul dan paha belakang tanpa memberikan tekanan kompresi berlebih pada sendi lutut melalui gerakan fleksi yang dalam.\n\nHari 1: Tubuh Bagian Atas\n- Bench press, 3 set dengan 8 sampai 12 repetisi [S1].\n- Lat pulldown, 3 set dengan 8 sampai 12 repetisi [S1].\n- Overhead press, 3 set dengan 8 sampai 12 repetisi [S1].\n- Seated row, 3 set dengan 8 sampai 12 repetisi [S1].\n\nHari 2: Tubuh Bagian Bawah\n- Hip thrust, 3 set dengan 10 sampai 15 repetisi [S2].\n- Hip abductor exercise, 3 set dengan 10 sampai 15 repetisi [S2].\n- Romanian deadlift, 3 set dengan 8 sampai 12 repetisi [S1].\n- Standing calf raise, 3 set dengan 10 sampai 15 repetisi [S1].\n\nHari 3: Istirahat\n\nHari 4: Tubuh Bagian Atas\n- Incline dumbbell press, 3 set dengan 8 sampai 12 repetisi [S1].\n- Pull-up atau chin-up, 3 set dengan 8 sampai 12 repetisi [S1].\n- Dumbbell lateral raise, 3 set dengan 10 sampai 15 repetisi [S1].\n- Bicep curl dan tricep extension, masing-masing 3 set dengan 10 sampai 15 repetisi [S1].\n\nHari 5: Tubuh Bagian Bawah\n- Glute bridge, 3 set dengan 10 sampai 15 repetisi [S2].\n- Side-lying leg lift, 3 set dengan 12 sampai 15 repetisi [S2].\n- Seated leg curl, 3 set dengan 8 sampai 12 repetisi [S1].\n- Seated calf raise, 3 set dengan 10 sampai 15 repetisi [S1].\n\nHari 6 dan 7: Istirahat\n\nUntuk memaksimalkan hipertrofi, pastikan total volume latihan mencapai minimal 10 set per kelompok otot setiap minggunya [S1]. Lakukan setiap set dengan intensitas yang cukup, yaitu menyisakan 2 sampai 3 repetisi sebelum mencapai kegagalan otot [S1]. Istirahat antar set bisa dilakukan selama 1 sampai 3 menit untuk memastikan pemulihan yang cukup [S1]. Gerakan step-up telah diganti dengan side-lying leg lift untuk melatih otot pinggul secara aman tanpa memberikan tekanan fleksi lutut yang berisiko bagi penderita patellofemoral pain [S2]. Gerakan seperti hip thrust dan glute bridge tetap dipertahankan karena sangat efektif untuk otot gluteus tanpa membebani patella [S2]. Pastikan untuk selalu menjaga postur tubuh yang stabil dan hindari gerakan yang memaksa sendi bahu ke posisi abduksi dan rotasi eksternal maksimal seperti behind-the-neck press untuk menjaga kesehatan bahu [S3]. Jika saat melakukan gerakan tertentu pada lutut kanan muncul nyeri, segera ganti dengan variasi gerakan lain yang tidak memicu keluhan tersebut [S2]. Karena nyeri patellofemoral sering membaik dengan penguatan otot pinggul dan paha, pastikan gerakan seperti hip abductor dan glute bridge dilakukan dengan teknik yang benar [S2]. Selalu lakukan pemanasan dan familiarisasi teknik sebelum menggunakan beban yang lebih berat untuk meminimalkan risiko cedera [S3].",
+          "faithfulness": 0.3,
+          "groundedness": 0.75,
+          "claims": "3/10"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Untuk mencapai target hipertrofi dengan frekuensi empat kali seminggu, kita akan menggunakan metode upper lower split agar setiap kelompok otot mendapatkan stimulasi dua kali dalam seminggu. Mengingat riwayat cedera patellofemoral pada lutut kanan kamu, kita akan menghindari gerakan yang memberikan tekanan berlebih pada sendi lutut seperti deep squat atau lunges yang terlalu dalam. Sebagai gantinya, kita akan fokus pada gerakan yang lebih stabil dan terkontrol.\n\nSesi satu adalah upper body fokus pada kekuatan dorong dan tarik.\n- Bench press 3 set 8 sampai 10 repetisi\n- Bent over row 3 set 8 sampai 10 repetisi\n- Overhead press 3 set 10 sampai 12 repetisi\n- Lat pulldown 3 set 10 sampai 12 repetisi\n- Bicep curl dan tricep extension masing-masing 3 set 12 sampai 15 repetisi\n\nSesi dua adalah lower body dengan modifikasi untuk lutut.\n- Leg press dengan posisi kaki lebih tinggi di platform 3 set 10 sampai 12 repetisi\n- Romanian deadlift 3 set 10 sampai 12 repetisi\n- Leg curl 3 set 12 sampai 15 repetisi\n- Seated calf raise 4 set 15 repetisi\n- Plank 3 set selama 45 sampai 60 detik\n\nSesi tiga kembali ke upper body dengan variasi gerakan.\n- Incline dumbbell press 3 set 10 sampai 12 repetisi\n- Seated cable row 3 set 10 sampai 12 repetisi\n- Lateral raise 3 set 12 sampai 15 repetisi\n- Face pull 3 set 12 sampai 15 repetisi\n- Hammer curl dan skull crusher masing-masing 3 set 12 sampai 15 repetisi\n\nSesi empat adalah lower body fokus pada posterior chain untuk mengurangi beban lutut.\n- Glute bridge atau hip thrust 3 set 10 sampai 12 repetisi\n- Leg extension dengan beban ringan dan fokus pada kontraksi puncak 3 set 15 repetisi\n- Stiff leg deadlift 3 set 10 sampai 12 repetisi\n- Standing calf raise 4 set 12 sampai 15 repetisi\n- Hanging leg raise 3 set 12 sampai 15 repetisi\n\nSelama latihan, pastikan kamu tidak memaksakan beban jika lutut mulai terasa tidak nyaman. Hindari gerakan yang mengharuskan lutut menekuk terlalu tajam atau menahan beban dalam posisi yang tidak stabil. Fokuslah pada tempo yang lambat saat menurunkan beban untuk memaksimalkan kerusakan serat otot demi pertumbuhan hipertrofi yang optimal. Jika kamu merasa nyeri pada lutut kanan, segera ganti gerakan tersebut dengan variasi lain yang tidak melibatkan sendi lutut secara langsung seperti mesin isolasi otot paha belakang.",
+          "faithfulness": 0.17647058823529413,
+          "groundedness": 0.5,
+          "claims": "3/17"
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan frekuensi empat kali seminggu, kita akan menggunakan pembagian latihan tubuh bagian atas dan bawah. Mengingat riwayat nyeri patellofemoral pada lutut kanan kamu, fokus utama kita adalah menjaga stabilitas sendi dan menghindari beban berlebih yang memicu nyeri, terutama pada gerakan yang melibatkan fleksi lutut yang dalam atau tekanan langsung pada tempurung lutut.\n\nSesi satu dan tiga akan difokuskan pada tubuh bagian atas. Kamu bisa melakukan gerakan seperti bench press, row, overhead press, dan lat pulldown. Untuk menjaga kesehatan bahu, hindari gerakan di belakang leher seperti behind the neck press atau lat pulldown ke belakang leher. Fokuslah pada kontrol gerakan dan durasi kontraksi yang stabil.\n\nSesi dua dan empat akan difokuskan pada tubuh bagian bawah dengan modifikasi khusus untuk lutut kamu. Hindari squat dengan beban berat yang terlalu dalam atau lunges yang memberikan tekanan tajam pada lutut kanan. Sebagai gantinya, gunakan gerakan yang lebih ramah sendi seperti leg press dengan posisi kaki yang lebih tinggi pada platform untuk mengurangi tekanan patellofemoral, atau gunakan hip thrust dan romanian deadlift untuk melatih otot paha belakang dan bokong tanpa membebani sendi lutut secara berlebihan. Latihan penguatan otot pinggul dan abduktor sangat disarankan untuk membantu stabilitas lutut kamu.\n\nBerikut adalah contoh pembagian jadwal latihan mingguan kamu:\n\nSenin: Tubuh Bagian Atas\n- Bench press 3 set 8-12 repetisi\n- Bent over row 3 set 8-12 repetisi\n- Overhead press 3 set 10-12 repetisi\n- Lat pulldown 3 set 10-12 repetisi\n\nSelasa: Tubuh Bagian Bawah dan Stabilitas\n- Hip thrust 3 set 10-12 repetisi\n- Leg press 3 set 12-15 repetisi dengan posisi kaki tinggi\n- Romanian deadlift 3 set 10-12 repetisi\n- Side lying leg raise 3 set 15 repetisi untuk stabilitas pinggul\n\nRabu: Istirahat\n\nKamis: Tubuh Bagian Atas\n- Incline dumbbell press 3 set 8-12 repetisi\n- Seated cable row 3 set 8-12 repetisi\n- Dumbbell lateral raise 3 set 12-15 repetisi\n- Face pull 3 set 15 repetisi\n\nJumat: Tubuh Bagian Bawah dan Stabilitas\n- Glute bridge 3 set 12-15 repetisi\n- Leg curl 3 set 12-15 repetisi\n- Step up rendah 3 set 10 repetisi per kaki dengan kontrol penuh\n- Clamshell 3 set 15 repetisi untuk otot gluteus medius\n\nSabtu dan Minggu: Istirahat\n\nPastikan kamu melakukan pemanasan yang cukup sebelum memulai sesi latihan. Jika saat melakukan gerakan tertentu kamu merasakan nyeri pada lutut kanan, segera hentikan gerakan tersebut dan ganti dengan variasi lain yang tidak menimbulkan rasa sakit. Kunci dari hipertrofi adalah konsistensi dan volume latihan yang cukup, yaitu minimal sepuluh set per kelompok otot dalam seminggu, jadi pastikan kamu tetap menjaga intensitas latihan dengan beban yang menantang namun tetap dalam batas kemampuan teknis kamu.",
+          "faithfulness": 0.25,
+          "groundedness": 1.0,
+          "claims": "1/4"
+        }
+      }
+    },
+    {
+      "scenario_id": "S05_kekuatan_cedera_bahu",
+      "message": "Aku mau fokus nambah kekuatan, levelnya lanjutan, latihan 5 hari seminggu, ada riwayat cedera bahu / rotator cuff, umur aku 31 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "kekuatan",
+        "frekuensi_tersedia": 5,
+        "level_pengalaman": "lanjutan",
+        "riwayat_cedera": [
+          "bahu / rotator cuff"
+        ],
+        "usia": 31,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "fbioe-13-1560597.pdf",
+        "ijerph-19-12710.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 3,
+      "context_chars": 252595,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Mengingat tujuanmu adalah meningkatkan kekuatan dan kamu sudah berada di level lanjutan, kita akan fokus pada latihan dengan beban berat minimal 80 persen dari satu repetisi maksimal untuk meningkatkan kekuatan secara optimal [S1]. Karena kamu memiliki riwayat cedera bahu, kita akan menghindari gerakan yang menempatkan bahu pada posisi abduksi dan rotasi eksternal maksimal, seperti gerakan menarik beban ke belakang leher atau menekan beban di belakang leher, karena posisi tersebut meningkatkan risiko cedera [S3]. Sebagai gantinya, kita akan mengutamakan gerakan yang membawa beban ke depan tubuh [S3].\n\nBerikut adalah rencana latihan lima hari dalam seminggu dengan pembagian fokus otot agar kamu mendapatkan pemulihan yang cukup:\n\nHari 1: Tubuh bagian atas (fokus dorong)\n- Bench press, 3 set dengan 4 sampai 6 repetisi [S1].\n- Overhead press ke depan, 3 set dengan 4 sampai 6 repetisi [S3].\n- Push-up, 3 set sampai mendekati gagal [S1].\n- Istirahat antar-set selama 2 sampai 3 menit [S1].\n\nHari 2: Tubuh bagian bawah (fokus dominan lutut)\n- Squat, 3 set dengan 4 sampai 6 repetisi [S1].\n- Lunge, 3 set dengan 6 sampai 8 repetisi [S1].\n- Istirahat antar-set selama 2 sampai 3 menit [S1].\n\nHari 3: Istirahat\n\nHari 4: Tubuh bagian atas (fokus tarik)\n- Pull-up, 3 set dengan 4 sampai 6 repetisi [S1].\n- Barbell row, 3 set dengan 4 sampai 6 repetisi [S1].\n- Scapular stabilization exercise, 3 set dengan 8 sampai 12 repetisi untuk menjaga kesehatan bahu [S2].\n- Istirahat antar-set selama 2 sampai 3 menit [S1].\n\nHari 5: Tubuh bagian bawah (fokus dominan pinggul)\n- Deadlift, 3 set dengan 4 sampai 6 repetisi [S1].\n- Nordic hamstring curl, 3 set dengan 6 sampai 8 repetisi untuk memperkuat otot hamstring [S1].\n- Istirahat antar-set selama 2 sampai 3 menit [S1].\n\nHari 6: Latihan tambahan dan stabilitas\n- Overhead press ke depan, 3 set dengan 6 sampai 8 repetisi [S1].\n- Scapular stabilization exercise, 3 set dengan 8 sampai 12 repetisi [S2].\n- Core strength training, 3 set dengan 10 sampai 15 repetisi untuk mendukung stabilitas tulang belakang [S3].\n- Istirahat antar-set selama 2 sampai 3 menit [S1].\n\nHari 7: Istirahat\n\nUntuk memastikan progres, lakukan latihan dengan rentang gerak penuh [S1]. Karena kamu memiliki riwayat cedera bahu, pastikan untuk melakukan pemanasan yang cukup dan fokus pada scapular stabilization exercise serta shoulder mobilization untuk membantu fungsi bahu [S2]. Kamu tidak perlu melakukan setiap set sampai gagal total karena hal tersebut tidak secara konsisten meningkatkan kekuatan lebih baik daripada berhenti dengan 2 sampai 3 repetisi di dalam cadangan [S1]. Pastikan total volume latihan mencapai minimal 10 set per kelompok otot setiap minggunya untuk mendukung adaptasi [S1]. Jika kamu merasakan nyeri saat melakukan gerakan tertentu, segera ganti dengan variasi gerakan lain yang melatih otot yang sama namun lebih nyaman bagi bahumu [S3].",
+          "faithfulness": 0.34782608695652173,
+          "groundedness": 1.0,
+          "claims": "8/23"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Mengingat kamu sudah berada di level lanjutan dan ingin fokus pada peningkatan kekuatan, kita akan menggunakan metode push pull legs upper lower dengan frekuensi lima hari seminggu. Karena kamu memiliki riwayat cedera pada bahu atau rotator cuff, kita akan memprioritaskan stabilitas sendi dengan menghindari gerakan overhead press yang terlalu berat atau gerakan yang memposisikan bahu dalam sudut yang rentan. Fokus kita adalah pada kontrol beban dan teknik yang sempurna untuk memastikan otot target bekerja tanpa membebani sendi bahu secara berlebihan.\n\nPada hari pertama, kita fokus pada push yang ramah bahu.\n- Bench press dengan grip netral atau sedikit lebih sempit untuk mengurangi tekanan pada bahu\n- Dumbbell floor press untuk membatasi rentang gerak agar bahu tidak terlalu tertekan\n- Cable chest fly dengan kontrol penuh\n- Tricep pushdown menggunakan tali\n- Lateral raise dengan beban ringan dan fokus pada kontraksi otot samping bahu\n\nHari kedua adalah sesi pull untuk memperkuat punggung.\n- Barbell row dengan posisi tubuh yang stabil\n- Lat pulldown dengan grip lebar\n- Seated cable row\n- Face pull untuk memperkuat otot rotator cuff dan postur bahu\n- Bicep curl dengan barbell\n\nHari ketiga kita fokus pada kaki.\n- Barbell squat\n- Leg press\n- Romanian deadlift\n- Leg extension\n- Calf raise\n\nHari keempat adalah upper body dengan variasi gerakan.\n- Incline dumbbell press dengan sudut rendah agar bahu lebih aman\n- Pull up atau chin up\n- Single arm dumbbell row\n- Dumbbell shrug\n- Hammer curl\n\nHari kelima kita tutup dengan sesi kaki tambahan.\n- Deadlift konvensional\n- Bulgarian split squat\n- Leg curl\n- Goblet squat\n- Plank untuk stabilitas inti\n\nSelama menjalankan program ini, pastikan kamu selalu melakukan pemanasan khusus untuk rotator cuff sebelum memulai sesi latihan beban utama. Jika kamu merasakan nyeri tajam pada bahu saat melakukan gerakan tertentu, segera hentikan gerakan tersebut dan ganti dengan variasi yang lebih nyaman seperti menggunakan dumbbell daripada barbell untuk memberikan kebebasan gerak pada sendi bahu. Jaga intensitas tetap tinggi dengan menambah beban secara bertahap setiap minggu, namun jangan pernah mengorbankan teknik demi angka yang lebih besar.",
+          "faithfulness": 0.25,
+          "groundedness": 0.75,
+          "claims": "1/4"
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Karena kamu sudah berpengalaman dan memiliki riwayat cedera pada bahu atau rotator cuff, fokus utama kita adalah membangun kekuatan maksimal dengan tetap menjaga stabilitas sendi bahu. Kita akan menggunakan frekuensi 5 hari seminggu dengan pembagian sesi yang memungkinkan pemulihan optimal bagi otot-otot pendukung bahu. Mengingat riwayat cedera tersebut, hindari gerakan yang memaksa bahu ke posisi abduksi ekstrem dengan rotasi eksternal seperti behind the neck press atau pull-up dengan pegangan lebar di belakang leher, karena posisi ini sangat berisiko bagi stabilitas rotator cuff.\n\nUntuk sesi latihan, kita akan menerapkan prinsip beban berat di atas 80 persen dari satu repetisi maksimal untuk meningkatkan kekuatan, dengan volume 2 sampai 3 set per latihan. Berikut adalah rencana mingguan kamu:\n\nSenin: Kekuatan tubuh bagian atas (fokus dorong)\n- Bench press dengan beban berat\n- Incline dumbbell press\n- Triceps extension dengan kabel (posisi netral)\n- Lateral raise dengan beban terkontrol (hindari mengangkat lebih tinggi dari bahu)\n\nSelasa: Kekuatan tubuh bagian bawah (fokus dominan lutut)\n- Back squat\n- Leg press\n- Leg extension\n- Calf raise\n\nRabu: Kekuatan tubuh bagian atas (fokus tarik)\n- Barbell row (posisi punggung stabil)\n- Seated cable row (pegangan netral)\n- Face pull (sangat penting untuk kesehatan rotator cuff)\n- Bicep curl dengan bar lurus atau EZ bar\n\nKamis: Kekuatan tubuh bagian bawah (fokus dominan pinggul)\n- Deadlift\n- Romanian deadlift\n- Leg curl\n- Glute bridge dengan beban\n\nJumat: Sesi penguatan spesifik bahu dan stabilitas\n- Overhead press dengan posisi bar di depan dada (bukan di belakang leher)\n- Dumbbell shrugs\n- External rotation dengan kabel atau resistance band\n- Plank dan variasi core lainnya untuk stabilitas tubuh secara keseluruhan\n\nDalam setiap sesi, pastikan kamu melakukan pemanasan yang cukup pada area bahu menggunakan gerakan rotasi ringan. Jika kamu merasakan nyeri tajam pada bahu saat melakukan gerakan tertentu, segera ganti dengan variasi lain yang lebih nyaman, seperti mengganti barbell dengan dumbbell agar rentang gerak lebih alami bagi sendi bahu kamu. Fokuslah pada teknik yang sempurna dan kontrol penuh pada fase eksentrik atau saat menurunkan beban untuk meminimalkan risiko cedera berulang. Karena tujuan utamanya adalah kekuatan, pastikan kamu mencatat beban yang diangkat setiap minggunya agar bisa menerapkan progresif overload secara terukur.",
+          "faithfulness": 0.17857142857142858,
+          "groundedness": 1.0,
+          "claims": "5/28"
+        }
+      }
+    },
+    {
+      "scenario_id": "S06_penurunan_bb_cedera_punggung",
+      "message": "Mau nurunin berat badan, pemula, bisa latihan 3 hari seminggu, ada riwayat nyeri punggung bawah kronis, umur aku 42 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "penurunan berat badan",
+        "frekuensi_tersedia": 3,
+        "level_pengalaman": "pemula",
+        "riwayat_cedera": [
+          "nyeri punggung bawah kronis"
+        ],
+        "usia": 42,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "journal.pone.0262023.pdf",
+        "s13102-025-01297-x.pdf",
+        "ijerph-19-12710.pdf",
+        "s10926-023-10124-4.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 5,
+      "context_chars": 351750,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Karena kamu memiliki riwayat nyeri punggung bawah kronis, kita akan memprioritaskan keamanan dengan menghindari gerakan yang memberikan beban kompresi atau geser berlebih pada tulang belakang, seperti gerakan yang melibatkan rotasi ekstrem atau beban langsung di atas bahu [S4]. Kamu bisa melakukan latihan sebanyak tiga kali seminggu, karena frekuensi minimal dua sesi per minggu sudah cukup untuk meningkatkan kekuatan dan fungsi otot [S1].\n\nHari 1: Tubuh Bagian Bawah dan Inti\n- Pola menekuk lutut, misalnya leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola engsel pinggul, misalnya hip bridge, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Latihan stabilitas inti, misalnya plank, 3 set dengan durasi yang mampu kamu tahan tanpa nyeri [S4].\nIstirahat antar-set selama 2 sampai 3 menit untuk memastikan pemulihan yang cukup [S1].\n\nHari 2: Istirahat\n\nHari 3: Tubuh Bagian Atas\n- Pola mendorong, misalnya chest press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik, misalnya lat pulldown, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Latihan bahu, misalnya lateral raise, 3 set dengan 10 sampai 15 repetisi [S1].\nGunakan beban yang memungkinkan kamu melakukan repetisi dengan teknik yang benar tanpa mencapai kegagalan otot sesaat, karena latihan hingga gagal tidak diperlukan untuk mendapatkan manfaat [S1].\n\nHari 4: Istirahat\n\nHari 5: Tubuh Bagian Bawah dan Inti\n- Pola menekuk lutut, misalnya leg extension, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola engsel pinggul, misalnya lying leg curl, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Latihan stabilitas inti, misalnya bird-dog, 3 set dengan repetisi yang terkontrol [S4].\nSusunan ini memastikan setiap kelompok otot utama terlatih minimal dua kali seminggu [S1].\n\nHari 6 dan 7: Istirahat\n\nUntuk menjaga keamanan punggung bawah, hindari gerakan seperti behind-the-neck press atau deadlift konvensional yang berisiko tinggi jika teknik belum sempurna [S4]. Jika kamu merasakan nyeri saat melakukan gerakan tertentu, segera ganti dengan variasi lain yang tidak memicu keluhan tersebut [S4]. Pastikan kamu melakukan gerakan dengan rentang gerak penuh untuk hasil yang optimal [S1]. Karena kamu pemula, mulailah dengan beban yang ringan dan fokuslah pada penguasaan teknik sebelum meningkatkan beban secara bertahap [S1].",
+          "faithfulness": 0.3793103448275862,
+          "groundedness": 1.0,
+          "claims": "11/29"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Fokus utama kita adalah menurunkan berat badan dengan aman tanpa memperparah nyeri punggung bawah kamu, jadi kita akan menggunakan metode latihan seluruh tubuh sebanyak tiga kali seminggu dengan hari istirahat di antaranya. Karena kamu pemula, kita akan mengutamakan gerakan yang stabil dan terkontrol untuk memperkuat otot inti sebagai pelindung tulang belakang.\n\nUntuk setiap sesi, lakukan pemanasan ringan selama lima menit seperti jalan di tempat atau mengayunkan lengan sebelum masuk ke gerakan inti. Berikut adalah daftar latihan yang harus kamu lakukan:\n\n- Goblet squat menggunakan kursi sebagai panduan kedalaman sebanyak 3 set dengan 10 repetisi\n- Wall push up atau push up dengan lutut sebanyak 3 set dengan 10 repetisi\n- Glute bridge atau jembatan panggul sebanyak 3 set dengan 12 repetisi\n- Bird dog sebanyak 3 set dengan 8 repetisi per sisi\n- Bird dog ini sangat penting untuk stabilitas punggung kamu, pastikan punggung tetap rata dan tidak melengkung saat melakukannya.\n\nAda beberapa gerakan yang harus kamu hindari sepenuhnya karena berisiko tinggi bagi punggung bawah kamu, yaitu sit up, crunch, atau gerakan apa pun yang mengharuskan kamu menekuk tulang belakang secara berulang. Kamu juga sebaiknya menghindari deadlift dengan beban berat atau gerakan melompat yang memberikan tekanan berlebih pada sendi. Selalu jaga posisi punggung tetap netral atau lurus selama melakukan gerakan apa pun, dan jika kamu merasakan nyeri tajam di area punggung saat melakukan latihan, segera hentikan gerakan tersebut dan istirahat. Fokuslah pada kualitas gerakan daripada kecepatan, karena bagi pemula, teknik yang benar adalah kunci utama untuk membakar lemak dengan efektif tanpa cedera.",
+          "faithfulness": 0.0,
+          "groundedness": 0.5,
+          "claims": null
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Karena kamu memiliki riwayat nyeri punggung bawah kronis, fokus utama kita adalah membangun kekuatan otot inti dan stabilitas tubuh secara bertahap tanpa memberikan beban berlebih pada tulang belakang. Kita akan memulai dengan frekuensi 3 kali seminggu untuk memastikan tubuhmu punya waktu pemulihan yang cukup. Mengingat tujuanmu adalah penurunan berat badan, kita akan mengombinasikan latihan kekuatan dengan gerakan yang aman bagi punggung.\n\nHindari gerakan yang melibatkan fleksi tulang belakang yang ekstrem atau beban berat langsung di atas bahu seperti barbell back squat atau sit-up konvensional, karena ini bisa memperburuk nyeri punggungmu. Sebagai gantinya, kita akan menggunakan variasi latihan yang menjaga posisi punggung tetap netral.\n\nBerikut adalah rencana latihan yang bisa kamu lakukan:\n\nSesi 1: Fokus Tubuh Bagian Bawah dan Inti\n- Goblet squat dengan beban ringan (pegang beban di depan dada untuk menjaga punggung tetap tegak) 3 set dengan 10 sampai 12 repetisi\n- Glute bridge (posisi berbaring telentang, angkat pinggul) 3 set dengan 12 repetisi\n- Bird dog (posisi merangkak, angkat tangan kanan dan kaki kiri secara bergantian) 3 set dengan 10 repetisi per sisi\n- Plank (tahan posisi dengan menjaga punggung tetap lurus) 3 set selama 30 detik\n\nSesi 2: Fokus Tubuh Bagian Atas dan Stabilitas\n- Wall push-up atau push-up dengan lutut 3 set dengan 10 repetisi\n- Dumbbell row satu tangan dengan tumpuan pada bangku 3 set dengan 10 repetisi per sisi\n- Dead bug (berbaring telentang, gerakkan tangan dan kaki berlawanan sambil menekan punggung bawah ke lantai) 3 set dengan 10 repetisi per sisi\n- Face pull menggunakan resistance band 3 set dengan 15 repetisi\n\nSesi 3: Fokus Fungsional dan Ketahanan\n- Step up ke bangku rendah 3 set dengan 10 repetisi per kaki\n- Lat pulldown menggunakan mesin atau resistance band 3 set dengan 12 repetisi\n- Side plank (bisa dengan lutut ditekuk jika terlalu berat) 3 set selama 20 detik per sisi\n- Pallof press menggunakan resistance band untuk melatih anti-rotasi inti 3 set dengan 10 repetisi per sisi\n\nLakukan setiap sesi dengan tempo yang terkontrol, terutama saat menurunkan beban, untuk memastikan otot bekerja maksimal tanpa hentakan. Jika kamu merasakan nyeri tajam pada punggung bawah saat melakukan gerakan tertentu, segera hentikan latihan tersebut dan ganti dengan variasi yang lebih ringan atau konsultasikan kembali. Pastikan kamu melakukan pemanasan ringan selama 5 sampai 10 menit sebelum memulai setiap sesi untuk menyiapkan otot dan sendi.",
+          "faithfulness": 0.0,
+          "groundedness": 1.0,
+          "claims": null
+        }
+      }
+    },
+    {
+      "scenario_id": "S07_hipertrofi_cedera_pergelangan_kaki",
+      "message": "Tujuan hipertrofi, level menengah, latihan 4 hari seminggu, pernah cedera pergelangan kaki (ankle sprain) beberapa bulan lalu, umur aku 24 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 4,
+        "level_pengalaman": "menengah",
+        "riwayat_cedera": [
+          "pergelangan kaki (ankle sprain)"
+        ],
+        "usia": 24,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "journal.pone.0262023.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 2,
+      "context_chars": 135234,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Karena kamu memiliki riwayat cedera pergelangan kaki, rencana latihan ini difokuskan untuk membangun hipertrofi otot sambil tetap menjaga stabilitas sendi melalui latihan yang lebih terkontrol. Mengingat risiko ketidakstabilan lateral pada gerakan dinamis seperti lunges, saya telah menggantinya dengan gerakan yang lebih stabil namun tetap efektif untuk melatih otot kaki secara maksimal.\n\nHari 1: Tubuh bagian bawah dan stabilitas pergelangan kaki\n- Latihan keseimbangan satu kaki, 3 set, 30 sampai 60 detik per kaki [S2].\n- Squat, 3 set, 8 sampai 12 repetisi [S1].\n- Leg press, 3 set, 8 sampai 12 repetisi [S1].\n- Istirahat antar set adalah 2 sampai 3 menit [S1].\n\nHari 2: Tubuh bagian atas\n- Bench press, 3 set, 8 sampai 12 repetisi [S1].\n- Row, 3 set, 8 sampai 12 repetisi [S1].\n- Overhead press, 3 set, 8 sampai 12 repetisi [S1].\n- Istirahat antar set adalah 2 sampai 3 menit [S1].\n\nHari 3: Istirahat\n\nHari 4: Tubuh bagian bawah dan stabilitas pergelangan kaki\n- Latihan keseimbangan satu kaki, 3 set, 30 sampai 60 detik per kaki [S2].\n- Deadlift, 3 set, 8 sampai 12 repetisi [S1].\n- Leg extension, 3 set, 8 sampai 12 repetisi [S1].\n- Istirahat antar set adalah 2 sampai 3 menit [S1].\n\nHari 5: Tubuh bagian atas\n- Lat pulldown, 3 set, 8 sampai 12 repetisi [S1].\n- Dumbbell press, 3 set, 8 sampai 12 repetisi [S1].\n- Seated row, 3 set, 8 sampai 12 repetisi [S1].\n- Istirahat antar set adalah 2 sampai 3 menit [S1].\n\nHari 6 dan 7: Istirahat\n\nUntuk mencapai hipertrofi, kamu perlu melakukan minimal 10 set per kelompok otot dalam seminggu [S1]. Susunan jadwal ini memastikan setiap kelompok otot terlatih minimal dua kali seminggu [S1]. Kamu disarankan melakukan latihan dengan beban yang cukup berat, minimal 80 persen dari kemampuan maksimal untuk meningkatkan kekuatan, namun untuk hipertrofi, volume total set lebih diutamakan [S1]. Kamu tidak perlu melakukan repetisi sampai benar-benar gagal atau tidak mampu bergerak lagi, karena latihan hingga kelelahan otot sesaat tidak memberikan manfaat tambahan yang signifikan untuk hipertrofi [S1]. Pastikan kamu melakukan gerakan dengan rentang gerak yang penuh untuk hasil yang optimal [S1]. Karena kamu memiliki riwayat cedera pergelangan kaki, hindari latihan pada permukaan yang tidak stabil jika kamu merasa belum memiliki kontrol yang cukup, dan fokuslah pada kualitas gerakan daripada volume latihan yang berlebihan [S2]. Jika kamu merasakan nyeri atau ketidakstabilan saat melakukan gerakan tertentu, segera sesuaikan intensitas atau posisi tubuhmu [S1]. Penggantian lunges dengan leg extension pada hari keempat bertujuan untuk memberikan beban pada otot paha depan tanpa memberikan tekanan lateral yang berisiko pada pergelangan kaki yang pernah cedera.",
+          "faithfulness": 0.1388888888888889,
+          "groundedness": 0.5,
+          "claims": "5/36"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Untuk mencapai target hipertrofi dengan frekuensi empat kali seminggu, kita akan menggunakan metode upper lower split agar setiap kelompok otot mendapatkan stimulasi dua kali dalam seminggu. Mengingat riwayat cedera pergelangan kaki, kita akan menghindari gerakan yang memberikan tekanan lateral berlebih atau beban impak tinggi pada sendi tersebut, seperti plyometrics atau lunge yang tidak stabil. Sebagai gantinya, kita akan fokus pada gerakan yang stabil dan terkontrol.\n\nSesi satu adalah upper body fokus pada kekuatan dorong.\n- Bench press 4 set 8 sampai 10 repetisi\n- Overhead press dengan posisi duduk 3 set 10 repetisi\n- Incline dumbbell press 3 set 12 repetisi\n- Lateral raise 3 set 15 repetisi\n- Tricep pushdown 3 set 12 repetisi\n\nSesi dua adalah lower body dengan modifikasi untuk keamanan pergelangan kaki.\n- Leg press 4 set 10 repetisi, pastikan posisi kaki stabil dan tidak terlalu rendah di platform\n- Leg extension 3 set 12 repetisi\n- Leg curl 3 set 12 repetisi\n- Seated calf raise 4 set 15 repetisi, gerakan ini lebih aman karena tidak menumpu berat badan secara langsung\n- Plank 3 set selama 45 detik\n\nSesi tiga adalah upper body fokus pada kekuatan tarik.\n- Pull up atau lat pulldown 4 set 8 sampai 10 repetisi\n- Seated cable row 3 set 10 repetisi\n- Face pull 3 set 15 repetisi\n- Dumbbell curl 3 set 12 repetisi\n- Hammer curl 3 set 12 repetisi\n\nSesi empat adalah lower body untuk melengkapi volume mingguan.\n- Goblet squat 4 set 10 repetisi, memegang beban di depan dada membantu menjaga keseimbangan dan mengurangi beban pada pergelangan kaki dibanding back squat\n- Romanian deadlift 3 set 10 repetisi dengan fokus pada kontraksi hamstring\n- Leg extension 3 set 12 repetisi\n- Leg curl 3 set 12 repetisi\n- Hanging leg raise 3 set 12 repetisi\n\nSelalu gunakan sepatu dengan dukungan arch yang baik dan hindari melakukan gerakan dengan beban berat jika kamu merasa pergelangan kaki sedang tidak stabil atau nyeri. Fokuslah pada tempo gerakan yang lambat saat menurunkan beban untuk memaksimalkan hipertrofi otot tanpa harus menggunakan beban yang terlalu ekstrem yang berisiko bagi sendi kamu. Jika kamu merasakan ketidaknyamanan pada pergelangan kaki saat melakukan gerakan tertentu, segera ganti dengan variasi mesin yang memiliki jalur gerak tetap.",
+          "faithfulness": 0.0,
+          "groundedness": 0.5,
+          "claims": null
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan frekuensi empat kali seminggu, kita akan menggunakan pembagian latihan tubuh bagian atas dan bawah. Mengingat riwayat cedera pergelangan kaki, kita akan memprioritaskan stabilitas dan menghindari gerakan yang memberikan tekanan lateral berlebih pada sendi tersebut, terutama pada fase awal.\n\nSesi satu difokuskan pada tubuh bagian atas dengan gerakan dorong dan tarik.\n- Bench press dengan barbell atau dumbbell 3 set sebanyak 8 sampai 12 repetisi\n- Lat pulldown 3 set sebanyak 10 sampai 12 repetisi\n- Overhead press dengan dumbbell 3 set sebanyak 10 repetisi\n- Seated cable row 3 set sebanyak 12 repetisi\n- Bicep curl dan tricep extension masing-masing 3 set sebanyak 12 sampai 15 repetisi\n\nSesi dua difokuskan pada tubuh bagian bawah dengan modifikasi keamanan pergelangan kaki.\n- Leg press 3 set sebanyak 10 sampai 12 repetisi, karena ini lebih stabil daripada squat bebas yang membebani pergelangan kaki\n- Leg extension 3 set sebanyak 12 sampai 15 repetisi\n- Leg curl 3 set sebanyak 12 sampai 15 repetisi\n- Calf raise dengan posisi duduk untuk mengurangi beban langsung pada pergelangan kaki 3 set sebanyak 15 repetisi\n- Plank untuk stabilitas inti 3 set selama 45 detik\n\nSesi tiga kembali ke tubuh bagian atas dengan variasi gerakan.\n- Incline dumbbell press 3 set sebanyak 10 sampai 12 repetisi\n- Pull up atau assisted pull up 3 set sebanyak 8 sampai 10 repetisi\n- Dumbbell lateral raise 3 set sebanyak 12 sampai 15 repetisi\n- Face pull 3 set sebanyak 15 repetisi\n- Hammer curl dan skull crusher masing-masing 3 set sebanyak 12 repetisi\n\nSesi empat kembali ke tubuh bagian bawah dengan fokus pada kontrol otot.\n- Goblet squat dengan beban yang dipegang di depan dada untuk menjaga keseimbangan 3 set sebanyak 10 sampai 12 repetisi\n- Romanian deadlift dengan dumbbell untuk fokus pada otot hamstring dan gluteus 3 set sebanyak 10 sampai 12 repetisi\n- Hip thrust 3 set sebanyak 10 sampai 12 repetisi\n- Leg press satu kaki untuk memperbaiki ketidakseimbangan otot 3 set sebanyak 12 repetisi\n- Latihan keseimbangan satu kaki di atas permukaan stabil sebagai bagian dari rehabilitasi pergelangan kaki 3 set selama 30 detik\n\nPastikan kamu melakukan pemanasan yang cukup sebelum memulai setiap sesi. Hindari gerakan yang mengharuskan kamu melompat atau melakukan perubahan arah mendadak karena berisiko tinggi bagi pergelangan kaki yang pernah cedera. Fokuslah pada tempo gerakan yang terkontrol, terutama pada fase eksentrik atau saat menurunkan beban, karena ini sangat efektif untuk hipertrofi. Jika kamu merasakan nyeri tajam pada pergelangan kaki saat melakukan gerakan tertentu, segera hentikan dan ganti dengan variasi mesin yang lebih stabil. Kamu perlu memastikan total volume latihan mencapai minimal 10 set per kelompok otot utama setiap minggunya untuk memaksimalkan pertumbuhan otot.",
+          "faithfulness": 0.045454545454545456,
+          "groundedness": 0.5,
+          "claims": "1/22"
+        }
+      }
+    },
+    {
+      "scenario_id": "S08_kekuatan_multi_cedera",
+      "message": "Aku mau nambah kekuatan, level lanjutan, latihan 5 hari seminggu, ada riwayat cedera lutut kiri DAN cedera bahu kanan, umur aku 28 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "kekuatan",
+        "frekuensi_tersedia": 5,
+        "level_pengalaman": "lanjutan",
+        "riwayat_cedera": [
+          "lutut kiri",
+          "bahu kanan"
+        ],
+        "usia": 28,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "journal.pone.0262023.pdf",
+        "ijerph-19-12710.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 3,
+      "context_chars": 238907,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Untuk mencapai tujuan kekuatan dengan frekuensi lima hari seminggu sambil menjaga kondisi bahu kanan dan lutut kiri kamu, kita akan memodifikasi gerakan agar tetap memberikan stimulus yang cukup tanpa membebani sendi yang rentan. Fokus kita adalah menggunakan gerakan yang lebih stabil dan meminimalkan beban aksial langsung pada lutut serta tekanan berlebih pada bahu.\n\nHari 1, tubuh bagian atas:\n- Floor press dengan dumbbell, 3 set dengan 5 sampai 8 repetisi untuk membatasi rentang gerak bahu dan mengurangi tekanan pada sendi [S1].\n- Lat pulldown dengan grip netral, 3 set dengan 8 sampai 12 repetisi [S1].\n- Chest supported row dengan posisi dada bersandar penuh, 3 set dengan 8 sampai 12 repetisi [S1].\n- Face pull dengan kabel, 3 set dengan 12 sampai 15 repetisi untuk kesehatan bahu [S3].\nIstirahat antar set disarankan 2 sampai 3 menit untuk memaksimalkan pemulihan kekuatan [S1].\n\nHari 2, tubuh bagian bawah:\n- Leg press dengan posisi kaki lebih tinggi pada platform, 3 set dengan 6 sampai 10 repetisi untuk mengurangi tekanan pada lutut [S1].\n- Romanian deadlift dengan dumbbell, 3 set dengan 5 sampai 8 repetisi [S1].\n- Single-leg stance, 3 set dengan durasi 30 detik untuk stabilitas pergelangan kaki [S2].\n- Hip flexion dengan elastic band, 3 set dengan 10 sampai 15 repetisi [S3].\n\nHari 3 dipakai untuk istirahat.\n\nHari 4, tubuh bagian atas:\n- Neutral grip dumbbell press, 3 set dengan 6 sampai 10 repetisi untuk posisi bahu yang lebih netral [S1].\n- Pull-up dengan grip netral, 3 set dengan repetisi maksimal yang terkontrol [S3].\n- Seated cable row dengan grip netral, 3 set dengan 6 sampai 10 repetisi [S1].\n- External rotation dengan kabel atau band, 3 set dengan 12 sampai 15 repetisi [S3].\n\nHari 5, tubuh bagian bawah:\n- Belt squat atau leg press unilateral, 3 set dengan 8 sampai 12 repetisi untuk menghilangkan beban aksial pada tulang belakang dan lutut [S1].\n- Leg curl, 3 set dengan 10 sampai 15 repetisi [S3].\n- Glute bridge dengan beban di panggul, 3 set dengan 10 sampai 12 repetisi untuk memperkuat rantai posterior [S1].\n- Plank, 3 set dengan durasi 45 detik untuk stabilitas inti [S3].\n\nHari 6, tubuh bagian atas dan bawah:\n- Incline dumbbell press dengan sudut rendah, 3 set dengan 8 sampai 12 repetisi [S1].\n- Seated row, 3 set dengan 8 sampai 12 repetisi [S1].\n- Glute ham raise atau nordic hamstring curl, 3 set dengan 10 sampai 12 repetisi sebagai alternatif yang lebih aman bagi lutut dibandingkan step up [S1].\n- Hip extension, 3 set dengan 10 sampai 12 repetisi [S1].\n\nHari 7 dipakai untuk istirahat.\n\nSusunan ini memastikan setiap kelompok otot utama terlatih minimal dua kali seminggu dengan volume yang cukup untuk meningkatkan kekuatan [S1]. Untuk meningkatkan kekuatan secara optimal, gunakan beban yang setara dengan 80 persen atau lebih dari satu repetisi maksimal kamu [S1]. Karena kamu memiliki riwayat cedera bahu, hindari posisi tangan di belakang leher dan pilih variasi gerakan yang membawa beban ke depan tubuh [S3]. Jika kamu merasakan nyeri pada lutut atau bahu saat melakukan gerakan tertentu, segera ganti dengan variasi gerakan lain yang tidak menimbulkan nyeri untuk menjaga keamanan sendi [S3]. Kamu tidak perlu mencapai kegagalan otot sesaat di setiap set karena hal tersebut tidak secara konsisten meningkatkan hasil kekuatan [S1]. Pastikan untuk melakukan pemanasan yang cukup dan fokus pada teknik yang benar untuk meminimalkan risiko cedera [S3].",
+          "faithfulness": 0.2647058823529412,
+          "groundedness": 1.0,
+          "claims": "9/34"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Mengingat kamu sudah berada di level lanjutan dan ingin fokus pada peningkatan kekuatan, kita akan menggunakan metode split latihan lima hari dengan pendekatan push pull legs upper lower untuk memaksimalkan pemulihan otot. Mengingat riwayat cedera pada lutut kiri dan bahu kanan, kita akan menghindari gerakan yang memberikan tekanan berlebih pada sendi tersebut seperti barbell back squat yang terlalu berat atau overhead press dengan beban bebas yang tidak stabil. Sebagai gantinya, kita akan fokus pada gerakan terkontrol dan variasi yang lebih ramah sendi.\n\nUntuk hari pertama, kita fokus pada push atau dorong dengan modifikasi pada bahu.\n- Dumbbell bench press 4 set 6 repetisi\n- Incline dumbbell press 3 set 8 repetisi\n- Cable chest fly 3 set 12 repetisi\n- Lateral raise dengan kabel 3 set 12 repetisi untuk menjaga stabilitas bahu kanan\n- Tricep pushdown 3 set 10 repetisi\n\nHari kedua kita masuk ke sesi pull atau tarik untuk punggung dan bisep.\n- Pull up 4 set sampai gagal\n- Seated cable row 4 set 8 repetisi\n- Lat pulldown 3 set 10 repetisi\n- Face pull 3 set 15 repetisi untuk kesehatan bahu\n- Barbell curl 3 set 8 repetisi\n\nHari ketiga adalah sesi kaki dengan modifikasi agar lutut kiri tetap aman.\n- Leg press dengan posisi kaki lebih tinggi 4 set 8 repetisi\n- Romanian deadlift 4 set 8 repetisi untuk fokus pada hamstring dan glutes\n- Leg curl 3 set 12 repetisi\n- Leg extension dengan beban ringan dan kontrol penuh 3 set 15 repetisi\n- Standing calf raise 4 set 15 repetisi\n\nHari keempat kita fokus pada upper body atau tubuh bagian atas.\n- Weighted dip 3 set 8 repetisi\n- Pendlay row 4 set 6 repetisi\n- Dumbbell shoulder press dengan posisi netral atau telapak tangan menghadap satu sama lain 3 set 10 repetisi untuk mengurangi beban pada bahu kanan\n- Pull over 3 set 10 repetisi\n- Hammer curl 3 set 10 repetisi\n\nHari kelima kita tutup dengan sesi lower body yang lebih intens namun tetap memperhatikan lutut.\n- Goblet squat dengan beban moderat 4 set 10 repetisi\n- Bulgarian split squat dengan bantuan pegangan untuk keseimbangan 3 set 8 repetisi per kaki\n- Glute bridge dengan beban 4 set 10 repetisi\n- Seated leg curl 3 set 12 repetisi\n- Plank 3 set selama 60 detik\n\nSelalu perhatikan sensasi pada bahu kanan dan lutut kiri saat melakukan setiap repetisi. Jika kamu merasakan nyeri tajam, segera hentikan gerakan tersebut dan ganti dengan variasi mesin yang memiliki jalur gerak tetap karena mesin cenderung lebih aman bagi sendi yang pernah cedera dibandingkan beban bebas. Pastikan kamu melakukan pemanasan dinamis selama sepuluh menit sebelum memulai sesi inti untuk memastikan sendi sudah terlubrikasi dengan baik.",
+          "faithfulness": 0.0,
+          "groundedness": 1.0,
+          "claims": null
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Karena kamu sudah berpengalaman dan punya riwayat cedera di lutut kiri serta bahu kanan, kita akan fokus pada program kekuatan dengan pendekatan yang mengutamakan stabilitas dan kontrol beban. Mengingat kamu punya waktu 5 hari dalam seminggu, kita akan menggunakan pembagian latihan yang memungkinkan pemulihan optimal untuk area yang pernah cedera.\n\nUntuk sesi latihan, kita akan menerapkan prinsip beban berat di atas 80 persen dari satu repetisi maksimal untuk kekuatan, dengan volume 2 sampai 3 set per latihan. Kita akan menghindari gerakan yang menempatkan bahu pada posisi berisiko tinggi, seperti menekan beban di belakang leher atau posisi high five yang melibatkan abduksi dan rotasi eksternal ekstrem. Untuk lutut, kita akan memprioritaskan gerakan yang terkontrol dan menghindari beban berlebih yang memicu nyeri.\n\nBerikut adalah jadwal latihan mingguan kamu:\n\nSenin: Kekuatan tubuh bagian atas fokus dorong\n- Bench press dengan grip sedang\n- Incline dumbbell press\n- Triceps cable pushdown dengan posisi siku stabil\n- Lateral raise dengan rentang gerak terkontrol\n\nSelasa: Kekuatan tubuh bagian bawah fokus dominan lutut\n- Goblet squat dengan beban di depan dada untuk menjaga postur tulang belakang\n- Leg press dengan posisi kaki yang tidak terlalu lebar\n- Romanian deadlift dengan fokus pada kontraksi hamstring\n- Calf raise berdiri\n\nRabu: Istirahat aktif atau mobilitas ringan\n\nKamis: Kekuatan tubuh bagian atas fokus tarik\n- Barbell row dengan posisi tubuh stabil\n- Lat pulldown ke arah depan dada\n- Face pull untuk stabilitas bahu\n- Bicep curl dengan bar lurus atau EZ bar\n\nJumat: Kekuatan tubuh bagian bawah fokus dominan pinggul\n- Deadlift konvensional dengan teknik yang sangat terjaga\n- Lunges statis untuk meminimalisir tekanan pada lutut\n- Leg curl untuk hamstring\n- Plank untuk stabilitas inti\n\nSabtu: Sesi tambahan untuk kelemahan atau volume tambahan\n- Overhead press dengan dumbbell di depan tubuh\n- Pull up atau chin up\n- Latihan stabilitas bahu dengan resistance band\n- Latihan keseimbangan satu kaki untuk rehabilitasi lutut\n\nDalam setiap sesi, pastikan kamu melakukan pemanasan yang cukup dan fokus pada kualitas gerakan daripada sekadar menambah beban. Jika kamu merasakan nyeri pada bahu kanan atau lutut kiri saat melakukan gerakan tertentu, segera ganti dengan variasi yang lebih nyaman atau kurangi beban. Mengingat riwayat cedera, pastikan kamu selalu menjaga posisi tulang belakang tetap netral dan hindari gerakan yang memaksa sendi ke titik terjauhnya secara tiba-tiba. Kamu bisa mengatur intensitas dengan menjaga repetisi di kisaran 2 sampai 3 repetisi di bawah batas kegagalan otot untuk menjaga keamanan sendi.",
+          "faithfulness": 0.5454545454545454,
+          "groundedness": 1.0,
+          "claims": "6/11"
+        }
+      }
+    },
+    {
+      "scenario_id": "S09_hipertrofi_pemula_cedera_umum",
+      "message": "Pemula, tujuannya hipertrofi, baru sanggup 2 hari seminggu, sering ngerasa nyeri di beberapa sendi pas latihan beban tapi gak tau spesifik dimana, umur aku 38 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 2,
+        "level_pengalaman": "pemula",
+        "riwayat_cedera": [
+          "nyeri sendi saat latihan beban"
+        ],
+        "usia": 38,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": "pengguna merasakan nyeri di beberapa sendi saat latihan beban namun tidak spesifik lokasi cederanya"
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "ijerph-19-12710.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 2,
+      "context_chars": 198529,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan frekuensi dua hari per minggu, kamu perlu melakukan latihan dengan upaya tinggi yang melibatkan semua kelompok otot utama [S1]. Mengingat kamu memiliki riwayat nyeri sendi, kita akan memprioritaskan gerakan yang lebih stabil dan minim tekanan pada sendi, serta menghindari gerakan yang berisiko tinggi seperti deadlift konvensional atau squat dengan beban berat yang bisa memperburuk nyeri [S2]. Kamu disarankan untuk melakukan pemanasan yang cukup dan memastikan teknik yang benar untuk menjaga integritas sendi [S2].\n\nPada hari pertama, fokus kita adalah melatih seluruh tubuh dengan gerakan yang lebih ramah sendi:\n- Chest press menggunakan mesin, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Lat pulldown ke arah depan dada, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1], [S2].\n- Leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Leg curl, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nHari kedua dan ketiga digunakan untuk istirahat agar sendi dan ototmu memiliki waktu pemulihan yang cukup.\n\nPada hari keempat, kita akan melanjutkan latihan seluruh tubuh dengan variasi gerakan yang berbeda:\n- Seated row, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Overhead press menggunakan mesin atau dumbbell dengan posisi netral, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1], [S2].\n- Goblet squat dengan beban ringan atau menggunakan mesin leg extension, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Glute bridge atau hip thrust dengan beban tubuh, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nHari kelima, keenam, dan ketujuh digunakan untuk istirahat.\n\nSusunan ini memastikan setiap kelompok otot terlatih minimal dua kali seminggu [S1]. Kamu disarankan untuk melakukan set dengan volume minimal 10 set per kelompok otot setiap minggunya untuk memaksimalkan hipertrofi [S1]. Gunakan rentang istirahat antar set yang cukup agar kamu merasa pulih sebelum set berikutnya [S1]. Jika kamu merasakan nyeri pada sendi tertentu, segera modifikasi gerakan atau ganti dengan variasi lain yang tidak menimbulkan nyeri untuk menjaga keamanan [S2]. Kamu tidak perlu mencapai kegagalan otot sesaat di setiap set karena upaya yang mendekati kegagalan dengan 2 sampai 3 repetisi cadangan sudah cukup untuk memicu adaptasi [S1]. Pastikan untuk selalu melakukan gerakan dengan rentang gerak yang penuh namun tetap dalam batas kenyamanan sendi untuk hasil yang optimal [S1].",
+          "faithfulness": 0.391304347826087,
+          "groundedness": 1.0,
+          "claims": "9/23"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Mengingat kamu punya riwayat nyeri sendi, kita akan fokus pada metode latihan full body dengan repetisi yang lebih tinggi dan tempo yang terkontrol untuk meminimalisir beban impak pada sendi sambil tetap merangsang pertumbuhan otot. Karena kamu hanya bisa berlatih dua kali seminggu, kita akan menggunakan pola latihan seluruh tubuh di setiap sesi agar setiap kelompok otot mendapatkan stimulasi yang cukup untuk hipertrofi.\n\nUntuk sesi pertama, fokus kita adalah pada gerakan dasar yang stabil. Lakukan gerakan ini dengan tempo 3 detik saat menurunkan beban agar otot bekerja lebih maksimal tanpa harus menggunakan beban yang terlalu berat bagi sendi kamu.\n\n- Goblet squat 3 set dengan 12 sampai 15 repetisi\n- Push up dengan lutut atau di permukaan tinggi 3 set dengan 10 sampai 12 repetisi\n- Dumbbell row 3 set dengan 12 repetisi per sisi\n- Glute bridge 3 set dengan 15 repetisi\n- Plank 3 set selama 30 sampai 45 detik\n\nPada sesi kedua, kita akan sedikit memvariasikan gerakan untuk memastikan perkembangan otot yang seimbang. Hindari gerakan yang mengharuskan kamu mengangkat beban langsung di atas kepala seperti overhead press karena gerakan ini sering memicu nyeri pada bahu bagi pemula.\n\n- Lunge statis 3 set dengan 10 repetisi per kaki\n- Chest press dengan dumbbell 3 set dengan 12 repetisi\n- Lat pulldown atau resistance band pull apart 3 set dengan 12 sampai 15 repetisi\n- Leg curl atau gerakan menekuk lutut dengan beban ringan 3 set dengan 15 repetisi\n- Bird dog 3 set dengan 10 repetisi per sisi\n\nMengenai nyeri sendi yang kamu rasakan, kunci utamanya adalah menghindari gerakan yang melibatkan penguncian sendi secara paksa atau gerakan yang terlalu eksplosif. Jika kamu merasakan nyeri tajam saat melakukan gerakan tertentu, segera hentikan dan ganti dengan variasi yang lebih nyaman. Pastikan kamu melakukan pemanasan dinamis selama 10 menit sebelum memulai latihan inti untuk melumasi sendi dan meningkatkan aliran darah ke otot. Jangan memaksakan beban yang terlalu berat di awal, fokuslah pada kualitas kontraksi otot dan rentang gerak yang aman bagi tubuh kamu. Jika nyeri sendi tetap muncul meski sudah menggunakan beban ringan, pertimbangkan untuk menggunakan resistance band sebagai pengganti dumbbell karena tekanannya jauh lebih ramah terhadap sendi.",
+          "faithfulness": 0.1,
+          "groundedness": 1.0,
+          "claims": "1/10"
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Karena kamu baru memulai latihan beban dan memiliki keluhan nyeri sendi, fokus utama kita adalah membangun fondasi kekuatan dengan aman tanpa membebani sendi secara berlebihan. Kita akan menggunakan frekuensi dua kali seminggu dengan pendekatan seluruh tubuh agar setiap kelompok otot utama mendapatkan stimulasi yang cukup untuk hipertrofi. Mengingat riwayat nyeri sendi kamu, kita akan menghindari gerakan yang menempatkan sendi pada posisi rentan, seperti menekan beban di belakang leher atau gerakan yang memaksa rentang gerak ekstrem.\n\nUntuk sesi pertama, lakukan gerakan berikut:\n\n- Leg press 3 set dengan 10 sampai 12 repetisi\n- Chest press menggunakan mesin 3 set dengan 10 sampai 12 repetisi\n- Seated row menggunakan kabel 3 set dengan 10 sampai 12 repetisi\n- Leg curl untuk otot paha belakang 3 set dengan 12 repetisi\n- Plank untuk stabilitas inti selama 30 sampai 45 detik sebanyak 3 set\n\nUntuk sesi kedua, lakukan gerakan berikut:\n\n- Goblet squat dengan memegang beban di depan dada 3 set dengan 10 sampai 12 repetisi\n- Lat pulldown dengan pegangan lebar 3 set dengan 10 sampai 12 repetisi\n- Shoulder press menggunakan mesin 3 set dengan 10 sampai 12 repetisi\n- Hip abduction menggunakan mesin 3 set dengan 12 sampai 15 repetisi\n- Bird dog untuk stabilitas punggung bawah 3 set dengan 10 repetisi per sisi\n\nDalam setiap sesi, pastikan kamu melakukan pemanasan yang cukup selama 5 sampai 10 menit untuk melumasi sendi. Gunakan beban yang memungkinkan kamu menyelesaikan repetisi dengan teknik yang sempurna tanpa harus memaksakan diri hingga gagal otot total, karena bagi pemula, konsistensi dan teknik jauh lebih penting daripada beban berat. Jika kamu merasakan nyeri tajam saat melakukan gerakan tertentu, segera hentikan latihan tersebut dan ganti dengan variasi lain yang lebih nyaman bagi sendi kamu. Kita akan menerapkan prinsip beban progresif dengan meningkatkan beban secara perlahan hanya jika kamu sudah merasa nyaman dan teknik gerakan sudah stabil selama dua minggu berturut-turut. Pastikan kamu memberikan jeda istirahat minimal satu hari di antara kedua sesi latihan tersebut agar tubuh memiliki waktu untuk pemulihan jaringan otot dan sendi.",
+          "faithfulness": 0.2962962962962963,
+          "groundedness": 1.0,
+          "claims": "8/27"
+        }
+      }
+    },
+    {
+      "scenario_id": "S10_kekuatan_lanjutan_tanpa_cedera",
+      "message": "Level aku udah lanjutan, tujuannya kekuatan maksimal, latihan 6 hari seminggu, kondisi fisik sehat semua, umur aku 25 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "kekuatan maksimal",
+        "frekuensi_tersedia": 6,
+        "level_pengalaman": "lanjutan",
+        "riwayat_cedera": [],
+        "usia": 25,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": ""
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "jcm-10-03968-v2.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 2,
+      "context_chars": 132352,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Untuk mencapai tujuan kekuatan maksimal dengan frekuensi enam hari seminggu, kamu perlu fokus pada intensitas tinggi dan volume yang terukur. Kamu harus melatih setiap kelompok otot utama minimal dua kali seminggu [S1]. Karena kamu adalah atlet tingkat lanjut, kamu bisa menggunakan beban berat minimal 80 persen dari satu repetisi maksimal untuk meningkatkan kekuatan secara optimal [S1]. Lakukan latihan dengan rentang gerak penuh untuk hasil terbaik [S1].\n\nBerikut adalah rencana latihan mingguan kamu:\n\nHari 1, tubuh bagian atas:\n- Pola mendorong, misalnya bench press, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola menarik, misalnya barbell row, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola menekan vertikal, misalnya overhead press, 3 set dengan 4 sampai 6 repetisi [S1].\n\nHari 2, tubuh bagian bawah:\n- Pola menekuk lutut, misalnya squat, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola engsel pinggul, misalnya deadlift, 3 set dengan 4 sampai 6 repetisi [S1].\n- Latihan tambahan, misalnya leg press, 2 set dengan 8 sampai 10 repetisi [S1].\n\nHari 3, tubuh bagian atas:\n- Pola mendorong, misalnya dumbbell press, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola menarik, misalnya pull up, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola menekan vertikal, misalnya dumbbell shoulder press, 3 set dengan 4 sampai 6 repetisi [S1].\n\nHari 4, tubuh bagian bawah:\n- Pola menekuk lutut, misalnya front squat, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola engsel pinggul, misalnya romanian deadlift, 3 set dengan 4 sampai 6 repetisi [S1].\n- Latihan tambahan, misalnya leg extension, 2 set dengan 8 sampai 10 repetisi [S1].\n\nHari 5, tubuh bagian atas:\n- Pola mendorong, misalnya incline bench press, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola menarik, misalnya lat pulldown, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola menekan vertikal, misalnya arnold press, 3 set dengan 4 sampai 6 repetisi [S1].\n\nHari 6, tubuh bagian bawah:\n- Pola menekuk lutut, misalnya lunges, 3 set dengan 4 sampai 6 repetisi [S1].\n- Pola engsel pinggul, misalnya leg curl, 3 set dengan 4 sampai 6 repetisi [S1].\n- Latihan tambahan, misalnya calf raise, 2 set dengan 8 sampai 10 repetisi [S1].\n\nHari 7 dipakai untuk istirahat total.\n\nUntuk meningkatkan kekuatan, tempatkan latihan utama di awal sesi [S1]. Kamu tidak perlu melakukan setiap set sampai gagal total karena hal tersebut tidak secara konsisten meningkatkan hasil kekuatan [S1]. Istirahat antar set bisa dilakukan selama 1 sampai 3 menit untuk memastikan pemulihan yang cukup [S1]. Jika kamu mengalami nyeri pada siku, kamu bisa menambahkan latihan eksentrik sebagai bagian dari manajemen tendinopati, karena latihan eksentrik terbukti efektif meningkatkan kekuatan otot pada kondisi tersebut [S2]. Pastikan untuk selalu menerapkan prinsip beban progresif dengan meningkatkan beban atau volume secara bertahap seiring adaptasi tubuhmu [S1].",
+          "faithfulness": 0.27586206896551724,
+          "groundedness": 0.5,
+          "claims": "8/29"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Untuk mencapai target kekuatan maksimal dengan frekuensi enam hari seminggu, kita akan menggunakan metode push pull legs yang diulang dua kali dalam seminggu. Karena kamu sudah berada di level lanjutan, kita akan fokus pada intensitas tinggi dengan rentang repetisi rendah antara 1 sampai 5 untuk gerakan utama guna membangun kekuatan sistem saraf pusat.\n\nPada hari Senin dan Kamis, kita fokus pada sesi push.\n- Barbell bench press 5 set x 3 sampai 5 repetisi\n- Overhead press 4 set x 4 sampai 6 repetisi\n- Incline dumbbell press 3 set x 6 sampai 8 repetisi\n- Lateral raise 3 set x 10 sampai 12 repetisi\n- Triceps dip 3 set x 6 sampai 8 repetisi\n\nPada hari Selasa dan Jumat, kita masuk ke sesi pull.\n- Barbell deadlift 3 set x 3 sampai 5 repetisi\n- Weighted pull up 4 set x 4 sampai 6 repetisi\n- Barbell row 4 set x 5 sampai 7 repetisi\n- Face pull 3 set x 12 sampai 15 repetisi\n- Barbell curl 3 set x 6 sampai 8 repetisi\n\nPada hari Rabu dan Sabtu, kita fokus pada sesi legs.\n- Barbell back squat 5 set x 3 sampai 5 repetisi\n- Romanian deadlift 4 set x 6 sampai 8 repetisi\n- Leg press 3 set x 8 sampai 10 repetisi\n- Leg curl 3 set x 10 sampai 12 repetisi\n- Standing calf raise 4 set x 8 sampai 10 repetisi\n\nKarena kamu tidak memiliki riwayat cedera, kamu bisa melakukan semua gerakan ini dengan beban maksimal yang terukur. Pastikan kamu melakukan pemanasan yang cukup sebelum masuk ke set berat dan selalu perhatikan teknik gerakan agar tetap terjaga meski beban yang diangkat sangat berat. Istirahat antar set untuk gerakan utama sebaiknya dilakukan selama 3 sampai 5 menit agar pemulihan ATP maksimal untuk set berikutnya. Kamu bisa menggunakan hari Minggu sebagai hari istirahat total untuk pemulihan otot dan sistem saraf sebelum memulai siklus latihan berikutnya di hari Senin.",
+          "faithfulness": 0.0,
+          "groundedness": 0.0,
+          "claims": null
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Mengingat tujuan kamu adalah kekuatan maksimal dengan frekuensi enam hari seminggu, kita akan menggunakan pendekatan latihan yang berfokus pada beban berat dan volume yang terukur. Karena kamu sudah berada di level lanjutan, kita akan menerapkan prinsip progresif dengan membagi sesi latihan agar setiap kelompok otot utama mendapatkan stimulasi yang cukup tanpa mengorbankan pemulihan.\n\nUntuk mencapai kekuatan maksimal, kamu harus fokus pada beban yang berat, yaitu minimal 80 persen dari satu repetisi maksimal kamu. Kamu perlu melakukan dua hingga tiga set per latihan dengan rentang repetisi yang rendah namun intens. Pastikan setiap gerakan dilakukan melalui rentang gerak yang penuh untuk hasil yang optimal. Karena kamu tidak memiliki riwayat cedera, kita bisa langsung menerapkan intensitas tinggi, namun tetap perhatikan teknik agar tetap terjaga.\n\nBerikut adalah pembagian jadwal latihan enam hari dalam seminggu:\n\nSesi 1, 3, dan 5 (Fokus Tubuh Bagian Atas)\n- Bench press dengan beban berat\n- Overhead press untuk bahu\n- Barbell row untuk punggung\n- Pull up dengan tambahan beban jika perlu\n- Bicep curl dan tricep extension sebagai pelengkap\n\nSesi 2, 4, dan 6 (Fokus Tubuh Bagian Bawah)\n- Back squat atau front squat\n- Deadlift untuk kekuatan rantai posterior\n- Leg press untuk volume tambahan\n- Romanian deadlift untuk hamstring\n- Calf raise untuk otot betis\n\nDalam setiap sesi, pastikan kamu memulai dengan latihan yang paling berat dan kompleks di awal. Kamu tidak perlu memaksakan diri hingga mencapai kegagalan otot total di setiap set karena bukti ilmiah menunjukkan bahwa hal tersebut tidak selalu memberikan keuntungan tambahan untuk kekuatan. Cukup sisakan dua hingga tiga repetisi di dalam cadangan kamu untuk menjaga kualitas gerakan dan keamanan jangka panjang.\n\nMeskipun kamu tidak memiliki riwayat cedera, tetaplah waspada terhadap tanda-tanda kelelahan berlebih. Jika kamu merasa performa menurun secara konsisten, kamu bisa melakukan variasi beban atau volume pada sesi keempat atau kelima untuk memberikan kesempatan bagi sistem saraf pusat kamu untuk pulih. Mengingat frekuensi latihan yang tinggi, pastikan asupan nutrisi dan waktu istirahat kamu mencukupi untuk mendukung adaptasi kekuatan yang kamu kejar.",
+          "faithfulness": 0.2,
+          "groundedness": 1.0,
+          "claims": "1/5"
+        }
+      }
+    },
+    {
+      "scenario_id": "S11_penurunan_bb_cedera_lutut",
+      "message": "Mau nurunin berat badan, level menengah, latihan 4 hari seminggu, ada riwayat nyeri lutut anterior pas naik turun tangga, umur aku 45 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "penurunan berat badan",
+        "frekuensi_tersedia": 4,
+        "level_pengalaman": "menengah",
+        "riwayat_cedera": [
+          "nyeri lutut anterior"
+        ],
+        "usia": 45,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": "nyeri lutut dirasakan saat naik turun tangga"
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "journal.pone.0262023.pdf",
+        "s13102-025-01297-x.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 3,
+      "context_chars": 181376,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Karena kamu memiliki nyeri lutut anterior yang terasa saat naik turun tangga, kita akan memprioritaskan latihan penguatan otot yang aman untuk lutut dengan fokus pada otot panggul dan paha untuk mengurangi beban pada sendi patellofemoral [S3]. Latihan penguatan otot terbukti memberikan efek positif dalam mengurangi nyeri dan meningkatkan fungsi lutut, terutama pada populasi wanita [S3]. Kamu bisa melakukan latihan sebanyak 4 hari dalam seminggu, dengan minimal dua sesi per minggu untuk setiap kelompok otot utama [S1].\n\nHari 1: Tubuh bagian bawah dan penguatan panggul\n- Latihan penguatan otot panggul, misalnya hip abduction, 3 set dengan 10 sampai 15 repetisi [S3].\n- Latihan penguatan otot paha depan dengan posisi yang tidak membebani lutut, misalnya straight leg raise, 3 set dengan 10 sampai 15 repetisi [S3].\n- Latihan penguatan otot paha belakang, misalnya hamstring curl, 3 set dengan 10 sampai 15 repetisi [S1].\n- Istirahat antar set selama 2 sampai 3 menit [S1].\n\nHari 2: Tubuh bagian atas\n- Pola mendorong, misalnya chest press, 3 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik, misalnya lat pulldown, 3 set dengan 8 sampai 12 repetisi [S1].\n- Pola mendorong vertikal, misalnya overhead press, 3 set dengan 8 sampai 12 repetisi [S1].\n- Istirahat antar set selama 2 sampai 3 menit [S1].\n\nHari 3: Istirahat\n\nHari 4: Tubuh bagian bawah dan penguatan panggul\n- Latihan penguatan otot panggul, misalnya side-lying leg lift, 3 set dengan 10 sampai 15 repetisi [S3].\n- Latihan penguatan otot paha depan dengan posisi berbaring, misalnya isometric quad sets dengan menekan handuk di bawah lutut, 3 set dengan durasi 30 sampai 45 detik [S3].\n- Latihan penguatan otot paha belakang, misalnya glute bridge, 3 set dengan 10 sampai 15 repetisi [S1].\n- Istirahat antar set selama 2 sampai 3 menit [S1].\n\nHari 5: Tubuh bagian atas\n- Pola mendorong, misalnya push-up, 3 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik, misalnya seated row, 3 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik vertikal, misalnya pull-up atau assisted pull-up, 3 set dengan 8 sampai 12 repetisi [S1].\n- Istirahat antar set selama 2 sampai 3 menit [S1].\n\nHari 6 dan 7: Istirahat\n\nLakukan latihan dengan intensitas yang cukup, yaitu sekitar 80 persen dari kemampuan maksimal untuk meningkatkan kekuatan [S1]. Kamu tidak perlu berlatih sampai mencapai kegagalan otot total karena hal tersebut tidak memberikan manfaat tambahan yang signifikan untuk kekuatan dan hipertrofi [S1]. Jika nyeri lutut muncul saat melakukan gerakan tertentu, segera ubah intensitas atau posisi tubuh agar tidak memicu nyeri lebih lanjut [S1]. Pastikan kamu melakukan gerakan dengan rentang gerak yang penuh untuk hasil yang optimal [S1]. Karena kamu memiliki riwayat nyeri lutut, hindari gerakan yang memberikan tekanan berlebih pada sendi patellofemoral seperti squat yang terlalu dalam atau lunges jika dirasa nyeri [S3]. Fokuslah pada konsistensi latihan karena kepatuhan adalah kunci utama dalam program rehabilitasi dan penurunan berat badan [S1].",
+          "faithfulness": 0.06666666666666667,
+          "groundedness": 0.5,
+          "claims": "1/15"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Mengingat nyeri lutut anterior yang kamu alami saat naik turun tangga, kita akan fokus pada latihan yang minim tekanan pada sendi lutut namun tetap efektif untuk membakar kalori dan meningkatkan metabolisme. Kita akan menggunakan jadwal 4 hari dalam seminggu dengan pembagian latihan tubuh bagian atas dan bawah yang dimodifikasi agar lututmu tetap aman. Hindari gerakan seperti squat dalam, lunges, atau lompatan karena itu akan memperparah nyeri lututmu. Sebagai gantinya, kita akan lebih banyak menggunakan gerakan berbasis lantai atau posisi duduk yang stabil.\n\nUntuk hari pertama dan ketiga, kita fokus pada tubuh bagian atas dan inti tubuh.\n- Push ups dengan lutut di lantai 3 set 12 repetisi\n- Dumbbell overhead press 3 set 12 repetisi\n- Dumbbell row 3 set 12 repetisi\n- Plank 3 set selama 45 detik\n- Bird dog 3 set 15 repetisi per sisi\n\nUntuk hari kedua dan keempat, kita fokus pada tubuh bagian bawah dengan modifikasi yang ramah lutut.\n- Glute bridge 3 set 15 repetisi\n- Clamshells 3 set 15 repetisi per sisi\n- Side lying leg raises 3 set 15 repetisi per sisi\n- Dead bug 3 set 12 repetisi\n- Seated leg extension dengan beban sangat ringan atau tanpa beban 3 set 15 repetisi\n\nPastikan kamu melakukan pemanasan dinamis selama 10 menit sebelum mulai, seperti memutar bahu dan menggerakkan pergelangan kaki, namun hindari gerakan memutar lutut yang tajam. Jika saat melakukan gerakan tertentu kamu merasakan nyeri yang menusuk di area lutut, segera hentikan gerakan tersebut dan ganti dengan variasi lain yang tidak membebani sendi. Fokuslah pada kontrol gerakan yang lambat dan stabil daripada mengejar kecepatan atau beban yang berat, karena stabilitas otot di sekitar lutut jauh lebih penting untuk mengurangi nyeri jangka panjang. Jangan lupa untuk menjaga pola makan dengan defisit kalori yang moderat agar penurunan berat badan bisa berjalan beriringan dengan penguatan otot.",
+          "faithfulness": 0.037037037037037035,
+          "groundedness": 0.0,
+          "claims": "1/27"
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Untuk mencapai tujuan penurunan berat badan dengan kondisi nyeri lutut anterior, kita akan fokus pada latihan beban yang memperkuat otot sekitar lutut dan pinggul tanpa memberikan tekanan berlebih pada sendi lutut. Mengingat kamu memiliki nyeri saat naik turun tangga, kita akan menghindari gerakan yang melibatkan beban impak tinggi atau tekanan langsung yang berlebihan pada tempurung lutut.\n\nKamu bisa melakukan latihan ini sebanyak 4 kali dalam seminggu. Setiap sesi dimulai dengan pemanasan ringan selama 5 sampai 10 menit untuk meningkatkan aliran darah ke otot. Berikut adalah pembagian sesi latihan yang bisa kamu ikuti:\n\nSesi 1 dan 3: Fokus Tubuh Bagian Bawah dan Inti\n- Glute bridge dengan posisi kaki stabil untuk memperkuat otot pinggul tanpa membebani lutut\n- Side lying leg lift untuk melatih otot abduktor pinggul yang sangat penting bagi stabilitas lutut\n- Clamshells untuk memperkuat otot rotasi pinggul\n- Bird dog untuk stabilitas otot inti dan punggung\n- Plank untuk memperkuat otot perut secara statis\n\nSesi 2 dan 4: Fokus Tubuh Bagian Atas dan Metabolisme\n- Dumbbell chest press untuk melatih otot dada dan bahu\n- Seated row menggunakan mesin atau resistance band untuk otot punggung\n- Overhead press dengan posisi duduk agar punggung lebih terjaga\n- Bicep curl dan tricep extension untuk otot lengan\n- Latihan pernapasan atau jalan santai dengan intensitas rendah sebagai pendinginan\n\nDalam menjalankan rencana ini, hindari gerakan seperti squat dalam atau lunge yang membuat lutut menekuk terlalu tajam karena ini sering memicu nyeri pada penderita nyeri lutut anterior. Jika kamu merasa nyeri saat melakukan gerakan tertentu, segera hentikan dan ganti dengan variasi yang lebih nyaman. Fokuslah pada kualitas gerakan dan kontrol otot daripada beban yang berat. Kamu disarankan untuk melakukan 2 sampai 3 set untuk setiap gerakan dengan repetisi yang terkontrol. Karena tujuan utamanya adalah penurunan berat badan, pastikan kamu tetap menjaga pola makan yang seimbang di luar jadwal latihan ini. Seiring berjalannya waktu, jika nyeri lutut mulai berkurang, kita bisa mulai menambahkan intensitas secara bertahap sesuai dengan kemampuan tubuhmu.",
+          "faithfulness": 0.0,
+          "groundedness": 0.25,
+          "claims": null
+        }
+      }
+    },
+    {
+      "scenario_id": "S12_hipertrofi_cedera_bahu_pemula",
+      "message": "Aku pemula, mau nambah otot terutama upper body, latihan 3 hari seminggu, ada keluhan bahu suka sakit kalau angkat tangan tinggi-tinggi, umur aku 19 tahun.",
+      "extracted_profile": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 3,
+        "level_pengalaman": "pemula",
+        "riwayat_cedera": [
+          "bahu sakit saat mengangkat tangan tinggi"
+        ],
+        "usia": 19,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": "fokus pada upper body"
+      },
+      "retrieved_sources": [
+        "american_college_of_sports_medicine_position.21.pdf",
+        "ijerph-19-12710.pdf"
+      ],
+      "context_mode": "full_document",
+      "n_context_items": 2,
+      "context_chars": 198529,
+      "arms": {
+        "rag": {
+          "arm": "rag",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan tiga sesi latihan per minggu, kamu perlu melakukan latihan beban minimal dua kali seminggu untuk setiap kelompok otot utama [S1]. Mengingat riwayat nyeri bahu saat mengangkat tangan tinggi, kita akan menghindari gerakan di atas kepala dan abduksi bahu yang lebar, karena posisi tersebut meningkatkan risiko cedera [S2]. Sebagai gantinya, kita akan fokus pada gerakan yang menjaga posisi bahu tetap stabil dan aman di depan tubuh [S2].\n\nHari 1, fokus tubuh bagian atas:\n- Bench press dengan dumbbell untuk menjaga stabilitas bahu, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Seated row dengan pegangan netral, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Chest press machine dengan posisi siku sedikit masuk ke dalam, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Low row dengan kabel untuk melatih otot punggung tanpa mengangkat tangan terlalu tinggi, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\nIstirahat antar-set disarankan 2 sampai 3 menit [S1].\n\nHari 2 dipakai untuk istirahat.\n\nHari 3, fokus tubuh bagian bawah:\n- Leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Romanian deadlift dengan dumbbell untuk melatih engsel pinggul, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Leg extension, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Leg curl, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\nIstirahat antar-set disarankan 2 sampai 3 menit [S1].\n\nHari 4 dipakai untuk istirahat.\n\nHari 5, fokus tubuh bagian atas dan core:\n- Incline dumbbell press dengan sudut rendah untuk meminimalisir beban pada bahu, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Cable row dengan pegangan sempit, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Push up dengan posisi tangan tidak terlalu lebar, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Plank, 3 sampai 4 set dengan durasi yang menantang [S2].\n- Side plank, 3 sampai 4 set dengan durasi yang menantang [S2].\nIstirahat antar-set disarankan 2 sampai 3 menit [S1].\n\nHari 6 dan 7 dipakai untuk istirahat.\n\nUntuk memaksimalkan hipertrofi, targetkan volume total minimal 10 set per kelompok otot setiap minggunya [S1]. Kamu tidak perlu berlatih sampai gagal total untuk mendapatkan hasil, cukup berhenti saat merasa masih mampu melakukan 2 sampai 3 repetisi lagi [S1]. Pastikan untuk selalu melakukan pemanasan dan fokus pada teknik yang benar untuk menjaga kesehatan sendi [S2]. Jika muncul nyeri saat melakukan gerakan tertentu, segera ganti dengan variasi lain yang tidak menimbulkan rasa sakit [S2].",
+          "faithfulness": 0.26666666666666666,
+          "groundedness": 1.0,
+          "claims": "4/15"
+        },
+        "baseline": {
+          "arm": "baseline",
+          "plan": "Untuk mencapai tujuan hipertrofi dengan frekuensi tiga kali seminggu, kita akan menggunakan metode full body workout agar otot kamu mendapatkan stimulasi yang cukup namun tetap punya waktu pemulihan yang optimal. Mengingat kondisi bahu kamu yang sakit saat mengangkat tangan tinggi, kita akan menghindari gerakan overhead press atau gerakan vertikal lainnya yang membebani sendi bahu secara langsung. Fokus kita adalah pada gerakan dorong dan tarik yang lebih aman untuk bahu.\n\nPada hari pertama, kita akan fokus pada kekuatan dasar.\n- Goblet squat 3 set dengan 10 sampai 12 repetisi\n- Bench press dengan posisi siku sedikit masuk ke dalam 3 set dengan 10 sampai 12 repetisi\n- Seated cable row 3 set dengan 12 sampai 15 repetisi\n- Dumbbell curl 3 set dengan 12 sampai 15 repetisi\n- Plank 3 set selama 30 sampai 45 detik\n\nPada hari kedua, kita akan memberikan variasi gerakan untuk upper body.\n- Romanian deadlift 3 set dengan 10 sampai 12 repetisi\n- Incline dumbbell press dengan sudut bangku rendah 3 set dengan 10 sampai 12 repetisi\n- Lat pulldown dengan pegangan netral 3 set dengan 12 sampai 15 repetisi\n- Tricep pushdown menggunakan tali 3 set dengan 12 sampai 15 repetisi\n- Leg raise 3 set dengan 15 repetisi\n\nPada hari ketiga, kita akan menutup minggu dengan volume yang sedikit lebih tinggi.\n- Leg press 3 set dengan 12 sampai 15 repetisi\n- Chest press machine 3 set dengan 10 sampai 12 repetisi\n- Single arm dumbbell row 3 set dengan 12 sampai 15 repetisi\n- Hammer curl 3 set dengan 12 sampai 15 repetisi\n- Face pull dengan posisi kabel setinggi dada 3 set dengan 15 repetisi\n\nPenting untuk diingat bahwa kamu harus menghindari gerakan seperti overhead press, lateral raise, atau pull up yang mengharuskan tangan terangkat tinggi di atas kepala karena itu akan memperburuk kondisi bahu kamu. Selalu gunakan beban yang bisa kamu kontrol dengan teknik yang benar, jangan memaksakan beban berat jika bentuk gerakan kamu mulai berantakan. Jika kamu merasakan nyeri tajam pada bahu saat melakukan gerakan tertentu, segera hentikan gerakan tersebut dan ganti dengan variasi lain yang lebih nyaman bagi sendi kamu. Pastikan kamu melakukan pemanasan ringan selama lima sampai sepuluh menit sebelum memulai sesi latihan untuk menyiapkan otot dan sendi agar tidak kaget saat menerima beban.",
+          "faithfulness": 0.13333333333333333,
+          "groundedness": 0.75,
+          "claims": "2/15"
+        },
+        "context_only": {
+          "arm": "context_only",
+          "plan": "Karena kamu ingin fokus pada hipertrofi tubuh bagian atas dengan frekuensi tiga kali seminggu, kita akan menggunakan pola latihan full body agar volume mingguan untuk otot-otot tersebut tetap optimal. Mengingat riwayat cedera bahu saat mengangkat tangan tinggi, kita akan menghindari gerakan overhead press atau latihan yang mengharuskan tangan berada di atas kepala secara vertikal untuk menjaga keamanan sendi bahumu.\n\nSesi latihan akan dilakukan sebanyak tiga kali seminggu dengan hari istirahat di antaranya, misalnya Senin, Rabu, dan Jumat. Setiap sesi akan mencakup latihan untuk otot dada, punggung, dan lengan.\n\nSesi 1\n- Bench press dengan dumbbell 3 set 8 sampai 12 repetisi\n- Seated row dengan kabel 3 set 8 sampai 12 repetisi\n- Chest fly dengan mesin atau kabel 3 set 10 sampai 15 repetisi\n- Lat pulldown dengan pegangan lebar 3 set 8 sampai 12 repetisi\n- Bicep curl dengan dumbbell 3 set 10 sampai 12 repetisi\n\nSesi 2\n- Incline dumbbell press 3 set 8 sampai 12 repetisi\n- Single arm dumbbell row 3 set 8 sampai 12 repetisi\n- Push up 3 set sampai mendekati kelelahan\n- Face pull dengan kabel 3 set 12 sampai 15 repetisi\n- Tricep pushdown dengan kabel 3 set 10 sampai 12 repetisi\n\nSesi 3\n- Chest press dengan mesin 3 set 8 sampai 12 repetisi\n- T-bar row atau barbell row 3 set 8 sampai 12 repetisi\n- Dumbbell lateral raise 3 set 12 sampai 15 repetisi\n- Hammer curl 3 set 10 sampai 12 repetisi\n- Tricep overhead extension dengan kabel atau dumbbell 3 set 10 sampai 12 repetisi\n\nUntuk memastikan hipertrofi terjadi, pastikan kamu melakukan set dengan intensitas yang cukup, yaitu menyisakan sekitar 2 sampai 3 repetisi sebelum mencapai kegagalan otot. Karena bahumu sensitif, hindari gerakan seperti military press atau overhead press yang membebani bahu dalam posisi tangan tinggi. Jika saat melakukan bench press atau gerakan lainnya kamu merasakan nyeri, segera turunkan beban atau ganti sudut kemiringan bangku agar posisi bahu lebih netral. Fokuslah pada kontrol gerakan yang lambat dan stabil, terutama pada fase menurunkan beban, karena beban eksentrik yang terkontrol sangat baik untuk pertumbuhan otot. Jangan lupa untuk melakukan pemanasan yang cukup pada area bahu sebelum memulai sesi latihan utama agar sendi lebih siap menerima beban.",
+          "faithfulness": 0.125,
+          "groundedness": 0.5,
+          "claims": "1/8"
+        }
+      }
+    }
+  ]
+}

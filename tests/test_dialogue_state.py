@@ -1,9 +1,4 @@
-"""
-Unit test untuk dialogue_state.py. Jalankan dengan:
-    python3 -m pytest tests/test_dialogue_state.py -v
-atau langsung:
-    python3 tests/test_dialogue_state.py
-"""
+"""Uji pengelolaan slot profil pada src/dialogue_state.py."""
 import sys
 from pathlib import Path
 
@@ -64,6 +59,7 @@ def test_get_missing_fields_hanya_yang_kurang():
         "frekuensi_tersedia": 5,
         "level_pengalaman": "tidak_disebutkan",
         "riwayat_cedera": [],
+        "usia": 24,
         "catatan_tambahan": "",
     }
     missing = get_missing_fields(profile)
@@ -77,6 +73,7 @@ def test_profil_lengkap_tidak_ada_yang_kurang():
         "frekuensi_tersedia": 5,
         "level_pengalaman": "menengah",
         "riwayat_cedera": [],
+        "usia": 24,
         "catatan_tambahan": "",
     }
     assert get_missing_fields(profile) == []
@@ -89,6 +86,7 @@ def test_clarifying_question_cuma_nanya_yang_kurang():
         "frekuensi_tersedia": 5,
         "level_pengalaman": None,
         "riwayat_cedera": None,
+        "usia": 24,
         "catatan_tambahan": "",
     }
     missing = get_missing_fields(profile)
@@ -107,6 +105,7 @@ def test_clarifying_question_single_missing_field():
         "frekuensi_tersedia": 5,
         "level_pengalaman": "menengah",
         "riwayat_cedera": None,
+        "usia": 24,
         "catatan_tambahan": "",
     }
     question = build_clarifying_question(profile, ["riwayat_cedera"])

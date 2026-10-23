@@ -3,7 +3,6 @@
 from __future__ import annotations
 import json
 import re
-import statistics
 import sys
 import time
 from dataclasses import dataclass, asdict, field
@@ -13,7 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import config, validate_config
-from src.dialogue_state import INITIAL_PROFILE, REQUIRED_FIELDS, merge_profile
+from src.dialogue_state import INITIAL_PROFILE, DISPLAY_FIELDS, merge_profile
 from src.generator import analyze_dialogue
 from evaluation.dialogue_cases import DIALOGUE_CASES
 
@@ -93,7 +92,7 @@ def cocok_slot(field: str, diharapkan, diperoleh) -> bool:
         return cocok_cedera(diharapkan, diperoleh)
     if diharapkan is None or diperoleh is None:
         return diharapkan is None and diperoleh in (None, "tidak_disebutkan")
-    if field == "frekuensi_tersedia":
+    if field in ("frekuensi_tersedia", "usia", "berat_badan"):
         try:
             return int(diharapkan) == int(diperoleh)
         except (TypeError, ValueError):
@@ -137,9 +136,9 @@ def jalankan_kasus(kasus: dict) -> HasilKasus:
 
         profil = merge_profile(profil, diekstrak)
 
-        diharapkan = {f: turn["expected"].get(f) for f in REQUIRED_FIELDS}
+        diharapkan = {f: turn["expected"].get(f) for f in DISPLAY_FIELDS}
         benar, salah = 0, []
-        for f in REQUIRED_FIELDS:
+        for f in DISPLAY_FIELDS:
             if cocok_slot(f, diharapkan[f], profil.get(f)):
                 benar += 1
             else:
@@ -153,13 +152,13 @@ def jalankan_kasus(kasus: dict) -> HasilKasus:
             giliran=nomor,
             message=turn["message"],
             diharapkan=diharapkan,
-            diperoleh={f: profil.get(f) for f in REQUIRED_FIELDS},
+            diperoleh={f: profil.get(f) for f in DISPLAY_FIELDS},
             slot_benar=benar,
-            slot_dinilai=len(REQUIRED_FIELDS),
-            profil_utuh_benar=(benar == len(REQUIRED_FIELDS)),
+            slot_dinilai=len(DISPLAY_FIELDS),
+            profil_utuh_benar=(benar == len(DISPLAY_FIELDS)),
             salah=salah,
         ))
-        print(f"    giliran {nomor}: {benar}/{len(REQUIRED_FIELDS)} slot benar"
+        print(f"    giliran {nomor}: {benar}/{len(DISPLAY_FIELDS)} slot benar"
               f"{'' if not salah else '  <- ' + ', '.join(s['slot'] for s in salah)}")
 
         time.sleep(config.API_PACING_DELAY_SECONDS)
@@ -177,10 +176,12 @@ def ringkas(hasil: list[HasilKasus]) -> dict:
     utuh = sum(1 for g in semua if g.profil_utuh_benar)
 
     per_slot = {}
-    for f in REQUIRED_FIELDS:
+    cakupan = {}
+    for f in DISPLAY_FIELDS:
         cocok = sum(1 for g in semua
                     if not any(s["slot"] == f for s in g.salah))
         per_slot[f] = round(cocok / len(semua), 4)
+        cakupan[f] = sum(1 for g in semua if g.diharapkan.get(f) is not None)
 
     return {
         "kasus": len(hasil),
@@ -188,11 +189,21 @@ def ringkas(hasil: list[HasilKasus]) -> dict:
         "akurasi_slot": round(benar / total, 4),
         "akurasi_profil_utuh": round(utuh / len(semua), 4),
         "akurasi_per_slot": per_slot,
+        "giliran_menguji_slot": cakupan,
+        "slot_dinilai_per_giliran": len(DISPLAY_FIELDS),
         "kasus_bergalat": [h.case_id for h in hasil if h.galat],
     }
 
 
 def main() -> None:
+    if config.GEMINI_FALLBACK_MODEL:
+        print(
+            f"Model cadangan '{config.GEMINI_FALLBACK_MODEL}' dinonaktifkan "
+            f"selama evaluasi agar seluruh giliran dinilai dari satu model "
+            f"({config.GEMINI_MODEL})."
+        )
+        config.GEMINI_FALLBACK_MODEL = None
+
     for w in validate_config():
         print(f"Peringatan: {w}")
 
@@ -210,9 +221,12 @@ def main() -> None:
     print(f"  Total giliran        : {r['giliran']}")
     print(f"  Akurasi slot         : {r['akurasi_slot']:.4f}")
     print(f"  Akurasi profil utuh  : {r['akurasi_profil_utuh']:.4f}")
-    print("  Akurasi per slot:")
+    print(f"  Slot dinilai/giliran : {r['slot_dinilai_per_giliran']}")
+    print("  Akurasi per slot (n = giliran yang benar-benar menguji slot itu):")
     for f, v in r["akurasi_per_slot"].items():
-        print(f"    {f:<22}{v:.4f}")
+        n = r["giliran_menguji_slot"][f]
+        catatan = "" if n else "   <- belum pernah diuji"
+        print(f"    {f:<22}{v:.4f}   n={n}{catatan}")
     if r["kasus_bergalat"]:
         print(f"  Kasus bergalat       : {', '.join(r['kasus_bergalat'])}")
 

@@ -1,0 +1,867 @@
+{
+  "dijalankan_pada": "2026-10-01T22:21:18",
+  "konfigurasi": {
+    "EMBEDDING_MODEL": "BAAI/bge-m3",
+    "CHUNK_SIZE": 800,
+    "CHUNK_OVERLAP": 150,
+    "DROP_REFERENCE_CHUNKS": true,
+    "TOP_K_CHUNKS_FOR_RANKING": 10,
+    "MAX_CONDITIONAL_DOCUMENTS": 4,
+    "CORE_DOCUMENT_KEYWORDS": [
+      "acsm",
+      "sports_medicine_position",
+      "currier",
+      "prinsip_dasar_rt"
+    ],
+    "USIA_MINIMUM": 18,
+    "COMPLIANCE_MAX_REVISIONS": 2,
+    "DIALOGUE_TEMPERATURE": 0.1,
+    "GENERATION_TEMPERATURE": 0.2,
+    "COMPLIANCE_TEMPERATURE": 0.0,
+    "GENERATION_SEED": 42,
+    "RETRY_MAX_ATTEMPTS": 6,
+    "RETRY_BASE_DELAY_SECONDS": 2.0,
+    "RETRY_MAX_DELAY_SECONDS": 60.0,
+    "RETRY_ATTEMPTS_INTERAKTIF": 3,
+    "RETRY_DELAY_INTERAKTIF_SECONDS": 8.0,
+    "API_PACING_DELAY_SECONDS": 30,
+    "MAX_EXERCISE_MEDIA": 12,
+    "GEMINI_MODEL": "gemini-3.1-flash-lite",
+    "GEMINI_FALLBACK_MODEL": null,
+    "EVAL_CONTEXT_MODE": "full_document"
+  },
+  "sidik_kode": {
+    "sha256": "185b01e540feb7e6",
+    "git_head": "5aa42f5",
+    "ada_perubahan_belum_commit": true
+  },
+  "git_status": [
+    " M evaluation/dialogue_cases.py",
+    " M evaluation/results/dialogue_eval_results.json",
+    " M evaluation/results/ragas_eval_results.json",
+    " M evaluation/results/ragas_eval_summary.csv",
+    " M evaluation/run_dialogue_eval.py",
+    " M evaluation/run_eval.py",
+    " M evaluation/scenarios.py",
+    " M main.py",
+    " M src/citations.py",
+    " M src/config.py",
+    " M src/dialogue_state.py",
+    " M src/exercise_media.py",
+    " M src/generator.py",
+    " M src/ingest.py",
+    " M src/pipeline.py",
+    " M web/app.py",
+    " M web/static/app.js",
+    " M web/static/index.html",
+    "?? evaluation/results/arsip_otomatis_20260925_174731/",
+    "?? evaluation/results/arsip_run1_tanpa_ambang/",
+    "?? evaluation/results/arsip_run2_9dokumen/",
+    "?? evaluation/results/arsip_run3_3skenario_aturan13_baru/",
+    "?? evaluation/results/arsip_sebelum_perbaikan_penanda/"
+  ],
+  "basis_pengetahuan": {
+    "jumlah_potongan": 774,
+    "jumlah_dokumen": 9,
+    "dokumen": [
+      {
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "is_core": true,
+        "num_chunks": 135,
+        "characters": 94588,
+        "kata_kunci_inti": [
+          "sports_medicine_position"
+        ]
+      },
+      {
+        "source": "ijerph-19-12710.pdf",
+        "is_core": false,
+        "num_chunks": 152,
+        "characters": 103371,
+        "kata_kunci_inti": []
+      },
+      {
+        "source": "s10926-023-10124-4.pdf",
+        "is_core": false,
+        "num_chunks": 99,
+        "characters": 66505,
+        "kata_kunci_inti": []
+      },
+      {
+        "source": "fbioe-13-1560597.pdf",
+        "is_core": false,
+        "num_chunks": 79,
+        "characters": 53910,
+        "kata_kunci_inti": []
+      },
+      {
+        "source": "s13102-025-01297-x.pdf",
+        "is_core": false,
+        "num_chunks": 67,
+        "characters": 46010,
+        "kata_kunci_inti": []
+      },
+      {
+        "source": "s11332-026-01650-8.pdf",
+        "is_core": false,
+        "num_chunks": 66,
+        "characters": 44828,
+        "kata_kunci_inti": []
+      },
+      {
+        "source": "fresc-6-1641054.pdf",
+        "is_core": false,
+        "num_chunks": 65,
+        "characters": 44903,
+        "kata_kunci_inti": []
+      },
+      {
+        "source": "journal.pone.0262023.pdf",
+        "is_core": false,
+        "num_chunks": 58,
+        "characters": 40264,
+        "kata_kunci_inti": []
+      },
+      {
+        "source": "jcm-10-03968-v2.pdf",
+        "is_core": false,
+        "num_chunks": 53,
+        "characters": 37392,
+        "kata_kunci_inti": []
+      }
+    ]
+  },
+  "giliran": [
+    {
+      "giliran": 1,
+      "pesan": "Saya mau latihan beban tapi gak tau mulai darimana, saya masih pemula tapi pengen nambah otot, bisa latihan 3 kali seminggu dan untuk cedera tidak ada.",
+      "status": "butuh_info",
+      "balasan": "Oke, catat ya — tujuannya hipertrofi, 3x seminggu, level pemula, nggak ada riwayat cedera. Sebelum aku susunin rencananya — Usia kamu berapa? Kalau sekalian mau sebut jenis kelamin dan berat badan juga boleh — dua itu opsional, cuma bikin rencananya lebih pas.",
+      "profil": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 3,
+        "level_pengalaman": "pemula",
+        "riwayat_cedera": [],
+        "usia": null,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": "pengguna ingin latihan beban namun tidak tahu harus mulai dari mana"
+      },
+      "slot_kosong": [
+        "usia"
+      ],
+      "menunggu_konfirmasi": false
+    },
+    {
+      "giliran": 2,
+      "pesan": "umur saya 21 tahun",
+      "status": "butuh_konfirmasi",
+      "balasan": "Sebelum aku susunin rencananya, tolong dicek dulu ya. Ini yang aku tangkap dari obrolan kita:\n\n- Tujuan latihan: hipertrofi\n- Frekuensi per minggu: 3 hari per minggu\n- Level pengalaman: pemula\n- Riwayat cedera: tidak ada\n- Usia: 21 tahun\n- Catatan tambahan: pengguna ingin latihan beban namun tidak tahu harus mulai dari mana\n\nSudah benar semua? Kalau sudah, bilang 'ya' atau 'lanjut'. Kalau ada yang keliru, sebutkan saja bagian mana yang perlu diperbaiki.",
+      "profil": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 3,
+        "level_pengalaman": "pemula",
+        "riwayat_cedera": [],
+        "usia": 21,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": "pengguna ingin latihan beban namun tidak tahu harus mulai dari mana"
+      },
+      "slot_kosong": [],
+      "menunggu_konfirmasi": true
+    },
+    {
+      "giliran": 3,
+      "pesan": "ya",
+      "status": "rencana_siap",
+      "balasan": null,
+      "profil": {
+        "tujuan_latihan": "hipertrofi",
+        "frekuensi_tersedia": 3,
+        "level_pengalaman": "pemula",
+        "riwayat_cedera": [],
+        "usia": 21,
+        "jenis_kelamin": null,
+        "berat_badan": null,
+        "catatan_tambahan": "pengguna ingin latihan beban namun tidak tahu harus mulai dari mana"
+      },
+      "slot_kosong": [],
+      "menunggu_konfirmasi": false
+    }
+  ],
+  "log_gemini": {
+    "analyze": [
+      {
+        "pesan": "Saya mau latihan beban tapi gak tau mulai darimana, saya masih pemula tapi pengen nambah otot, bisa latihan 3 kali seminggu dan untuk cedera tidak ada.",
+        "riwayat_cedera_sebelumnya": null,
+        "hasil": {
+          "tujuan_latihan": "hipertrofi",
+          "frekuensi_tersedia": 3,
+          "level_pengalaman": "pemula",
+          "riwayat_cedera": [],
+          "usia": null,
+          "jenis_kelamin": null,
+          "berat_badan": null,
+          "catatan_tambahan": "pengguna ingin latihan beban namun tidak tahu harus mulai dari mana"
+        }
+      },
+      {
+        "pesan": "umur saya 21 tahun",
+        "riwayat_cedera_sebelumnya": [],
+        "hasil": {
+          "tujuan_latihan": null,
+          "frekuensi_tersedia": null,
+          "level_pengalaman": "tidak_disebutkan",
+          "riwayat_cedera": null,
+          "usia": 21,
+          "jenis_kelamin": null,
+          "berat_badan": null,
+          "catatan_tambahan": ""
+        }
+      }
+    ],
+    "generate": [
+      {
+        "profil": {
+          "tujuan_latihan": "hipertrofi",
+          "frekuensi_tersedia": 3,
+          "level_pengalaman": "pemula",
+          "riwayat_cedera": [],
+          "usia": 21,
+          "jenis_kelamin": null,
+          "berat_badan": null,
+          "catatan_tambahan": "pengguna ingin latihan beban namun tidak tahu harus mulai dari mana"
+        },
+        "panjang_konteks": 161701,
+        "rencana": "Untuk memulai latihan beban dengan tujuan hipertrofi, kamu perlu melakukan latihan minimal dua sesi per minggu [S1]. Karena kamu memiliki waktu tiga hari dalam seminggu, kamu bisa membagi jadwal latihan menjadi hari Senin, Rabu, dan Jumat, dengan hari Selasa, Kamis, Sabtu, dan Minggu sebagai hari istirahat. Susunan ini memastikan kamu melatih kelompok otot utama minimal dua kali seminggu [S1].\n\nHari 1, fokus tubuh bagian atas:\n- Pola mendorong, misalnya bench press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik, misalnya lat pulldown, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola mendorong vertikal, misalnya overhead press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nHari 2, fokus tubuh bagian bawah:\n- Pola menekuk lutut, misalnya squat, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola engsel pinggul, misalnya deadlift, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola latihan kaki tambahan, misalnya leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nHari 3, fokus seluruh tubuh:\n- Pola mendorong, misalnya chest press machine, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik, misalnya seated row, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola menekuk lutut, misalnya leg extension, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nKonteks menganjurkan volume minimal 10 set per kelompok otot setiap minggu untuk memaksimalkan hipertrofi [S1]. Kamu tidak perlu melakukan repetisi sampai gagal total karena hal tersebut tidak terbukti meningkatkan hasil secara konsisten [S1]. Cukup gunakan beban yang memungkinkan kamu menyelesaikan set dengan sisa 2 sampai 3 repetisi di dalam cadangan [S1]. Istirahat antar-set bisa dilakukan selama 2 sampai 3 menit untuk memastikan pemulihan yang cukup [S1]. Pastikan kamu melakukan setiap gerakan melalui rentang gerak yang lengkap untuk hasil yang optimal [S1]. Karena kamu tidak memiliki riwayat cedera, kamu bisa melakukan gerakan-gerakan ini dengan aman, namun jika muncul nyeri, segera sesuaikan intensitas atau posisi tubuh [S1]."
+      }
+    ],
+    "compliance": [
+      {
+        "batasan": {
+          "riwayat_cedera": []
+        },
+        "hasil": {
+          "patuh": true,
+          "pelanggaran": []
+        }
+      }
+    ],
+    "revise": []
+  },
+  "galat": [],
+  "hasil_akhir": {
+    "kueri": "hipertrofi level pemula",
+    "status": "rencana_siap",
+    "retrieved_sources": [
+      "american_college_of_sports_medicine_position.21.pdf",
+      "s10926-023-10124-4.pdf"
+    ],
+    "compliance": {
+      "patuh": true,
+      "pelanggaran": []
+    },
+    "revision_attempts": 0,
+    "warnings": [],
+    "citations": [
+      {
+        "marker": "S1",
+        "number": 1,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "valid": true
+      }
+    ],
+    "marked_sentences": 17,
+    "total_sentences": 18,
+    "jumlah_gerakan": 9
+  },
+  "retrieval": {
+    "kueri": "hipertrofi level pemula",
+    "norma_kuadrat_q": 1.0000000150174102,
+    "q_empat_pertama": [
+      -0.040691934525966644,
+      -0.05053502321243286,
+      -0.04510458558797836,
+      -0.024297377094626427
+    ],
+    "q_dua_terakhir": [
+      -0.016675248742103577,
+      0.04766027256846428
+    ],
+    "sepuluh_potongan": [
+      {
+        "peringkat": 1,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 116,
+        "jarak": 0.914162278175354,
+        "kosinus": 0.5429187556963931,
+        "norma_kuadrat_v": 0.9999999688421101,
+        "panjang_teks": 693,
+        "awal_teks": "e) per exercise \npositively impacted strength (88–93) and hypertrophy \n(24,128,131–133), which aligns with a recent analysis \nby Swinton et al. (184). Clearly, one set is superior to \nzero sets (CTRL)"
+      },
+      {
+        "peringkat": 2,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 7,
+        "jarak": 0.9300814270973206,
+        "kosinus": 0.5349592398736661,
+        "norma_kuadrat_v": 0.9999999442420562,
+        "panjang_teks": 710,
+        "awal_teks": "s should perform progressive RT, with variable prescription \nconsistent with our findings, to improve muscle function, size, and physical performance. Muscle strength, hypertrophy, power, \nand certain"
+      },
+      {
+        "peringkat": 3,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 110,
+        "jarak": 0.9567365646362305,
+        "kosinus": 0.5216316131314456,
+        "norma_kuadrat_v": 0.9999998738270683,
+        "panjang_teks": 730,
+        "awal_teks": "l muscular strength, function, and hypertrophy. Advances enable a more comprehensive understanding \nof how RTx variable manipulation affects outcomes. For example, the previous Position Stand recommen"
+      },
+      {
+        "peringkat": 4,
+        "source": "s10926-023-10124-4.pdf",
+        "chunk_index": 42,
+        "jarak": 0.962039589881897,
+        "kosinus": 0.5189802834861234,
+        "norma_kuadrat_v": 1.0000000781734104,
+        "panjang_teks": 663,
+        "awal_teks": "31, 33], or long term (1 trial; \nMD = 1.62, 95% CI − 0.06 to 3.31; scale 0 to 24, 0 = no \nfunctional limitations) (no plot, narrative synthesis) [30]. Due to very low certainty evidence from one RCT ["
+      },
+      {
+        "peringkat": 5,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 6,
+        "jarak": 0.9625716805458069,
+        "kosinus": 0.5187142375121688,
+        "norma_kuadrat_v": 0.9999999323021747,
+        "panjang_teks": 752,
+        "awal_teks": "s, at the beginning of training sessions, \nand ≥2 sessions/wk. Muscle hypertrophy was enhanced by higher volumes (≥10 sets/wk) and eccentric overload. Power was \nenhanced by moderate loads (30%–70% on"
+      },
+      {
+        "peringkat": 6,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 50,
+        "jarak": 0.9647096395492554,
+        "kosinus": 0.517645259389934,
+        "norma_kuadrat_v": 1.0000000939615332,
+        "panjang_teks": 753,
+        "awal_teks": "119,120,122,124,147). Improving hypertrophy. Compared with CTRL, \nhypertrophy was improved by RT, including circuit RT \nand elastic band RT (Table 6). Between RTx, hypertrophy \nwas enhanced by RT perf"
+      },
+      {
+        "peringkat": 7,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 55,
+        "jarak": 0.9702963829040527,
+        "kosinus": 0.5148516527534369,
+        "norma_kuadrat_v": 0.9999998732697093,
+        "panjang_teks": 612,
+        "awal_teks": "IONS\nTABLE 4. Resistance training prescription variables that impact strength, hypertrophy, and power when compared with standard (nonspecialized) RT. Strength Hypertrophy Power\nFrequency ✔\n↑ 4 review"
+      },
+      {
+        "peringkat": 8,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 94,
+        "jarak": 0.9754175543785095,
+        "kosinus": 0.5122912745671342,
+        "norma_kuadrat_v": 0.9999999928405903,
+        "panjang_teks": 713,
+        "awal_teks": "these results, it is apparent that many forms of \nRT work to promote the primary hallmark outcomes of \nRT: increased strength, hypertrophy, and power. Our pri-\nmary recommendation is that healthy adul"
+      },
+      {
+        "peringkat": 9,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "chunk_index": 117,
+        "jarak": 0.9775875210762024,
+        "kosinus": 0.5112062711131382,
+        "norma_kuadrat_v": 0.9999999595849244,
+        "panjang_teks": 755,
+        "awal_teks": "for strength and ~18–20 weekly sets \nfor hypertrophy with varying loads; thus, healthy adults \nare advised to complete at least two sets per exercise. Completing more than two sets per exercise may pr"
+      },
+      {
+        "peringkat": 10,
+        "source": "s10926-023-10124-4.pdf",
+        "chunk_index": 51,
+        "jarak": 0.9787899255752563,
+        "kosinus": 0.5106050734927786,
+        "norma_kuadrat_v": 0.9999999924087386,
+        "panjang_teks": 665,
+        "awal_teks": "or quality \nof life) in the immediate (MD = 0.05, 95% CI − 0.01 to \n0.11) (plot 4.2.3.1), short (MD = 0.04, 95% CI − 0.00 to \n0.08) (plot 4.2.3.2), or intermediate term (MD = 0.05, 95% \nCI − 0.00 to 0"
+      }
+    ]
+  },
+  "dokumen_terpilih": [
+    {
+      "penanda": "S1",
+      "source": "american_college_of_sports_medicine_position.21.pdf",
+      "inti": true,
+      "jarak_terkecil": null,
+      "jumlah_potongan": 135,
+      "potongan_masuk_10_teratas": 8,
+      "jumlah_panjang_potongan": 94588,
+      "panjang_teks_utuh": 94856,
+      "awal_potongan_pemicu": [
+        "e) per exercise \npositively impacted strength (88–93) and hypertrophy \n(24,128,131–133), which aligns with a recent analysis \nby Swinton et al. (184). Clearly, one set is superior to \nzero sets (CTRL)",
+        "s should perform progressive RT, with variable prescription \nconsistent with our findings, to improve muscle function, size, and physical performance. Muscle strength, hypertrophy, power, \nand certain",
+        "l muscular strength, function, and hypertrophy. Advances enable a more comprehensive understanding \nof how RTx variable manipulation affects outcomes. For example, the previous Position Stand recommen"
+      ]
+    },
+    {
+      "penanda": "S2",
+      "source": "s10926-023-10124-4.pdf",
+      "inti": false,
+      "jarak_terkecil": 0.962039589881897,
+      "jumlah_potongan": 99,
+      "potongan_masuk_10_teratas": 2,
+      "jumlah_panjang_potongan": 66505,
+      "panjang_teks_utuh": 66701,
+      "awal_potongan_pemicu": [
+        "31, 33], or long term (1 trial; \nMD = 1.62, 95% CI − 0.06 to 3.31; scale 0 to 24, 0 = no \nfunctional limitations) (no plot, narrative synthesis) [30]. Due to very low certainty evidence from one RCT [",
+        "or quality \nof life) in the immediate (MD = 0.05, 95% CI − 0.01 to \n0.11) (plot 4.2.3.1), short (MD = 0.04, 95% CI − 0.00 to \n0.08) (plot 4.2.3.2), or intermediate term (MD = 0.05, 95% \nCI − 0.00 to 0"
+      ]
+    }
+  ],
+  "prompt": {
+    "panjang_konteks_terformat": 161701,
+    "panjang_judul_sumber": [
+      83,
+      54
+    ],
+    "jumlah_pemisah_antarsumber": 1,
+    "panjang_pemisah": 7,
+    "panjang_kepala_prompt": 403,
+    "panjang_blok_konteks": 161719,
+    "tambahan_blok_konteks": 18,
+    "panjang_task_grounded": 4286,
+    "jumlah_aturan_task_grounded": 13,
+    "panjang_style_rules": 1190,
+    "panjang_prompt_total": 167598,
+    "perkiraan_token_total": 41900,
+    "kepala_prompt": "Kamu adalah pelatih kebugaran berpengalaman yang menjelaskan rencana\nlatihan langsung ke kliennya lewat chat.\n\nPROFIL PENGGUNA:\n{\n  \"tujuan_latihan\": \"hipertrofi\",\n  \"frekuensi_tersedia\": 3,\n  \"level_pengalaman\": \"pemula\",\n  \"riwayat_cedera\": [],\n  \"usia\": 21,\n  \"jenis_kelamin\": null,\n  \"berat_badan\": null,\n  \"catatan_tambahan\": \"pengguna ingin latihan beban namun tidak tahu harus mulai dari mana\"\n}\n"
+  },
+  "rencana": {
+    "teks": "Untuk memulai latihan beban dengan tujuan hipertrofi, kamu perlu melakukan latihan minimal dua sesi per minggu [S1]. Karena kamu memiliki waktu tiga hari dalam seminggu, kamu bisa membagi jadwal latihan menjadi hari Senin, Rabu, dan Jumat, dengan hari Selasa, Kamis, Sabtu, dan Minggu sebagai hari istirahat. Susunan ini memastikan kamu melatih kelompok otot utama minimal dua kali seminggu [S1].\n\nHari 1, fokus tubuh bagian atas:\n- Pola mendorong, misalnya bench press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik, misalnya lat pulldown, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola mendorong vertikal, misalnya overhead press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nHari 2, fokus tubuh bagian bawah:\n- Pola menekuk lutut, misalnya squat, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola engsel pinggul, misalnya deadlift, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola latihan kaki tambahan, misalnya leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nHari 3, fokus seluruh tubuh:\n- Pola mendorong, misalnya chest press machine, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola menarik, misalnya seated row, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n- Pola menekuk lutut, misalnya leg extension, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1].\n\nKonteks menganjurkan volume minimal 10 set per kelompok otot setiap minggu untuk memaksimalkan hipertrofi [S1]. Kamu tidak perlu melakukan repetisi sampai gagal total karena hal tersebut tidak terbukti meningkatkan hasil secara konsisten [S1]. Cukup gunakan beban yang memungkinkan kamu menyelesaikan set dengan sisa 2 sampai 3 repetisi di dalam cadangan [S1]. Istirahat antar-set bisa dilakukan selama 2 sampai 3 menit untuk memastikan pemulihan yang cukup [S1]. Pastikan kamu melakukan setiap gerakan melalui rentang gerak yang lengkap untuk hasil yang optimal [S1]. Karena kamu tidak memiliki riwayat cedera, kamu bisa melakukan gerakan-gerakan ini dengan aman, namun jika muncul nyeri, segera sesuaikan intensitas atau posisi tubuh [S1].",
+    "penanda_muncul": {
+      "[S1]": 17
+    },
+    "nomor_unik": [
+      1
+    ],
+    "peta_sitasi": [
+      {
+        "marker": "S1",
+        "number": 1,
+        "source": "american_college_of_sports_medicine_position.21.pdf",
+        "valid": true
+      }
+    ],
+    "kalimat": [
+      {
+        "kalimat": "K1",
+        "panjang": 116,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Untuk memulai latihan beban dengan tujuan hipertrofi, kamu perlu melakukan latihan minimal dua sesi per minggu [S1]."
+      },
+      {
+        "kalimat": "K2",
+        "panjang": 191,
+        "dihitung": true,
+        "penanda": [],
+        "berpenanda_sah": false,
+        "teks": "Karena kamu memiliki waktu tiga hari dalam seminggu, kamu bisa membagi jadwal latihan menjadi hari Senin, Rabu, dan Jumat, dengan hari Selasa, Kamis, Sabtu, dan Minggu sebagai hari istirahat."
+      },
+      {
+        "kalimat": "K3",
+        "panjang": 87,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Susunan ini memastikan kamu melatih kelompok otot utama minimal dua kali seminggu [S1]."
+      },
+      {
+        "kalimat": "K4",
+        "panjang": 121,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Hari 1, fokus tubuh bagian atas:\n- Pola mendorong, misalnya bench press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K5",
+        "panjang": 87,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "- Pola menarik, misalnya lat pulldown, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K6",
+        "panjang": 100,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "- Pola mendorong vertikal, misalnya overhead press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K7",
+        "panjang": 120,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Hari 2, fokus tubuh bagian bawah:\n- Pola menekuk lutut, misalnya squat, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K8",
+        "panjang": 90,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "- Pola engsel pinggul, misalnya deadlift, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K9",
+        "panjang": 98,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "- Pola latihan kaki tambahan, misalnya leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K10",
+        "panjang": 125,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Hari 3, fokus seluruh tubuh:\n- Pola mendorong, misalnya chest press machine, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K11",
+        "panjang": 85,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "- Pola menarik, misalnya seated row, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K12",
+        "panjang": 94,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "- Pola menekuk lutut, misalnya leg extension, 3 sampai 4 set dengan 8 sampai 12 repetisi [S1]."
+      },
+      {
+        "kalimat": "K13",
+        "panjang": 111,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Konteks menganjurkan volume minimal 10 set per kelompok otot setiap minggu untuk memaksimalkan hipertrofi [S1]."
+      },
+      {
+        "kalimat": "K14",
+        "panjang": 131,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Kamu tidak perlu melakukan repetisi sampai gagal total karena hal tersebut tidak terbukti meningkatkan hasil secara konsisten [S1]."
+      },
+      {
+        "kalimat": "K15",
+        "panjang": 116,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Cukup gunakan beban yang memungkinkan kamu menyelesaikan set dengan sisa 2 sampai 3 repetisi di dalam cadangan [S1]."
+      },
+      {
+        "kalimat": "K16",
+        "panjang": 102,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Istirahat antar-set bisa dilakukan selama 2 sampai 3 menit untuk memastikan pemulihan yang cukup [S1]."
+      },
+      {
+        "kalimat": "K17",
+        "panjang": 104,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Pastikan kamu melakukan setiap gerakan melalui rentang gerak yang lengkap untuk hasil yang optimal [S1]."
+      },
+      {
+        "kalimat": "K18",
+        "panjang": 172,
+        "dihitung": true,
+        "penanda": [
+          "[S1]"
+        ],
+        "berpenanda_sah": true,
+        "teks": "Karena kamu tidak memiliki riwayat cedera, kamu bisa melakukan gerakan-gerakan ini dengan aman, namun jika muncul nyeri, segera sesuaikan intensitas atau posisi tubuh [S1]."
+      }
+    ],
+    "marked_sentences": 17,
+    "total_sentences": 18,
+    "rasio": 0.9444444444444444,
+    "teks_tanpa_penanda": "Untuk memulai latihan beban dengan tujuan hipertrofi, kamu perlu melakukan latihan minimal dua sesi per minggu. Karena kamu memiliki waktu tiga hari dalam seminggu, kamu bisa membagi jadwal latihan menjadi hari Senin, Rabu, dan Jumat, dengan hari Selasa, Kamis, Sabtu, dan Minggu sebagai hari istirahat. Susunan ini memastikan kamu melatih kelompok otot utama minimal dua kali seminggu.\n\nHari 1, fokus tubuh bagian atas:\n- Pola mendorong, misalnya bench press, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n- Pola menarik, misalnya lat pulldown, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n- Pola mendorong vertikal, misalnya overhead press, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n\nHari 2, fokus tubuh bagian bawah:\n- Pola menekuk lutut, misalnya squat, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n- Pola engsel pinggul, misalnya deadlift, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n- Pola latihan kaki tambahan, misalnya leg press, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n\nHari 3, fokus seluruh tubuh:\n- Pola mendorong, misalnya chest press machine, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n- Pola menarik, misalnya seated row, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n- Pola menekuk lutut, misalnya leg extension, 3 sampai 4 set dengan 8 sampai 12 repetisi.\n\nKonteks menganjurkan volume minimal 10 set per kelompok otot setiap minggu untuk memaksimalkan hipertrofi. Kamu tidak perlu melakukan repetisi sampai gagal total karena hal tersebut tidak terbukti meningkatkan hasil secara konsisten. Cukup gunakan beban yang memungkinkan kamu menyelesaikan set dengan sisa 2 sampai 3 repetisi di dalam cadangan. Istirahat antar-set bisa dilakukan selama 2 sampai 3 menit untuk memastikan pemulihan yang cukup. Pastikan kamu melakukan setiap gerakan melalui rentang gerak yang lengkap untuk hasil yang optimal. Karena kamu tidak memiliki riwayat cedera, kamu bisa melakukan gerakan-gerakan ini dengan aman, namun jika muncul nyeri, segera sesuaikan intensitas atau posisi tubuh."
+  },
+  "gerakan": {
+    "terdeteksi": [
+      {
+        "id": "bench_press",
+        "alias": "bench press"
+      },
+      {
+        "id": "lat_pulldown",
+        "alias": "lat pulldown"
+      },
+      {
+        "id": "overhead_press",
+        "alias": "overhead press"
+      },
+      {
+        "id": "squat",
+        "alias": "squat"
+      },
+      {
+        "id": "deadlift",
+        "alias": "deadlift"
+      },
+      {
+        "id": "leg_press",
+        "alias": "leg press"
+      },
+      {
+        "id": "machine_chest_press",
+        "alias": "chest press"
+      },
+      {
+        "id": "seated_cable_row",
+        "alias": "seated row"
+      },
+      {
+        "id": "leg_extension",
+        "alias": "leg extension"
+      }
+    ],
+    "ditampilkan": [
+      {
+        "id": "bench_press",
+        "nama": "Bench Press",
+        "nama_id": "Menekan barbel dari dada sambil berbaring",
+        "disebut_sebagai": "bench press"
+      },
+      {
+        "id": "lat_pulldown",
+        "nama": "Lat Pulldown",
+        "nama_id": "Menarik batang katrol ke dada",
+        "disebut_sebagai": "lat pulldown"
+      },
+      {
+        "id": "overhead_press",
+        "nama": "Overhead Press",
+        "nama_id": "Menekan barbel ke atas kepala",
+        "disebut_sebagai": "overhead press"
+      },
+      {
+        "id": "squat",
+        "nama": "Barbell Back Squat",
+        "nama_id": "Squat dengan barbel di punggung",
+        "disebut_sebagai": "squat"
+      },
+      {
+        "id": "deadlift",
+        "nama": "Deadlift",
+        "nama_id": "Mengangkat barbel dari lantai",
+        "disebut_sebagai": "deadlift"
+      },
+      {
+        "id": "leg_press",
+        "nama": "Leg Press",
+        "nama_id": "Menekan beban dengan kaki di mesin",
+        "disebut_sebagai": "leg press"
+      },
+      {
+        "id": "machine_chest_press",
+        "nama": "Machine Chest Press",
+        "nama_id": "Menekan beban dada pada mesin",
+        "disebut_sebagai": "chest press"
+      },
+      {
+        "id": "seated_cable_row",
+        "nama": "Seated Cable Row",
+        "nama_id": "Menarik pegangan katrol sambil duduk",
+        "disebut_sebagai": "seated row"
+      },
+      {
+        "id": "leg_extension",
+        "nama": "Leg Extension",
+        "nama_id": "Meluruskan lutut melawan beban",
+        "disebut_sebagai": "leg extension"
+      }
+    ]
+  },
+  "ragas": {
+    "pertanyaan_penilai": "Susun rencana latihan untuk profil: {\"tujuan_latihan\": \"hipertrofi\", \"frekuensi_tersedia\": 3, \"level_pengalaman\": \"pemula\", \"riwayat_cedera\": [], \"usia\": 21, \"jenis_kelamin\": null, \"berat_badan\": null, \"catatan_tambahan\": \"pengguna ingin latihan beban namun tidak tahu harus mulai dari mana\"}",
+    "panjang_konteks_penilai": 161558,
+    "faithfulness": 0.2608695652173913,
+    "pernyataan": [
+      {
+        "pernyataan": "Pemula perlu melakukan latihan beban minimal dua sesi per minggu untuk mencapai tujuan hipertrofi.",
+        "putusan": 0,
+        "alasan": "The context states that healthy adults should perform RT at least twice weekly, and that higher volumes (>=10 sets/wk) enhance hypertrophy, but it does not specifically mandate a minimum of two sessions per week for beginners to achieve hypertrophy."
+      },
+      {
+        "pernyataan": "Jadwal latihan tiga hari dalam seminggu dapat dibagi menjadi hari Senin, Rabu, dan Jumat.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific weekly training schedules or day-by-day plans."
+      },
+      {
+        "pernyataan": "Hari Selasa, Kamis, Sabtu, dan Minggu adalah hari istirahat.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific weekly training schedules or day-by-day plans."
+      },
+      {
+        "pernyataan": "Susunan jadwal latihan memastikan kelompok otot utama terlatih minimal dua kali seminggu.",
+        "putusan": 0,
+        "alasan": "The text mentions that major muscle groups should be engaged at least twice weekly, but it does not provide a specific schedule to ensure this."
+      },
+      {
+        "pernyataan": "Latihan hari pertama berfokus pada tubuh bagian atas.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific daily training focus or workout plans."
+      },
+      {
+        "pernyataan": "Latihan hari pertama mencakup pola mendorong seperti bench press sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari pertama mencakup pola menarik seperti lat pulldown sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari pertama mencakup pola mendorong vertikal seperti overhead press sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari kedua berfokus pada tubuh bagian bawah.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific daily training focus or workout plans."
+      },
+      {
+        "pernyataan": "Latihan hari kedua mencakup pola menekuk lutut seperti squat sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari kedua mencakup pola engsel pinggul seperti deadlift sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari kedua mencakup pola latihan kaki tambahan seperti leg press sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari ketiga berfokus pada seluruh tubuh.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific daily training focus or workout plans."
+      },
+      {
+        "pernyataan": "Latihan hari ketiga mencakup pola mendorong seperti chest press machine sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari ketiga mencakup pola menarik seperti seated row sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Latihan hari ketiga mencakup pola menekuk lutut seperti leg extension sebanyak 3 sampai 4 set dengan 8 sampai 12 repetisi.",
+        "putusan": 0,
+        "alasan": "The provided text does not contain any specific exercise routines, sets, or repetitions."
+      },
+      {
+        "pernyataan": "Volume minimal 10 set per kelompok otot setiap minggu dianjurkan untuk memaksimalkan hipertrofi.",
+        "putusan": 1,
+        "alasan": "The text states that muscle hypertrophy was enhanced by higher volumes (>=10 sets/wk)."
+      },
+      {
+        "pernyataan": "Melakukan repetisi sampai gagal total tidak terbukti meningkatkan hasil secara konsisten.",
+        "putusan": 1,
+        "alasan": "The text states that training to momentary muscle fatigue did not consistently impact training outcomes."
+      },
+      {
+        "pernyataan": "Pengguna disarankan menggunakan beban yang memungkinkan penyelesaian set dengan sisa 2 sampai 3 repetisi di dalam cadangan.",
+        "putusan": 1,
+        "alasan": "The text suggests that sufficient effort can be accomplished by completing sets with a target of 2-3 repetitions in reserve (RIR)."
+      },
+      {
+        "pernyataan": "Istirahat antar-set selama 2 sampai 3 menit memastikan pemulihan yang cukup.",
+        "putusan": 0,
+        "alasan": "The text mentions that previous guidelines recommended 2-3 min rest between sets, but it does not state this as a current requirement for sufficient recovery."
+      },
+      {
+        "pernyataan": "Setiap gerakan harus dilakukan melalui rentang gerak yang lengkap untuk hasil yang optimal.",
+        "putusan": 1,
+        "alasan": "The text states that voluntary strength was enhanced through a complete range of motion."
+      },
+      {
+        "pernyataan": "Pengguna tanpa riwayat cedera dapat melakukan gerakan-gerakan tersebut dengan aman.",
+        "putusan": 1,
+        "alasan": "The text states that RT is safe for healthy adults of all ages."
+      },
+      {
+        "pernyataan": "Pengguna harus segera menyesuaikan intensitas atau posisi tubuh jika muncul nyeri saat berlatih.",
+        "putusan": 1,
+        "alasan": "The text mentions that musculoskeletal complications were resolved by changing RT intensity or body position."
+      }
+    ],
+    "groundedness": 0.5,
+    "keluaran_mentah_groundedness": [
+      "1",
+      "1"
+    ]
+  }
+}

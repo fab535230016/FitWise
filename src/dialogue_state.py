@@ -8,6 +8,9 @@ INITIAL_PROFILE: dict = {
     "frekuensi_tersedia": None,
     "level_pengalaman": None,
     "riwayat_cedera": None,
+    "usia": None,
+    "jenis_kelamin": None,
+    "berat_badan": None,
     "catatan_tambahan": "",
 }
 
@@ -16,14 +19,28 @@ REQUIRED_FIELDS: list[str] = [
     "frekuensi_tersedia",
     "level_pengalaman",
     "riwayat_cedera",
+    "usia",
 ]
+
+OPTIONAL_FIELDS: list[str] = [
+    "jenis_kelamin",
+    "berat_badan",
+]
+
+DISPLAY_FIELDS: list[str] = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
 FIELD_LABELS: dict[str, str] = {
     "tujuan_latihan": "Tujuan latihan",
     "frekuensi_tersedia": "Frekuensi per minggu",
     "level_pengalaman": "Level pengalaman",
     "riwayat_cedera": "Riwayat cedera",
+    "usia": "Usia",
+    "jenis_kelamin": "Jenis kelamin",
+    "berat_badan": "Berat badan",
 }
+
+BELUM_DIISI = "(belum diisi)"
+TIDAK_DISEBUTKAN = "(tidak disebutkan)"
 
 AFFIRMATIVE_WORDS: frozenset[str] = frozenset({
     "ya", "iya", "yoi", "yup", "yep", "yes", "y",
@@ -62,22 +79,32 @@ def is_negative(message: str) -> bool:
 def format_field(profile: dict, field: str) -> str:
     """Ubah satu nilai profil menjadi teks yang enak dibaca pengguna."""
     value = profile.get(field)
+    kosong = TIDAK_DISEBUTKAN if field in OPTIONAL_FIELDS else BELUM_DIISI
+
     if field == "riwayat_cedera":
         if value is None:
-            return "(belum diisi)"
+            return BELUM_DIISI
         if not value:
             return "tidak ada"
         return ", ".join(value)
     if value in (None, "", "tidak_disebutkan"):
-        return "(belum diisi)"
+        return kosong
     if field == "frekuensi_tersedia":
         return f"{value} hari per minggu"
+    if field == "usia":
+        return f"{value} tahun"
+    if field == "berat_badan":
+        return f"{value} kg"
     return str(value)
 
 
 def build_profile_summary(profile: dict) -> str:
     """Susun ringkasan profil sebagai daftar berlabel."""
     lines = [f"- {FIELD_LABELS[f]}: {format_field(profile, f)}" for f in REQUIRED_FIELDS]
+    for f in OPTIONAL_FIELDS:
+        nilai = format_field(profile, f)
+        if nilai != TIDAK_DISEBUTKAN:
+            lines.append(f"- {FIELD_LABELS[f]}: {nilai}")
     note = (profile.get("catatan_tambahan") or "").strip()
     if note:
         lines.append(f"- Catatan tambahan: {note}")
@@ -109,16 +136,67 @@ FIELD_QUESTIONS: dict[str, str] = {
         "buat keamanan program latihannya — kalau nggak ada, bilang aja "
         "'nggak ada'."
     ),
+    "usia": (
+        "Usia kamu berapa? Kalau sekalian mau sebut jenis kelamin dan berat "
+        "badan juga boleh — dua itu opsional, cuma bikin rencananya lebih pas."
+    ),
 }
+
+
+PRIA = frozenset({"pria", "laki-laki", "laki laki", "lakilaki", "cowok",
+                  "male", "l", "m"})
+WANITA = frozenset({"wanita", "perempuan", "cewek", "female", "p", "w", "f"})
+
+
+def _angka_wajar(value, minimum: int, maksimum: int) -> int | None:
+    """Terima angka hanya bila masuk di rentang yang masuk akal.
+
+    Pengekstrak slot kadang mengembalikan teks atau angka yang jelas keliru,
+    misalnya usia 250. Nilai seperti itu lebih baik diabaikan daripada masuk ke
+    profil, karena profil ikut dikirim ke penyusun rencana.
+    """
+    try:
+        angka = int(float(value))
+    except (TypeError, ValueError):
+        return None
+    return angka if minimum <= angka <= maksimum else None
+
+
+def _normalkan_jenis_kelamin(value) -> str | None:
+    """Samakan ragam penulisan jenis kelamin menjadi dua nilai baku."""
+    if not isinstance(value, str):
+        return None
+    bentuk = value.strip().lower()
+    if bentuk in PRIA:
+        return "pria"
+    if bentuk in WANITA:
+        return "wanita"
+    return None
 
 
 def merge_profile(base: dict, update: dict) -> dict:
     merged = dict(base)
 
-    for f in ("tujuan_latihan", "frekuensi_tersedia", "level_pengalaman"):
+    for f in ("tujuan_latihan", "level_pengalaman"):
         value = update.get(f)
         if value not in (None, "", "tidak_disebutkan"):
             merged[f] = value
+
+    frekuensi = _angka_wajar(update.get("frekuensi_tersedia"), 1, 14)
+    if frekuensi is not None:
+        merged["frekuensi_tersedia"] = frekuensi
+
+    usia = _angka_wajar(update.get("usia"), 5, 100)
+    if usia is not None:
+        merged["usia"] = usia
+
+    berat = _angka_wajar(update.get("berat_badan"), 25, 300)
+    if berat is not None:
+        merged["berat_badan"] = berat
+
+    kelamin = _normalkan_jenis_kelamin(update.get("jenis_kelamin"))
+    if kelamin is not None:
+        merged["jenis_kelamin"] = kelamin
 
     if update.get("riwayat_cedera") is not None:
         merged["riwayat_cedera"] = update["riwayat_cedera"]
@@ -152,6 +230,9 @@ def _summarize_known(profile: dict) -> str:
     level = profile.get("level_pengalaman")
     if level and level != "tidak_disebutkan":
         bits.append(f"level {level}")
+    usia = profile.get("usia")
+    if usia:
+        bits.append(f"usia {usia} tahun")
     cedera = profile.get("riwayat_cedera")
     if cedera:
         bits.append("ada riwayat cedera: " + ", ".join(cedera))

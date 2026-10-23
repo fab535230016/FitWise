@@ -83,10 +83,30 @@ class TrainingPlanPipeline:
         self.last_plan = ""
         self.last_documents = []
 
-    def run(self, user_message: str) -> PipelineResult:
-        warnings: list[str] = []
+    def _tolak_bila_di_luar_cakupan(self, user_message: str):
+        usia = self.profile.get("usia")
+        if not isinstance(usia, int) or usia >= config.USIA_MINIMUM:
+            return None
+        self.awaiting_confirmation = False
+        return PipelineResult(
+            user_message=user_message,
+            status="di_luar_cakupan",
+            extracted_profile=self.profile,
+            message=(
+                f"Maaf, FitWise dibatasi untuk pengguna berusia "
+                f"{config.USIA_MINIMUM} tahun ke atas. Latihan beban untuk "
+                "usia di bawah itu punya pedoman tersendiri yang belum "
+                "tercakup di basis literatur sistem ini, dan sebaiknya "
+                "disusun serta diawasi langsung oleh pelatih atau tenaga "
+                "kesehatan yang kompeten."
+            ),
+        )
 
+    def run(self, user_message: str) -> PipelineResult:
         if self.awaiting_confirmation and is_affirmative(user_message):
+            di_luar = self._tolak_bila_di_luar_cakupan(user_message)
+            if di_luar is not None:
+                return di_luar
             self.awaiting_confirmation = False
             return self._build_plan(user_message)
 
@@ -98,6 +118,10 @@ class TrainingPlanPipeline:
         profile_before = dict(self.profile)
         self.profile = merge_profile(self.profile, extracted)
         profile_changed = self.profile != profile_before
+
+        di_luar = self._tolak_bila_di_luar_cakupan(user_message)
+        if di_luar is not None:
+            return di_luar
 
         missing = get_missing_fields(self.profile)
         if missing:
@@ -157,7 +181,7 @@ class TrainingPlanPipeline:
                 self.profile, self.last_context, self.last_plan, user_message
             )
             sources = [d.source for d in self.last_documents]
-            marked, total = count_sentences_with_marker(answer)
+            marked, total = count_sentences_with_marker(answer, sources)
             return PipelineResult(
                 user_message=user_message,
                 status="jawaban_lanjutan",
@@ -190,9 +214,20 @@ class TrainingPlanPipeline:
         retrieved_docs = self.retriever.retrieve_full_documents(query)
 
         if not retrieved_docs:
-            warnings.append(
-                "Nggak ada dokumen relevan ditemukan di knowledge base — "
-                "pastikan sudah menjalankan ingest.py dan pertanyaan sesuai topik KB."
+            return PipelineResult(
+                user_message=user_message,
+                status="konteks_kosong",
+                extracted_profile=self.profile,
+                message=(
+                    "Maaf, belum ada dokumen yang bisa dijadikan dasar untuk "
+                    "menyusun rencana. Basis pengetahuan sepertinya masih kosong "
+                    "atau belum terindeks."
+                ),
+                warnings=[
+                    "Tidak ada dokumen relevan di knowledge base. Jalankan "
+                    "ingest.py terlebih dahulu, atau periksa apakah pertanyaan "
+                    "sesuai cakupan topik basis pengetahuan."
+                ],
             )
 
         context = format_full_documents_for_prompt(retrieved_docs)
@@ -224,12 +259,8 @@ class TrainingPlanPipeline:
             )
 
         sources = [d.source for d in retrieved_docs]
-        marked, total = count_sentences_with_marker(plan)
+        marked, total = count_sentences_with_marker(plan, sources)
 
-        # Pemetaan ilustrasi dijalankan paling akhir, atas rencana yang sudah
-        # lolos compliance checker, sehingga gerakan yang sempat ditolak pada
-        # tahap revisi tidak ikut ditampilkan gambarnya. Daftar kosong bukan
-        # kondisi galat: rencana boleh saja hanya menyebut pola gerak umum.
         exercises = self._media(plan)
 
         self.plan_ready = True
@@ -262,4 +293,7 @@ class TrainingPlanPipeline:
         level = profile.get("level_pengalaman")
         if level and level != "tidak_disebutkan":
             parts.append(f"level {level}")
+        usia = profile.get("usia")
+        if isinstance(usia, int) and usia >= 60:
+            parts.append("lansia usia lanjut")
         return " ".join(p for p in parts if p)

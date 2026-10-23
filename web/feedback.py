@@ -8,6 +8,8 @@ from pathlib import Path
 
 VALID_RATINGS = ("berguna", "tidak_berguna")
 MAX_REASON_LENGTH = 500
+PUBLIC_PROFILE_FIELDS = ("Tujuan latihan", "Level pengalaman")
+MAX_PUBLIC_CONTEXT_LENGTH = 60
 
 
 class FeedbackStore:
@@ -25,6 +27,7 @@ class FeedbackStore:
         profile: dict | None = None,
         sources: list[str] | None = None,
         plan_excerpt: str = "",
+        tampilkan: bool = False,
     ) -> dict:
         if rating not in VALID_RATINGS:
             raise ValueError(
@@ -39,6 +42,7 @@ class FeedbackStore:
             "profil": profile or {},
             "sumber": sources or [],
             "cuplikan_rencana": plan_excerpt[:300],
+            "tampilkan": bool(tampilkan),
         }
 
         with self._lock:
@@ -68,4 +72,36 @@ class FeedbackStore:
             "berguna": berguna,
             "tidak_berguna": total - berguna,
             "proporsi_berguna": round(berguna / total, 4) if total else None,
+        }
+
+    def public_reviews(self, limit: int = 6, offset: int = 0) -> dict:
+        """Ulasan yang boleh tampil di antarmuka, terbaru lebih dahulu.
+
+        Hanya masukan yang pemiliknya mencentang persetujuan dan mengisi alasan
+        yang ikut. Pengenal sesi, riwayat cedera, usia, sumber, dan cuplikan
+        rencana tidak pernah dikirim ke luar.
+        """
+        shown = [
+            e for e in self.read_all()
+            if e.get("tampilkan") is True and e.get("alasan")
+        ]
+        shown.reverse()
+        return {
+            "jumlah_ulasan": len(shown),
+            "ulasan": [self._public_view(e) for e in shown[offset:offset + limit]],
+        }
+
+    @staticmethod
+    def _public_view(entry: dict) -> dict:
+        profil = entry.get("profil") or {}
+        konteks = {}
+        for label in PUBLIC_PROFILE_FIELDS:
+            nilai = str(profil.get(label) or "").strip()
+            if nilai and not nilai.startswith("("):
+                konteks[label] = nilai[:MAX_PUBLIC_CONTEXT_LENGTH]
+        return {
+            "tanggal": entry["waktu"][:10],
+            "rating": entry["rating"],
+            "alasan": entry["alasan"],
+            "konteks": konteks,
         }

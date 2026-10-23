@@ -7,13 +7,18 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from src.config import config, validate_config
-from src.dialogue_state import FIELD_LABELS, REQUIRED_FIELDS, format_field
+from src.dialogue_state import (
+    DISPLAY_FIELDS,
+    FIELD_LABELS,
+    REQUIRED_FIELDS,
+    format_field,
+)
 from src.exercise_media import ringkasan_katalog
 from web.feedback import FeedbackStore
 from web.session import SessionStore
@@ -48,6 +53,15 @@ def warm_up() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    config.RETRY_MAX_ATTEMPTS = config.RETRY_ATTEMPTS_INTERAKTIF
+    config.RETRY_MAX_DELAY_SECONDS = config.RETRY_DELAY_INTERAKTIF_SECONDS
+    print(
+        f"Mode interaktif: percobaan ulang dibatasi "
+        f"{config.RETRY_MAX_ATTEMPTS}x dengan jeda maksimum "
+        f"{config.RETRY_MAX_DELAY_SECONDS:.0f} detik, agar pengguna tidak "
+        f"menunggu terlalu lama. Evaluasi tetap memakai anggaran penuh."
+    )
+
     for warning in validate_config():
         print(f"Peringatan: {warning}")
 
@@ -84,12 +98,23 @@ class FeedbackRequest(BaseModel):
     profile: dict = Field(default_factory=dict)
     sources: list[str] = Field(default_factory=list)
     plan_excerpt: str = Field(default="", max_length=400)
+    tampilkan: bool = False
 
 
 def profile_rows(profile: dict) -> list[dict]:
+    """Baris profil untuk panel antarmuka.
+
+    Slot opsional ikut dikirim supaya pengguna melihat apa lagi yang bisa
+    disebutkan, dan ditandai lewat "wajib" agar bilah kemajuan hanya menghitung
+    slot yang benar-benar menahan penyusunan rencana.
+    """
     return [
-        {"label": FIELD_LABELS[field], "value": format_field(profile, field)}
-        for field in REQUIRED_FIELDS
+        {
+            "label": FIELD_LABELS[field],
+            "value": format_field(profile, field),
+            "wajib": field in REQUIRED_FIELDS,
+        }
+        for field in DISPLAY_FIELDS
     ]
 
 
@@ -121,6 +146,8 @@ KATEGORI_DOKUMEN = {
     "jcm-10-03968-v2": "Nyeri siku",
     "journal.pone.0262023": "Cedera pergelangan kaki",
     "s10926-023-10124-4": "Nyeri punggung bawah",
+    "fresc-6-1641054": "Nyeri lutut",
+    "s11332-026-01650-8": "Perbedaan jenis kelamin",
 }
 
 
@@ -237,6 +264,7 @@ def feedback(request: FeedbackRequest):
         profile=request.profile,
         sources=request.sources,
         plan_excerpt=request.plan_excerpt,
+        tampilkan=request.tampilkan,
     )
     return {"status": "tersimpan", "waktu": entry["waktu"]}
 
@@ -246,6 +274,14 @@ def feedback_summary():
     if state["feedback"] is None:
         return JSONResponse(status_code=503, content={"error": "Sistem belum siap."})
     return state["feedback"].summary()
+
+
+@app.get("/api/ulasan")
+def ulasan(batas: int = Query(6, ge=1, le=50), lewati: int = Query(0, ge=0)):
+    if state["feedback"] is None:
+        return JSONResponse(status_code=503, content={"error": "Sistem belum siap."})
+    store = state["feedback"]
+    return {"ringkasan": store.summary(), **store.public_reviews(batas, lewati)}
 
 
 @app.get("/")

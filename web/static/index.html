@@ -51,6 +51,7 @@
       <a href="#chat">Coba Sekarang</a>
       <a href="#cara">Cara Kerja</a>
       <a href="#sumber">Sumber</a>
+      <a href="#ulasan">Ulasan</a>
       <a href="#tanya">Tanya Jawab</a>
     </div>
     <div class="nav-aksi">
@@ -71,7 +72,7 @@
           <span class="sr">Mode gelap</span>
         </button>
       </div>
-      <a class="nav-tombol" href="https://github.com/fab535230016/rag-project" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      <a class="nav-tombol" href="https://github.com/fab535230016/FitWise" target="_blank" rel="noopener noreferrer">GITHUB</a>
     </div>
   </div>
   <div class="nav-garis"></div>
@@ -96,9 +97,9 @@
   </div>
 </section>
 <section class="statistik">
-  <div class="stat"><div class="stat-angka">7</div><div class="stat-ket">Dokumen Ilmiah</div></div>
-  <div class="stat"><div class="stat-angka biru">643</div><div class="stat-ket">Potongan Terindeks</div></div>
-  <div class="stat"><div class="stat-angka">442rb</div><div class="stat-ket">Karakter Literatur</div></div>
+  <div class="stat"><div class="stat-angka" id="statDokumen">9</div><div class="stat-ket">Dokumen Ilmiah</div></div>
+  <div class="stat"><div class="stat-angka biru" id="statPotongan">774</div><div class="stat-ket">Potongan Terindeks</div></div>
+  <div class="stat"><div class="stat-angka" id="statKarakter">532rb</div><div class="stat-ket">Karakter Literatur</div></div>
   <div class="stat"><div class="stat-angka biru">1024</div><div class="stat-ket">Dimensi Vektor</div></div>
 </section>
 
@@ -152,9 +153,10 @@
     <div class="kartu">
       <div class="nomor">01</div>
       <h3>Memahami Profil</h3>
-      <p>Sistem mengumpulkan tujuan latihan, frekuensi, level pengalaman, dan
-         riwayat cedera dari percakapan bebas, lalu memastikannya kepadamu.</p>
-      <span class="metrik">4 informasi wajib</span>
+      <p>Sistem mengumpulkan tujuan latihan, frekuensi, level pengalaman,
+         riwayat cedera, dan usia dari percakapan bebas, lalu memastikannya
+         kepadamu.</p>
+      <span class="metrik">5 informasi wajib</span>
     </div>
     <div class="kartu">
       <div class="nomor">02</div>
@@ -168,7 +170,7 @@
       <h3>Menyusun Rencana</h3>
       <p>Rencana disusun hanya dari dokumen yang diambil, dan setiap kalimat
          rekomendasi diberi penanda sumber yang dapat ditelusuri.</p>
-      <span class="metrik">Faithfulness 0,82</span>
+      <span class="metrik">Kalimat bersumber</span>
     </div>
     <div class="kartu">
       <div class="nomor">04</div>
@@ -198,6 +200,21 @@
   <div class="sumber-daftar" id="sumberDaftar"></div>
 </section>
 
+<section id="ulasan">
+  <div class="judul-bagian">
+    <h2>Ulasan Pengguna</h2>
+    <p>Penilaian dari pengguna yang sudah mencoba menyusun rencana. Alasan hanya
+       ditampilkan bila pemiliknya mengizinkan.</p>
+  </div>
+  <div class="ulasan-ringkasan" id="ulasanRingkasan"></div>
+  <p class="ulasan-catatan">Persentase dihitung dari seluruh penilaian, termasuk yang alasannya
+     tidak ditampilkan.</p>
+  <div class="ulasan-daftar" id="ulasanDaftar" aria-live="polite"></div>
+  <div class="ulasan-aksi">
+    <button type="button" class="ulasan-lagi" id="ulasanLagi" hidden>Tampilkan ulasan lainnya</button>
+  </div>
+</section>
+
 <section id="tanya">
   <div class="judul-bagian">
     <h2>Tanya Jawab</h2>
@@ -210,7 +227,7 @@
       angkanya sulit ditelusuri. FitWise mengambil dokumen ilmiah lebih dahulu,
       lalu menyusun rencana hanya dari dokumen itu. Pada pengujian dengan dua
       belas skenario, proporsi klaim yang dapat ditelusuri ke dokumen mencapai
-      0,82 pada FitWise dibandingkan 0,03 pada pendekatan tanpa pengambilan
+      0,32 pada FitWise dibandingkan 0,04 pada pendekatan tanpa pengambilan
       dokumen.</div>
   </details>
 
@@ -245,7 +262,9 @@
     <div class="isi">Percakapan disimpan sementara di memori peladen selama sesi
       berlangsung dan dihapus setelah satu jam tidak dipakai. Bila kamu mengisi
       penilaian pada akhir rencana, masukan tersebut disimpan tanpa identitas
-      untuk keperluan penelitian.</div>
+      untuk keperluan penelitian. Alasanmu baru tampil di bagian Ulasan Pengguna
+      bila kamu mencentang izinnya, dan yang ditampilkan hanya tanggal,
+      penilaian, alasan, serta tujuan dan level latihanmu.</div>
   </details>
 
   <details class="faq">

@@ -15,9 +15,12 @@ di antarmuka agar pembaca dapat menelusurinya sendiri.
 
 Pemakaian:
 
-    python3 -m scripts.siapkan_gerakan                  # katalog + unduh gambar
-    python3 -m scripts.siapkan_gerakan --tanpa-gambar   # katalog saja
-    python3 -m scripts.siapkan_gerakan --paksa          # timpa gambar yang ada
+    python3 -m scripts.siapkan_gerakan
+    python3 -m scripts.siapkan_gerakan --tanpa-gambar
+    python3 -m scripts.siapkan_gerakan --paksa
+
+Tanpa opsi, katalog dibangun dan gambar diunduh. --tanpa-gambar hanya
+membangun katalog, sedangkan --paksa menimpa gambar yang sudah ada.
 """
 
 from __future__ import annotations
@@ -32,8 +35,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
 
-from scripts.metadata_gerakan import GERAKAN  # noqa: E402
-from src.exercise_media import normalisasi  # noqa: E402
+from scripts.metadata_gerakan import GERAKAN
+from src.exercise_media import normalisasi
 
 SUMBER_DATA = (
     "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json"
@@ -116,9 +119,6 @@ def bangun_katalog(sumber: list[dict]) -> list[dict]:
                 "nama": meta["nama"],
                 "nama_id": meta["nama_id"],
                 "pola_gerak": meta["pola_gerak"],
-                # Alias disimpan dalam bentuk yang sudah dinormalkan supaya
-                # penulisan yang setara ("push-up", "push up", "pushup") tidak
-                # tersimpan berkali-kali.
                 "alias": sorted(
                     {normalisasi(a) for a in meta["alias"] if normalisasi(a)},
                     key=len,

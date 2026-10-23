@@ -6,6 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from src.config import config
 from src.pipeline import TrainingPlanPipeline
 from src.retriever import RetrievedDocument, collect_evaluation_contexts
 from src.dialogue_state import (
@@ -109,6 +110,7 @@ COMPLETE_PROFILE = {
     "frekuensi_tersedia": 3,
     "level_pengalaman": "pemula",
     "riwayat_cedera": ["nyeri bahu"],
+    "usia": 24,
     "catatan_tambahan": "",
 }
 
@@ -240,7 +242,7 @@ def test_konteks_evaluasi_mode_potongan_lebih_ringkas():
     full = collect_evaluation_contexts(docs, mode="full_document")
     chunks = collect_evaluation_contexts(docs, mode="retrieved_chunks")
     assert len(full) == 2
-    assert len(chunks) == 3, potongan
+    assert len(chunks) == 3, chunks
     assert all(d.source in "".join(chunks) for d in docs)
     assert sum(len(c) for c in chunks) < sum(len(c) for c in full) + 200
     print(f"  ok  mode potongan menghasilkan {len(chunks)} item konteks "
@@ -258,7 +260,7 @@ def test_dokumen_inti_tanpa_hit_tetap_masuk_konteks():
         hit_chunks=[],
     )]
     chunks = collect_evaluation_contexts(docs, mode="retrieved_chunks")
-    assert len(chunks) == 2, potongan
+    assert len(chunks) == 2, chunks
     print("  ok  dokumen inti tanpa potongan terambil tetap terwakili di konteks")
 
 
@@ -362,7 +364,7 @@ def test_deteksi_jawaban_ya_dan_tidak():
 def test_ringkasan_menampilkan_seluruh_field():
     ringkasan = build_profile_summary(COMPLETE_PROFILE)
     for label in ["Tujuan latihan", "Frekuensi per minggu", "Level pengalaman",
-                  "Riwayat cedera"]:
+                  "Riwayat cedera", "Usia"]:
         assert label in ringkasan, label
     kosong = build_profile_summary(
         dict(COMPLETE_PROFILE, riwayat_cedera=[])
@@ -472,3 +474,46 @@ if __name__ == "__main__":
             print(f"  GAGAL  {t.__name__}: {e}")
     print(f"\n{len(tests) - failed}/{len(tests)} tes lolos")
     sys.exit(1 if failed else 0)
+
+
+def test_usia_di_bawah_batas_ditolak():
+    p, calls = build_pipeline([dict(COMPLETE_PROFILE, usia=13)])
+    hasil = p.run("hipertrofi, 3 hari seminggu, pemula, gak ada cedera, umur 13")
+    assert hasil.status == "di_luar_cakupan", hasil.status
+    assert str(config.USIA_MINIMUM) in hasil.message
+    assert calls["generate"] == 0, "rencana tidak boleh disusun sama sekali"
+    print("  ok  usia di bawah batas ditolak sebelum rencana disusun")
+
+
+def test_koreksi_usia_tidak_bisa_dilompati_lewat_konfirmasi():
+    p, calls = build_pipeline([
+        COMPLETE_PROFILE,
+        dict(COMPLETE_PROFILE, usia=13),
+        dict(COMPLETE_PROFILE, usia=13),
+    ])
+    assert p.run("hipertrofi, 3 hari, pemula, aman, umur 30").status == "butuh_konfirmasi"
+    assert p.awaiting_confirmation is True
+
+    hasil = p.run("eh salah, umurku 13")
+    assert hasil.status == "di_luar_cakupan", hasil.status
+    assert p.awaiting_confirmation is False, "konfirmasi wajib dibatalkan"
+
+    sesudah = p.run("ya")
+    assert sesudah.status == "di_luar_cakupan", sesudah.status
+    assert calls["generate"] == 0, "jawaban ya tidak boleh melompati gerbang usia"
+    print("  ok  gerbang usia tidak bisa dilompati lewat jalur konfirmasi")
+
+
+def test_knowledge_base_kosong_dibalas_pesan_bukan_galat():
+    class RetrieverKosong:
+        def retrieve_full_documents(self, query, **kwargs):
+            return []
+
+    p, calls = build_pipeline([COMPLETE_PROFILE], retriever=RetrieverKosong())
+    assert p.run("hipertrofi, 3 hari, pemula, aman, umur 24").status == "butuh_konfirmasi"
+    hasil = confirm(p)
+    assert hasil.status == "konteks_kosong", hasil.status
+    assert hasil.message
+    assert any("ingest" in w for w in hasil.warnings)
+    assert calls["generate"] == 0, "generator tidak boleh dipanggil tanpa konteks"
+    print("  ok  knowledge base kosong dibalas pesan jelas, bukan galat mentah")

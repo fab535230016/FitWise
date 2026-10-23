@@ -1,0 +1,4 @@
+scenario_id,mode_konteks,n_item_konteks,karakter_konteks,rag_faithfulness,rag_klaim,rag_groundedness,baseline_faithfulness,baseline_klaim,baseline_groundedness,context_only_faithfulness,context_only_klaim,context_only_groundedness,sumber_yang_diambil
+S01_hipertrofi_tanpa_cedera,full_document,3,206515,0.27586206896551724,8/29,1.0,0.02857142857142857,1/35,0.25,0.034482758620689655,1/29,0.75,american_college_of_sports_medicine_position.21.pdf; s10926-023-10124-4.pdf; s11332-026-01650-8.pdf
+S02_kekuatan_pemula_tanpa_cedera,full_document,4,288518,0.9411764705882353,16/17,1.0,0.0,,0.0,0.42857142857142855,3/7,0.75,american_college_of_sports_medicine_position.21.pdf; s11332-026-01650-8.pdf; ijerph-19-12710.pdf; fresc-6-1641054.pdf
+S03_penurunan_bb_tanpa_cedera,full_document,4,261765,0.27586206896551724,8/29,1.0,0.0,,0.0,0.2916666666666667,7/24,nan,american_college_of_sports_medicine_position.21.pdf; s10926-023-10124-4.pdf; s13102-025-01297-x.pdf; fbioe-13-1560597.pdf

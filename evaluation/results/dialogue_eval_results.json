@@ -1,18 +1,21 @@
 {
-  "dijalankan_pada": "2026-09-02T10:07:38",
+  "dijalankan_pada": "2026-09-23T01:36:41",
   "model": "gemini-3.1-flash-lite",
   "temperature": 0.1,
   "seed": 42,
   "ringkasan": {
-    "kasus": 12,
-    "giliran": 26,
+    "kasus": 16,
+    "giliran": 32,
     "akurasi_slot": 1.0,
     "akurasi_profil_utuh": 1.0,
     "akurasi_per_slot": {
       "tujuan_latihan": 1.0,
       "frekuensi_tersedia": 1.0,
       "level_pengalaman": 1.0,
-      "riwayat_cedera": 1.0
+      "riwayat_cedera": 1.0,
+      "usia": 1.0,
+      "jenis_kelamin": 1.0,
+      "berat_badan": 1.0
     },
     "kasus_bergalat": []
   },
@@ -28,16 +31,22 @@
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": null,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": null,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -48,16 +57,22 @@
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -68,16 +83,22 @@
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -90,18 +111,24 @@
             "level_pengalaman": "pemula",
             "riwayat_cedera": [
               "nyeri bahu kanan"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
             "riwayat_cedera": [
-              "bahu kanan nyeri saat overhead press"
-            ]
+              "bahu kanan nyeri saat angkat beban di atas kepala"
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -119,16 +146,22 @@
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -146,16 +179,22 @@
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -166,16 +205,22 @@
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 5,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 5,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -195,7 +240,10 @@
             "level_pengalaman": "menengah",
             "riwayat_cedera": [
               "nyeri lutut kiri"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
@@ -203,10 +251,13 @@
             "level_pengalaman": "menengah",
             "riwayat_cedera": [
               "lutut kiri nyeri"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -219,7 +270,10 @@
             "level_pengalaman": "menengah",
             "riwayat_cedera": [
               "nyeri lutut kanan"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
@@ -227,10 +281,13 @@
             "level_pengalaman": "menengah",
             "riwayat_cedera": [
               "lutut kanan nyeri"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -250,7 +307,10 @@
             "level_pengalaman": "lanjutan",
             "riwayat_cedera": [
               "nyeri bahu kanan"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
@@ -258,10 +318,13 @@
             "level_pengalaman": "lanjutan",
             "riwayat_cedera": [
               "bahu kanan"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -275,7 +338,10 @@
             "riwayat_cedera": [
               "nyeri bahu kanan",
               "cedera pergelangan kaki"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
@@ -284,10 +350,13 @@
             "riwayat_cedera": [
               "bahu kanan",
               "pergelangan kaki"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -305,16 +374,22 @@
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": 5,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": 5,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -325,16 +400,22 @@
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": 5,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": 5,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -352,16 +433,22 @@
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": null,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": null,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -372,16 +459,22 @@
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -392,16 +485,22 @@
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -412,16 +511,22 @@
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -439,16 +544,22 @@
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": null,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": null,
             "level_pengalaman": null,
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -459,16 +570,22 @@
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "penurunan berat badan",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": null
+            "riwayat_cedera": null,
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -481,7 +598,10 @@
             "level_pengalaman": "pemula",
             "riwayat_cedera": [
               "nyeri punggung bawah"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "penurunan berat badan",
@@ -489,10 +609,13 @@
             "level_pengalaman": "pemula",
             "riwayat_cedera": [
               "punggung bawah sering pegal"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -510,16 +633,22 @@
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 3,
             "level_pengalaman": "pemula",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -537,16 +666,22 @@
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -557,16 +692,22 @@
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
             "frekuensi_tersedia": 4,
             "level_pengalaman": "menengah",
-            "riwayat_cedera": []
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -586,7 +727,10 @@
             "level_pengalaman": "pemula",
             "riwayat_cedera": [
               "nyeri lutut"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "hipertrofi",
@@ -594,10 +738,13 @@
             "level_pengalaman": "pemula",
             "riwayat_cedera": [
               "lutut sakit kalau jongkok dalam"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }
@@ -617,7 +764,10 @@
             "level_pengalaman": "lanjutan",
             "riwayat_cedera": [
               "nyeri bahu kanan"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
@@ -625,10 +775,13 @@
             "level_pengalaman": "lanjutan",
             "riwayat_cedera": [
               "bahu kanan nyeri"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         },
@@ -641,7 +794,10 @@
             "level_pengalaman": "lanjutan",
             "riwayat_cedera": [
               "nyeri bahu kanan"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
           "diperoleh": {
             "tujuan_latihan": "kekuatan",
@@ -649,10 +805,197 @@
             "level_pengalaman": "lanjutan",
             "riwayat_cedera": [
               "bahu kanan nyeri"
-            ]
+            ],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
           },
-          "slot_benar": 4,
-          "slot_dinilai": 4,
+          "slot_benar": 7,
+          "slot_dinilai": 7,
+          "profil_utuh_benar": true,
+          "salah": []
+        }
+      ],
+      "galat": null
+    },
+    {
+      "case_id": "D13_usia_menyusul",
+      "keterangan": "Usia baru disebut pada giliran berikutnya",
+      "giliran": [
+        {
+          "giliran": 1,
+          "message": "hipertrofi, 4 hari seminggu, level menengah, gak ada cedera",
+          "diharapkan": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 4,
+            "level_pengalaman": "menengah",
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "diperoleh": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 4,
+            "level_pengalaman": "menengah",
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "slot_benar": 7,
+          "slot_dinilai": 7,
+          "profil_utuh_benar": true,
+          "salah": []
+        },
+        {
+          "giliran": 2,
+          "message": "umur aku 27",
+          "diharapkan": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 4,
+            "level_pengalaman": "menengah",
+            "riwayat_cedera": [],
+            "usia": 27,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "diperoleh": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 4,
+            "level_pengalaman": "menengah",
+            "riwayat_cedera": [],
+            "usia": 27,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "slot_benar": 7,
+          "slot_dinilai": 7,
+          "profil_utuh_benar": true,
+          "salah": []
+        }
+      ],
+      "galat": null
+    },
+    {
+      "case_id": "D14_usia_jk_bb_satu_pesan",
+      "keterangan": "Usia, jenis kelamin, dan berat badan disebut sekaligus",
+      "giliran": [
+        {
+          "giliran": 1,
+          "message": "mau nambah kekuatan, 5 hari seminggu, level lanjutan, aman gak ada cedera, aku cowok 31 tahun berat 78 kg",
+          "diharapkan": {
+            "tujuan_latihan": "kekuatan",
+            "frekuensi_tersedia": 5,
+            "level_pengalaman": "lanjutan",
+            "riwayat_cedera": [],
+            "usia": 31,
+            "jenis_kelamin": "pria",
+            "berat_badan": 78
+          },
+          "diperoleh": {
+            "tujuan_latihan": "kekuatan",
+            "frekuensi_tersedia": 5,
+            "level_pengalaman": "lanjutan",
+            "riwayat_cedera": [],
+            "usia": 31,
+            "jenis_kelamin": "pria",
+            "berat_badan": 78
+          },
+          "slot_benar": 7,
+          "slot_dinilai": 7,
+          "profil_utuh_benar": true,
+          "salah": []
+        }
+      ],
+      "galat": null
+    },
+    {
+      "case_id": "D15_usia_di_luar_nalar",
+      "keterangan": "Usia yang mustahil harus ditolak, slot tetap kosong",
+      "giliran": [
+        {
+          "giliran": 1,
+          "message": "hipertrofi, 3 hari seminggu, pemula, gak ada cedera",
+          "diharapkan": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 3,
+            "level_pengalaman": "pemula",
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "diperoleh": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 3,
+            "level_pengalaman": "pemula",
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "slot_benar": 7,
+          "slot_dinilai": 7,
+          "profil_utuh_benar": true,
+          "salah": []
+        },
+        {
+          "giliran": 2,
+          "message": "umur aku 250 tahun",
+          "diharapkan": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 3,
+            "level_pengalaman": "pemula",
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "diperoleh": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 3,
+            "level_pengalaman": "pemula",
+            "riwayat_cedera": [],
+            "usia": null,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "slot_benar": 7,
+          "slot_dinilai": 7,
+          "profil_utuh_benar": true,
+          "salah": []
+        }
+      ],
+      "galat": null
+    },
+    {
+      "case_id": "D16_jenis_kelamin_tidak_ditebak",
+      "keterangan": "Nama pengguna tidak boleh dipakai menebak jenis kelamin",
+      "giliran": [
+        {
+          "giliran": 1,
+          "message": "halo, aku Rizky. mau nambah otot, 4 hari seminggu, level menengah, gak ada cedera, umur 23",
+          "diharapkan": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 4,
+            "level_pengalaman": "menengah",
+            "riwayat_cedera": [],
+            "usia": 23,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "diperoleh": {
+            "tujuan_latihan": "hipertrofi",
+            "frekuensi_tersedia": 4,
+            "level_pengalaman": "menengah",
+            "riwayat_cedera": [],
+            "usia": 23,
+            "jenis_kelamin": null,
+            "berat_badan": null
+          },
+          "slot_benar": 7,
+          "slot_dinilai": 7,
           "profil_utuh_benar": true,
           "salah": []
         }

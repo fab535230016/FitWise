@@ -19,6 +19,7 @@ COMPLETE_PROFILE = {
     "frekuensi_tersedia": 3,
     "level_pengalaman": "pemula",
     "riwayat_cedera": ["nyeri bahu kanan"],
+    "usia": 24,
     "catatan_tambahan": "",
 }
 
@@ -219,9 +220,14 @@ def test_profil_dikirim_sebagai_label_dan_nilai():
     labels = [r["label"] for r in rows]
     values = {r["label"]: r["value"] for r in rows}
     assert labels == ["Tujuan latihan", "Frekuensi per minggu",
-                      "Level pengalaman", "Riwayat cedera"]
+                      "Level pengalaman", "Riwayat cedera", "Usia",
+                      "Jenis kelamin", "Berat badan"]
+    assert [r["wajib"] for r in rows] == [True, True, True, True, True,
+                                          False, False]
     assert values["Frekuensi per minggu"] == "3 hari per minggu"
     assert values["Riwayat cedera"] == "nyeri bahu kanan"
+    assert values["Usia"] == "24 tahun"
+    assert values["Jenis kelamin"] == "(tidak disebutkan)"
     print("  ok  profil dikirim sebagai pasangan label dan nilai yang siap tampil")
 
 
@@ -243,7 +249,8 @@ def test_galat_pipeline_menjaga_profil_dan_membalas_502():
     data = response.json()
     assert response.status_code == 502
     assert "503" in data["error"]
-    assert data["filled_fields"] == 4
+    assert data["filled_fields"] == 5
+    assert data["total_fields"] == 5
     assert data["session_id"]
     print("  ok  galat pipeline dibalas 502 dengan profil yang masih tersimpan")
 
@@ -413,6 +420,67 @@ def test_ringkasan_kosong_tidak_membagi_nol():
     assert data == {"total": 0, "berguna": 0, "tidak_berguna": 0,
                     "proporsi_berguna": None}
     print("  ok  ringkasan tanpa data tidak melakukan pembagian dengan nol")
+
+
+def test_ulasan_hanya_menampilkan_yang_disetujui():
+    client, _ = build_client()
+    sid = client.post("/api/chat", json={"message": "halo"}).json()["session_id"]
+    profil = {"Tujuan latihan": "hipertrofi", "Level pengalaman": "pemula",
+              "Riwayat cedera": "nyeri bahu kanan", "Usia": "24 tahun"}
+    kiriman = [
+        ("berguna", "rencananya jelas dan ada sumbernya", True),
+        ("berguna", "bagus", False),
+        ("tidak_berguna", "", True),
+        ("tidak_berguna", "terlalu banyak gerakan untuk pemula", True),
+    ]
+    for rating, alasan, tampil in kiriman:
+        client.post("/api/feedback", json={
+            "session_id": sid, "rating": rating, "reason": alasan,
+            "profile": profil, "sources": ["acsm.pdf"],
+            "plan_excerpt": "Rencana tiga sesi.", "tampilkan": tampil,
+        })
+
+    data = client.get("/api/ulasan").json()
+    assert data["ringkasan"]["total"] == 4, "ringkasan tetap menghitung semua penilaian"
+    assert data["jumlah_ulasan"] == 2
+    assert [u["alasan"] for u in data["ulasan"]] == [
+        "terlalu banyak gerakan untuk pemula",
+        "rencananya jelas dan ada sumbernya",
+    ], "ulasan terbaru harus tampil lebih dahulu"
+    pertama = data["ulasan"][0]
+    assert set(pertama) == {"tanggal", "rating", "alasan", "konteks"}
+    assert pertama["konteks"] == {"Tujuan latihan": "hipertrofi",
+                                  "Level pengalaman": "pemula"}
+    assert "nyeri bahu" not in str(data) and sid not in str(data)
+    print("  ok  ulasan publik hanya memuat yang disetujui, tanpa cedera dan sesi")
+
+
+def test_ulasan_bisa_dipaginasi_dan_dibatasi():
+    client, _ = build_client()
+    for i in range(5):
+        client.post("/api/feedback", json={
+            "session_id": "abc", "rating": "berguna",
+            "reason": f"ulasan {i}", "tampilkan": True,
+        })
+    data = client.get("/api/ulasan?batas=2&lewati=2").json()
+    assert data["jumlah_ulasan"] == 5
+    assert [u["alasan"] for u in data["ulasan"]] == ["ulasan 2", "ulasan 1"]
+    assert client.get("/api/ulasan?batas=0").status_code == 422
+    assert client.get("/api/ulasan?batas=51").status_code == 422
+    print("  ok  ulasan dapat dipaginasi dan batasnya divalidasi")
+
+
+def test_masukan_lama_tanpa_persetujuan_tidak_tampil():
+    client, _ = build_client()
+    store = web_app.state["feedback"]
+    with open(store.path, "w", encoding="utf-8") as f:
+        f.write('{"waktu": "2026-09-11T11:04:07", "session_id": "x", '
+                '"rating": "berguna", "alasan": "lama", "profil": {}, '
+                '"sumber": [], "cuplikan_rencana": ""}\n')
+    data = client.get("/api/ulasan").json()
+    assert data["ringkasan"]["total"] == 1
+    assert data["jumlah_ulasan"] == 0 and data["ulasan"] == []
+    print("  ok  masukan sebelum ada persetujuan tidak ikut ditampilkan")
 
 
 def test_jawaban_lanjutan_dikirim_dengan_sitasi():

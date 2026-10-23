@@ -91,8 +91,6 @@ def katalog_uji(tmp_path) -> str:
     return str(berkas)
 
 
-# --------------------------------------------------------------- normalisasi
-
 def test_normalisasi_menyamakan_tanda_hubung_dan_bentuk_rapat():
     assert normalisasi("Push-Up") == normalisasi("push up") == normalisasi("PUSHUP")
 
@@ -100,8 +98,6 @@ def test_normalisasi_menyamakan_tanda_hubung_dan_bentuk_rapat():
 def test_normalisasi_membuang_penanda_sumber():
     assert "[s1]" not in normalisasi("Lakukan squat 3 set [S1].")
 
-
-# ----------------------------------------------------------------- deteksi
 
 def test_alias_terpanjang_menang(katalog_uji):
     hasil = deteksi_gerakan("Tambahkan romanian deadlift 3 set.", katalog_uji)
@@ -143,8 +139,6 @@ def test_katalog_tidak_ada_tidak_menggagalkan(tmp_path):
     assert kumpulkan_media("deadlift", path=hilang) == []
 
 
-# ------------------------------------------------------------ kumpulkan media
-
 def test_media_memuat_langkah_dan_gambar(katalog_uji):
     hasil = kumpulkan_media("Mulai dengan barbell deadlift.", path=katalog_uji)
     assert len(hasil) == 1
@@ -154,7 +148,6 @@ def test_media_memuat_langkah_dan_gambar(katalog_uji):
     assert gerakan.disebut_sebagai == "barbell deadlift"
     assert gerakan.langkah
     assert gerakan.poin_kunci
-    # Berkas lokal belum diunduh pada lingkungan uji, jadi URL sumber dipakai.
     assert gerakan.gambar[0]["url"] == "https://contoh.invalid/deadlift/0.jpg"
     assert gerakan.gambar[0]["keterangan"] == "Posisi awal"
 
@@ -176,12 +169,10 @@ def test_batas_jumlah_dihormati(katalog_uji):
 
 def test_to_dict_siap_dikirim_sebagai_json(katalog_uji):
     hasil = kumpulkan_media("deadlift", path=katalog_uji)[0].to_dict()
-    json.dumps(hasil)  # tidak boleh melempar galat
+    json.dumps(hasil)
     for kunci in ("id", "nama", "langkah", "gambar", "sumber_media", "disebut_sebagai"):
         assert kunci in hasil
 
-
-# ------------------------------------------------------------- katalog nyata
 
 @pytest.mark.skipif(not KATALOG_ASLI.exists(), reason="katalog belum dibangun")
 class TestKatalogNyata:

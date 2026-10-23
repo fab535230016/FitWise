@@ -3,6 +3,10 @@
 Setiap kasus memuat urutan pesan pengguna beserta profil yang seharusnya
 terbentuk setelah tiap pesan diproses. Nilai None berarti slot masih kosong,
 sedangkan senarai kosong berarti pengguna menyatakan tidak memiliki cedera.
+
+Kasus D13-D16 menguji tiga slot yang ditambahkan belakangan: usia (wajib),
+jenis kelamin, dan berat badan (keduanya opsional). D15 menguji penolakan nilai
+di luar nalar, D16 menguji bahwa jenis kelamin tidak ditebak dari nama pengguna.
 """
 
 DIALOGUE_CASES: list[dict] = [
@@ -194,6 +198,67 @@ DIALOGUE_CASES: list[dict] = [
                           "frekuensi_tersedia": 5,
                           "level_pengalaman": "lanjutan",
                           "riwayat_cedera": ["nyeri bahu kanan"]}},
+        ],
+    },
+    {
+        "id": "D13_usia_menyusul",
+        "keterangan": "Usia baru disebut pada giliran berikutnya",
+        "turns": [
+            {"message": "hipertrofi, 4 hari seminggu, level menengah, gak ada cedera",
+             "expected": {"tujuan_latihan": "hipertrofi",
+                          "frekuensi_tersedia": 4,
+                          "level_pengalaman": "menengah",
+                          "riwayat_cedera": []}},
+            {"message": "umur aku 27",
+             "expected": {"tujuan_latihan": "hipertrofi",
+                          "frekuensi_tersedia": 4,
+                          "level_pengalaman": "menengah",
+                          "riwayat_cedera": [],
+                          "usia": 27}},
+        ],
+    },
+    {
+        "id": "D14_usia_jk_bb_satu_pesan",
+        "keterangan": "Usia, jenis kelamin, dan berat badan disebut sekaligus",
+        "turns": [
+            {"message": "mau nambah kekuatan, 5 hari seminggu, level lanjutan, "
+                        "aman gak ada cedera, aku cowok 31 tahun berat 78 kg",
+             "expected": {"tujuan_latihan": "kekuatan",
+                          "frekuensi_tersedia": 5,
+                          "level_pengalaman": "lanjutan",
+                          "riwayat_cedera": [],
+                          "usia": 31,
+                          "jenis_kelamin": "pria",
+                          "berat_badan": 78}},
+        ],
+    },
+    {
+        "id": "D15_usia_di_luar_nalar",
+        "keterangan": "Usia yang mustahil harus ditolak, slot tetap kosong",
+        "turns": [
+            {"message": "hipertrofi, 3 hari seminggu, pemula, gak ada cedera",
+             "expected": {"tujuan_latihan": "hipertrofi",
+                          "frekuensi_tersedia": 3,
+                          "level_pengalaman": "pemula",
+                          "riwayat_cedera": []}},
+            {"message": "umur aku 250 tahun",
+             "expected": {"tujuan_latihan": "hipertrofi",
+                          "frekuensi_tersedia": 3,
+                          "level_pengalaman": "pemula",
+                          "riwayat_cedera": []}},
+        ],
+    },
+    {
+        "id": "D16_jenis_kelamin_tidak_ditebak",
+        "keterangan": "Nama pengguna tidak boleh dipakai menebak jenis kelamin",
+        "turns": [
+            {"message": "halo, aku Rizky. mau nambah otot, 4 hari seminggu, "
+                        "level menengah, gak ada cedera, umur 23",
+             "expected": {"tujuan_latihan": "hipertrofi",
+                          "frekuensi_tersedia": 4,
+                          "level_pengalaman": "menengah",
+                          "riwayat_cedera": [],
+                          "usia": 23}},
         ],
     },
 ]

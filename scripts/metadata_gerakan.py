@@ -17,10 +17,7 @@ Aturan penulisan alias:
 
 from __future__ import annotations
 
-# (id, nama_sumber_free_exercise_db, nama_tampil, nama_indonesia, pola_gerak,
-#  alias, langkah, poin_kunci)
 GERAKAN: list[dict] = [
-    # ------------------------------------------------------------------ TUNGKAI
     {
         "id": "squat",
         "sumber_nama": "Barbell Squat",
@@ -276,7 +273,6 @@ GERAKAN: list[dict] = [
         ],
         "poin_kunci": "Berhenti di posisi lurus; melengkungkan punggung ke belakang menambah tekanan pada punggung bawah.",
     },
-    # ---------------------------------------------------------- DORONG BAGIAN ATAS
     {
         "id": "bench_press",
         "sumber_nama": "Barbell Bench Press - Medium Grip",
@@ -517,7 +513,6 @@ GERAKAN: list[dict] = [
         ],
         "poin_kunci": "Kencangkan perut agar punggung bawah tidak melengkung saat lengan di atas kepala.",
     },
-    # ----------------------------------------------------------- TARIK BAGIAN ATAS
     {
         "id": "pull_up",
         "sumber_nama": "Pullups",
@@ -698,7 +693,6 @@ GERAKAN: list[dict] = [
         ],
         "poin_kunci": "Beban ringan dan repetisi lebih banyak biasanya lebih nyaman untuk siku dan pergelangan tangan.",
     },
-    # ------------------------------------------------------------------------ INTI
     {
         "id": "plank",
         "sumber_nama": "Plank",

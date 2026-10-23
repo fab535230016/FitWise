@@ -13,7 +13,7 @@ from evaluation.run_dialogue_eval import (
     cocok_slot,
     inti_cedera,
 )
-from src.dialogue_state import REQUIRED_FIELDS
+from src.dialogue_state import DISPLAY_FIELDS
 
 
 def test_sinonim_tujuan_dianggap_cocok():
@@ -81,7 +81,7 @@ def test_setiap_kasus_punya_label_lengkap():
         assert kasus["turns"], kasus["id"]
         for t in kasus["turns"]:
             assert t["message"].strip(), kasus["id"]
-            asing = set(t["expected"]) - set(REQUIRED_FIELDS)
+            asing = set(t["expected"]) - set(DISPLAY_FIELDS)
             assert not asing, f"{kasus['id']}: slot tidak dikenal {asing}"
     print(f"  ok  {len(DIALOGUE_CASES)} kasus punya label yang lengkap dan sah")
 

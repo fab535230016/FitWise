@@ -28,11 +28,8 @@ from pathlib import Path
 from src.citations import strip_source_markers
 from src.config import config
 
-# Karakter yang disamakan menjadi spasi agar "push-up", "push up", dan
-# "push_up" diperlakukan sebagai bentuk yang sama.
 _PEMISAH = re.compile(r"[-\u2010\u2011\u2012\u2013\u2014_/]+")
 _SPASI = re.compile(r"\s+")
-# Bentuk rapat tanpa spasi juga umum ditulis pengguna maupun model.
 _VARIAN_RAPAT = {"pushup": "push up", "pullup": "pull up", "chinup": "chin up"}
 
 

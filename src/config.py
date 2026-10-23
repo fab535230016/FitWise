@@ -34,16 +34,13 @@ class Config:
     KNOWLEDGE_BASE_DIR: str = str(BASE_DIR / "data" / "knowledge_base")
     FEEDBACK_PATH: str = str(BASE_DIR / "data" / "feedback.jsonl")
 
-    # Ilustrasi gerakan. Katalog disusun oleh scripts/siapkan_gerakan.py;
-    # gambar disimpan lokal agar antarmuka tetap jalan tanpa internet, dan
-    # jatuh ke URL sumber bila berkas lokalnya belum diunduh.
     EXERCISE_CATALOG_PATH: str = str(BASE_DIR / "data" / "gerakan" / "katalog_gerakan.json")
     EXERCISE_MEDIA_DIR: str = str(BASE_DIR / "web" / "static" / "gerakan")
     EXERCISE_MEDIA_URL_PREFIX: str = "/static/gerakan"
     MAX_EXERCISE_MEDIA: int = 12
 
     GEMINI_MODEL: str = "gemini-3.1-flash-lite"
-    GEMINI_FALLBACK_MODEL: str | None = None
+    GEMINI_FALLBACK_MODEL: str | None = "gemini-3.6-flash"
     EVAL_JUDGE_MODEL: str | None = None
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
 
@@ -61,6 +58,8 @@ class Config:
         "prinsip_dasar_rt",
     )
 
+    USIA_MINIMUM: int = 18
+
     COMPLIANCE_MAX_REVISIONS: int = 2
 
     DIALOGUE_TEMPERATURE: float = 0.1
@@ -68,9 +67,11 @@ class Config:
     COMPLIANCE_TEMPERATURE: float = 0.0
     GENERATION_SEED: int | None = 42
 
-    RETRY_MAX_ATTEMPTS: int = 4
+    RETRY_MAX_ATTEMPTS: int = 6
     RETRY_BASE_DELAY_SECONDS: float = 2.0
-    RETRY_MAX_DELAY_SECONDS: float = 30.0
+    RETRY_MAX_DELAY_SECONDS: float = 60.0
+    RETRY_ATTEMPTS_INTERAKTIF: int = 3
+    RETRY_DELAY_INTERAKTIF_SECONDS: float = 8.0
     API_PACING_DELAY_SECONDS: int = 30
 
     EVAL_ARMS: tuple[str, ...] = ("rag", "baseline", "context_only")

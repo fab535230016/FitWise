@@ -1,8 +1,6 @@
-// Jalankan: npm install jsdom && node tests/uji_layar_pemuatan.js
-// Menguji kontrak layar pemuatan pada web/static/app.js:
-// gulir terkunci selama tirai menutup, dan sinyal "fitwise:siap" dikirim tepat
-// sekali saat tirai dibuka. Sinyal itulah yang menahan animasi kemunculan
-// supaya tidak berjalan di balik tirai.
+
+
+
 const fs = require("fs");
 let JSDOM;
 try {
@@ -44,7 +42,6 @@ function siapkan({ kurangiGerak = false, penuh = 120 } = {}) {
 
   const skrip = dom.window.document.createElement("script");
   skrip.textContent = `
-    // Durasi dipendekkan supaya pengujian tidak menunggu lima detik.
     const TAMPIL_PENUH_MS = ${penuh};
     const TAMPIL_SINGKAT_MS = ${penuh};
     const PENDEKKAN_SAAT_MUAT_ULANG = false;
@@ -60,7 +57,7 @@ function siapkan({ kurangiGerak = false, penuh = 120 } = {}) {
 }
 
 (async () => {
-  // --- Jalur normal ---
+
   const dom = siapkan();
   const w = dom.window;
   const d = w.document;
@@ -70,7 +67,7 @@ function siapkan({ kurangiGerak = false, penuh = 120 } = {}) {
   cek("belum ada sinyal siap sebelum tirai dibuka", w.jumlahSinyal === 0);
   cek("tirai masih ada di halaman", !!d.getElementById("pemuat"));
 
-  // Halaman selesai dimuat, tapi durasi tahan belum lewat.
+
   w.dispatchEvent(new w.Event("load"));
   cek("sinyal belum dikirim walau halaman sudah siap, karena tahan belum lewat",
       w.jumlahSinyal === 0);
@@ -85,7 +82,7 @@ function siapkan({ kurangiGerak = false, penuh = 120 } = {}) {
   await tunggu(700);
   cek("sinyal tidak dikirim dua kali", w.jumlahSinyal === 1);
 
-  // --- Jalur kurangi gerak ---
+
   const dom2 = siapkan({ kurangiGerak: true });
   const w2 = dom2.window;
   cek("mode kurangi gerak langsung melepas tirai",
@@ -94,7 +91,7 @@ function siapkan({ kurangiGerak = false, penuh = 120 } = {}) {
   cek("mode kurangi gerak tidak meninggalkan gulir terkunci",
       !w2.document.body.classList.contains("terkunci"));
 
-  // --- Pengaman: halaman tidak pernah selesai dimuat ---
+
   const dom3 = siapkan({ penuh: 100 });
   const w3 = dom3.window;
   await tunggu(700);

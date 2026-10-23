@@ -1,11 +1,4 @@
-"""
-Unit test untuk helper parsing JSON toleran di generator.py (_parse_json_response).
-Nggak butuh GEMINI_API_KEY/internet karena cuma nes-test fungsi parsing-nya,
-bukan manggil API beneran. Jalankan dengan:
-    python3 -m pytest tests/test_json_parsing.py -v
-atau langsung:
-    python3 tests/test_json_parsing.py
-"""
+"""Uji parsing JSON toleran (_parse_json_response) tanpa GEMINI_API_KEY maupun internet."""
 import sys
 from pathlib import Path
 
@@ -48,7 +41,8 @@ def test_bukan_json_sama_sekali_raise_error():
     raw = "Maaf, saya tidak bisa memproses permintaan ini."
     try:
         _parse_json_response(raw, context="test")
-        assert False, "Harusnya raise ValueError buat teks yang bukan JSON sama sekali"
+        raise AssertionError(
+            "Harusnya raise ValueError buat teks yang bukan JSON sama sekali")
     except ValueError as e:
         assert "test" in str(e), "Pesan error harus nyebut context-nya biar gampang di-debug"
     print("  ok  Teks yang bukan JSON sama sekali raise ValueError yang jelas (bukan crash diam-diam)")

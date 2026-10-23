@@ -15,6 +15,7 @@ COMPLETE_PROFILE = {
     "frekuensi_tersedia": 3,
     "level_pengalaman": "pemula",
     "riwayat_cedera": ["nyeri bahu kanan"],
+    "usia": 24,
     "catatan_tambahan": "",
 }
 

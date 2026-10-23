@@ -1,9 +1,4 @@
-"""
-Unit test untuk chunking.py. Jalankan dengan:
-    python3 -m pytest tests/test_chunking.py -v
-atau langsung:
-    python3 tests/test_chunking.py
-"""
+"""Uji pemecahan dokumen menjadi chunk pada src/chunking.py."""
 import sys
 from pathlib import Path
 
@@ -32,7 +27,7 @@ def test_chunk_respects_max_size_roughly():
     chunks = chunk_text(SAMPLE_TEXT, source="test_doc.txt", chunk_size=300, chunk_overlap=50)
     for c in chunks:
         assert len(c.text) <= 300 + 100, f"Chunk kepanjangan: {len(c.text)} chars"
-    print(f"  ok  Semua chunk masih dalam batas wajar ukurannya")
+    print("  ok  Semua chunk masih dalam batas wajar ukurannya")
 
 
 def test_chunk_metadata_preserved():
@@ -45,7 +40,7 @@ def test_chunk_metadata_preserved():
     )
     assert all(c.source == "bonilla_2022.pdf" for c in chunks)
     assert all(c.metadata.get("tahun") == 2022 for c in chunks)
-    print(f"  ok  Metadata (source, tahun, topik) konsisten di semua chunk")
+    print("  ok  Metadata (source, tahun, topik) konsisten di semua chunk")
 
 
 def test_chunk_index_sequential():
@@ -63,7 +58,7 @@ def test_overlap_actually_overlaps():
         return
     tail_prev = chunks[0].text[-30:]
     assert tail_prev[:15] in chunks[1].text, "Overlap kayaknya nggak jalan"
-    print(f"  ok  Overlap antar chunk terverifikasi")
+    print("  ok  Overlap antar chunk terverifikasi")
 
 
 if __name__ == "__main__":

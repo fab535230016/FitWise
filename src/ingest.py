@@ -1,7 +1,6 @@
 """Pipeline ingest: baca dokumen dari data/knowledge_base, chunk, embed dengan BGE-M3, simpan ke ChromaDB."""
 
 from __future__ import annotations
-import os
 import re
 from pathlib import Path
 

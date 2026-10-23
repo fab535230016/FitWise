@@ -1,5 +1,5 @@
-// Jalankan: npm install jsdom && node tests/uji_peraga_gerakan.js
-// Menguji peraga gerakan (pergantian dua bingkai) pada web/static/app.js.
+
+
 const fs = require("fs");
 let JSDOM;
 try {
@@ -30,7 +30,6 @@ const doc = window.document;
 
 const skrip = doc.createElement("script");
 skrip.textContent = `
-  // Pewaktu dipendekkan supaya pengujian tidak perlu menunggu lama.
   const JEDA_BINGKAI_MS = 30;
   const KURANGI_GERAK = false;
   const pengamatPeraga = null;
@@ -42,9 +41,7 @@ doc.body.appendChild(skrip);
 
 const tunggu = ms => new Promise(r => setTimeout(r, ms));
 
-// Menunggu sampai syarat terpenuhi, bukan menebak berapa milidetik yang pas.
-// Pewaktu asli bisa meleset kalau mesin sedang sibuk, dan pengujian yang
-// mematok waktu persis akan gagal sesekali tanpa ada yang benar-benar rusak.
+
 async function tungguSampai(syarat, batasMs = 1500) {
   const tenggat = Date.now() + batasMs;
   while (Date.now() < tenggat) {
@@ -85,7 +82,7 @@ const contoh = {
   cek("alt gambar menyebut nama gerakan dan posisinya",
       bidang[1].alt.includes("Deadlift") && bidang[1].alt.includes("Posisi akhir"));
 
-  // --- Mulai peraga lewat tombol ---
+
   tombol.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
   cek("tombol berubah jadi Jeda setelah ditekan",
       tombol.textContent === "Jeda" && tombol.getAttribute("aria-pressed") === "true");
@@ -99,7 +96,7 @@ const contoh = {
   cek("peraga berputar kembali ke bingkai awal",
       await tungguSampai(() => bidang[0].classList.contains("aktif")));
 
-  // --- Jeda manual ---
+
   tombol.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
   const sebelum = kotak.querySelector("img.aktif").src;
   cek("jeda manual menandai kotak sebagai dijeda", kotak._dijeda === true);
@@ -107,13 +104,13 @@ const contoh = {
   cek("bingkai berhenti berganti setelah dijeda",
       kotak.querySelector("img.aktif").src === sebelum);
 
-  // --- Berhenti sementara karena keluar layar ---
+
   tombol.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
   kotak._henti(true);
   cek("berhenti sementara tidak mengubah label tombol", tombol.textContent === "Jeda");
   cek("berhenti sementara tidak menandai dijeda", kotak._dijeda === false);
 
-  // --- Gerakan yang cuma punya satu gambar ---
+
   const tunggal = window.bangunGambar({
     nama: "Plank", gambar: [{ url: "/x/0.jpg", keterangan: "Posisi tahan" }]
   });
@@ -123,7 +120,7 @@ const contoh = {
   cek("gerakan tanpa gambar tidak menghasilkan kotak",
       window.bangunGambar({ nama: "Kosong", gambar: [] }) === null);
 
-  // --- Semua gambar gagal dimuat ---
+
   const rusak = window.bangunGambar(contoh);
   rusak.querySelectorAll("img").forEach(g => g.dispatchEvent(new window.Event("error")));
   cek("kotak disembunyikan kalau semua gambar gagal dimuat",

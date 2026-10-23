@@ -68,6 +68,22 @@ def test_teks_kosong_tidak_menjatuhkan_program():
     print("  ok  teks kosong ditangani tanpa galat")
 
 
+def test_rasio_hanya_menghitung_penanda_sah():
+    rencana = (
+        "Lakukan squat tiga set delapan repetisi untuk kekuatan tungkai [S1]. "
+        "Tambahkan bench press beban sedang supaya dada ikut terlatih [S7]. "
+        "Istirahat dua menit antar set agar pemulihan cukup sebelum set lanjut [S9]."
+    )
+    sumber = ["a.pdf", "b.pdf", "c.pdf"]
+
+    longgar, total = count_sentences_with_marker(rencana)
+    assert (longgar, total) == (3, 3), (longgar, total)
+
+    ketat, total = count_sentences_with_marker(rencana, sumber)
+    assert (ketat, total) == (1, 3), (ketat, total)
+    print("  ok  rasio bersumber mengabaikan penanda di luar jangkauan")
+
+
 if __name__ == "__main__":
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     print(f"Menjalankan {len(tests)} tes penanda sumber\n")
@@ -80,3 +96,16 @@ if __name__ == "__main__":
             print(f"  GAGAL  {t.__name__}: {e}")
     print(f"\n{len(tests) - failed}/{len(tests)} tes lolos")
     sys.exit(1 if failed else 0)
+
+
+def test_penanda_gabungan_dikenali():
+    rencana = (
+        "Pilih landmine press sebagai pengganti overhead press agar bahu aman [S1, S3]. "
+        "Tambahkan face pull untuk penstabil skapula dua kali seminggu [S2,S3]."
+    )
+    assert used_marker_numbers(rencana) == [1, 2, 3]
+    bersih = strip_source_markers(rencana)
+    assert "[S" not in bersih and "aman." in bersih and "seminggu." in bersih
+    assert count_sentences_with_marker(rencana, ["a.pdf", "b.pdf", "c.pdf"]) == (2, 2)
+    peta = build_citation_map(rencana, ["a.pdf", "b.pdf", "c.pdf"])
+    assert [c["source"] for c in peta] == ["a.pdf", "b.pdf", "c.pdf"]

@@ -205,6 +205,15 @@ Ekstrak informasi berikut dalam format JSON:
                             bukan kiri", "bukan lutut, maksudnya bahu"), GANTI item
                             yang relevan, jangan duplikat, dan jangan pertahankan
                             item lama yang sudah jelas-jelas dikoreksi
+- usia (integer, usia pengguna dalam tahun; null jika tidak disebutkan di pesan
+  ini. Ambil hanya bila pengguna benar-benar menyebut usianya, jangan menebak
+  dari kata seperti "masih muda" atau "udah tua")
+- jenis_kelamin (string: "pria" atau "wanita"; null jika tidak disebutkan di
+  pesan ini. JANGAN menebak dari nama, gaya bahasa, atau jenis latihan yang
+  diminta -- hanya ambil bila disebut eksplisit)
+- berat_badan (integer, berat badan dalam kilogram; null jika tidak disebutkan
+  di pesan ini. Kalau pengguna menyebut berat dalam satuan lain, ubah ke
+  kilogram)
 - catatan_tambahan (string, ringkasan singkat hal lain yang relevan di pesan ini;
   string kosong "" jika tidak ada)
 
@@ -302,6 +311,12 @@ Susun rencana latihan yang sesuai profil pengguna, dengan aturan:
    dan selingi hari latihan dengan hari istirahat secara merata sepanjang minggu.
    Kalau konteks menyebut lama istirahat antar-set, sertakan angkanya beserta
    penanda sumber.
+13. USIA, JENIS KELAMIN, DAN BERAT BADAN: profil pengguna bisa memuat ketiganya.
+   Sebut pertimbangan berdasarkan ketiganya HANYA bila konteks ilmiah di atas
+   memang membahasnya, dan bubuhkan penanda sumbernya seperti rekomendasi lain.
+   Kalau konteks tidak membahasnya, jangan singgung sama sekali. Jangan menambahkan
+   saran praktis tanpa penanda yang dikaitkan dengan usia, jenis kelamin, atau
+   berat badan pengguna.
 """
 
 TASK_PLAIN = """
@@ -507,12 +522,34 @@ Balas HANYA JSON, tanpa teks lain.
 """
 
 
+_TIDAK_PATUH = {"false", "tidak", "no", "0", "tidak patuh", "melanggar"}
+_PATUH = {"true", "ya", "yes", "1", "patuh"}
+
+
+def _normalkan_patuh(nilai) -> bool:
+    """Ubah nilai "patuh" dari model menjadi boolean agar teks "false" tidak lolos."""
+    if isinstance(nilai, bool):
+        return nilai
+    if isinstance(nilai, str):
+        bentuk = nilai.strip().lower()
+        if bentuk in _TIDAK_PATUH:
+            return False
+        if bentuk in _PATUH:
+            return True
+    if isinstance(nilai, (int, float)):
+        return bool(nilai)
+    return True
+
+
 def check_compliance(plan: str, constraints: dict) -> dict:
     """Periksa rencana terhadap constraint riwayat cedera pengguna."""
     prompt = COMPLIANCE_CHECK_PROMPT.format(
         constraints=json.dumps(constraints, ensure_ascii=False, indent=2),
         plan=plan,
     )
-    return _generate_json(
+    hasil = _generate_json(
         prompt, context="compliance_checker", temperature=config.COMPLIANCE_TEMPERATURE
     )
+    if isinstance(hasil, dict) and "patuh" in hasil:
+        hasil["patuh"] = _normalkan_patuh(hasil["patuh"])
+    return hasil

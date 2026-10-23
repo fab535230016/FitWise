@@ -1,157 +1,165 @@
-# RAG Conversational Agent — Penyusun Rencana Latihan
+# FitWise
 
-Skeleton pipeline RAG sesuai skripsi: Dialogue Analyzer → Retrieval (BGE-M3 +
-ChromaDB) → Plan Generator (Gemini) → Compliance Checker.
+FitWise adalah conversational agent berbahasa Indonesia yang menyusun rencana latihan beban secara personal. Setiap rekomendasi pada rencana diberi penanda sumber yang merujuk ke dokumen ilmiah pada basis pengetahuan, sehingga asal anjurannya dapat ditelusuri oleh pengguna.
 
-## ⚠️ Penting sebelum mulai
+Repositori ini berisi program skripsi "FitWise: Personalisasi Program Latihan Beban Melalui Conversational Agent Berbasis Retrieval sebagai Alternatif Konsultasi Personal Trainer", Fakultas Teknologi Informasi, Universitas Tarumanagara.
 
-1. **Model Gemini 2.0 Flash/Flash-Lite sudah shutdown per 1 Juni 2026.**
-   Kode ini pakai `gemini-3.1-flash-lite` (di `src/config.py`). Update
-   juga bagian Tech Stack di dokumen skripsimu biar konsisten.
-2. Kode ini ditulis di sandbox tanpa akses internet, jadi **belum pernah
-   di-run end-to-end dengan model beneran**. Logic chunking sudah ditest
-   (lihat `tests/`), tapi bagian embedding/LLM perlu kamu test sendiri di
-   lokal karena butuh download model + API key.
-3. File `data/knowledge_base/contoh_bonilla_2022.txt` isinya **ringkasan
-   contoh buatan sendiri**, bukan kutipan asli papernya (soal hak cipta).
-   Ganti dengan hasil ekstraksi dari PDF asli yang kamu download legal.
+## Cara kerja
 
-## Struktur Project
+Satu permintaan diproses oleh lima modul secara berurutan.
 
-```
-rag-project/
-├── main.py                  # CLI buat testing pipeline end-to-end
-├── requirements.txt
-├── .env.example              # copy jadi .env, isi API key
-├── src/
-│   ├── config.py              # semua konfigurasi (model, path, chunk size)
-│   ├── chunking.py            # pecah dokumen jadi chunk (sudah ditest)
-│   ├── ingest.py               # load dokumen -> embed -> simpan ke ChromaDB
-│   ├── retriever.py            # query ChromaDB, ambil chunk relevan
-│   ├── generator.py            # wrapper Gemini (analyzer, plan generator,
-│   │                            #   compliance checker, baseline non-RAG)
-│   ├── dialogue_state.py       # slot-filling: kumpulin profil user bertahap
-│   │                            #   antar pesan, cek data wajib yang kurang
-│   └── pipeline.py             # orkestrasi semua di atas jadi satu alur
-├── data/
-│   ├── knowledge_base/         # taruh paper/pedoman (.txt atau .pdf) di sini
-│   └── chroma_db/               # otomatis dibuat, tempat ChromaDB nyimpen data
-└── tests/
-    ├── test_chunking.py         # unit test (JALAN tanpa perlu API key/internet)
-    └── test_dialogue_state.py   # unit test slot-filling (JALAN tanpa API key/internet)
-```
+1. Dialogue Analyzer mengambil profil pengguna dari percakapan bebas. Slot wajibnya adalah tujuan latihan, frekuensi per minggu, level pengalaman, riwayat cedera, dan usia, sedangkan jenis kelamin dan berat badan dicatat bila disebutkan. Slot yang masih kosong ditanyakan, lalu ringkasan profil dikonfirmasi ke pengguna sebelum rencana disusun.
+2. Retrieval mencari dokumen di ChromaDB memakai BGE-M3. Dokumen inti selalu disertakan, ditambah paling banyak empat dokumen lain yang paling dekat dengan profil pengguna. Dokumen terpilih dibangun ulang secara utuh sebagai konteks.
+3. Plan Generator menyusun rencana memakai Gemini 3.1 Flash Lite. Setiap kalimat rekomendasi diberi penanda sumber seperti [S1].
+4. Compliance Checker memeriksa rencana terhadap riwayat cedera. Rencana yang melanggar disusun ulang, paling banyak dua kali.
+5. Penyajian Hasil memetakan penanda ke berkas sumber, menghitung proporsi kalimat bersumber, dan melampirkan ilustrasi gerakan dari katalog.
 
-## Alur percakapan multi-turn (slot-filling)
+Pengguna yang berusia di bawah 18 tahun tidak dilayani.
 
-Awalnya tiap pesan user diproses sendiri-sendiri tanpa mengingat pesan
-sebelumnya, jadi begitu user baru kasih sebagian info (misal cuma "latihan
-otot 5x seminggu"), sistem tetap maksa generate rencana lengkap dengan profil
-yang bolong (level pengalaman & riwayat cedera masih kosong) → hasilnya
-generik/nggak nyambung ("out of context").
+## Struktur folder
 
-Sekarang `TrainingPlanPipeline` nyimpen profil user (`self.profile`) selama
-sesi CLI berjalan, dan tiap pesan baru cuma **melengkapi** slot yang masih
-kosong (lihat `src/dialogue_state.py`), bukan menimpa dari nol. Field wajib
-sebelum boleh generate rencana: `tujuan_latihan`, `frekuensi_tersedia`,
-`level_pengalaman`, `riwayat_cedera` (field terakhir ini pakai tri-state:
-`null` = belum ditanya, `[]` = user eksplisit bilang nggak ada cedera, biar
-nggak ketuker sama "belum jawab").
+| Lokasi | Isi |
+|---|---|
+| `src/` | Modul inti: konfigurasi, pemecahan dokumen, ingest, retrieval, pemanggilan Gemini, pengelolaan slot, penanda sumber, katalog gerakan, dan pipeline |
+| `web/` | Peladen FastAPI (`app.py`), pengelolaan sesi, perekaman umpan balik, dan halaman web di `web/static/` |
+| `evaluation/` | Skrip evaluasi RAGAs dan evaluasi percakapan, data skenario, serta hasilnya di `evaluation/results/` |
+| `scripts/` | Penyusun katalog gerakan, jejak perhitungan Lampiran 1, analisis jarak dokumen, daftar model Gemini, dan pembuat borang penilaian |
+| `tests/` | Pengujian unit (pytest) dan pengujian halaman web (Node.js dengan jsdom) |
+| `data/knowledge_base/` | Sembilan artikel ilmiah dalam format PDF |
+| `data/chroma_db/` | Indeks ChromaDB hasil ingest |
+| `data/gerakan/` | Katalog gerakan (`katalog_gerakan.json`) |
+| `main.py` | Antarmuka baris perintah |
 
-Contoh alur:
+## Kebutuhan
+
+- Python 3.13 (versi yang dipakai selama pengembangan)
+- Kunci API Gemini dari Google AI Studio
+- Koneksi internet untuk memanggil Gemini dan untuk mengunduh model BGE-M3 (sekitar 2 GB) saat pertama kali dijalankan
+- Node.js, hanya untuk pengujian halaman web
+
+## Instalasi
 
 ```
-AI  : Halo! Kamu mau program latihan seperti apa?
-Kamu: aku pengen latihan 5x seminggu latihan otot
-AI  : Oke, catat ya — tujuannya hipertrofi, 5x seminggu. Sebelum aku
-      susunin rencananya, boleh lengkapi dulu:
-      - Level pengalaman kamu gimana — pemula, menengah, atau lanjutan?
-      - Ada riwayat cedera atau keluhan fisik tertentu nggak?
-Kamu: aku menengah, gak ada cedera
-AI  : (baru di sini retrieval + plan generator + compliance checker jalan)
-```
-
-Kalau mau mulai sesi baru (lupain profil lama) tanpa keluar dari program,
-panggil `pipeline.reset()`.
-
-## Setup di lokal
-
-```bash
-# 1. Buat virtual environment
-python3 -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-# 2. Install dependencies
+git clone https://github.com/fab535230016/FitWise.git
+cd FitWise
+python -m venv venv
+venv\Scripts\activate
 pip install -r requirements.txt
-
-# 3. Setup API key
-cp .env.example .env
-# edit .env, isi GEMINI_API_KEY (gratis di https://aistudio.google.com/apikey)
-
-# 4. Verifikasi logic chunking dulu (nggak butuh internet/API key)
-python3 tests/test_chunking.py
-
-# 5. Taruh dokumen knowledge base kamu (paper, pedoman, dst) di
-#    data/knowledge_base/ sebagai .txt atau .pdf
-
-# 6. Jalankan ingest (download model BGE-M3 pertama kali, ~2GB, bisa
-#    beberapa menit)
-python3 -m src.ingest
-
-# 7. Coba pipeline end-to-end
-python3 main.py
 ```
 
-## Alur kerja tiap komponen
+Di Linux atau macOS, lingkungan virtual diaktifkan dengan `source venv/bin/activate`.
 
-| Komponen | File | Peran |
+Salin `.env.example` menjadi `.env`, lalu isi kunci API:
+
+```
+GEMINI_API_KEY=isi_dengan_kunci_api
+```
+
+## Menyiapkan data
+
+Indeks pada `data/chroma_db/` dan katalog pada `data/gerakan/` sudah disertakan. Dua perintah berikut hanya perlu dijalankan ulang bila isi `data/knowledge_base/` atau `scripts/metadata_gerakan.py` diubah.
+
+```
+python -m src.ingest
+python -m scripts.siapkan_gerakan
+```
+
+Ingest membaca PDF pada `data/knowledge_base/`, memecahnya menjadi potongan berukuran 800 karakter dengan overlap 150 karakter, membuang potongan yang berisi daftar pustaka, lalu menyimpan hasilnya ke ChromaDB. Dengan sembilan dokumen saat ini, indeks berisi 774 potongan.
+
+## Menjalankan
+
+Aplikasi web:
+
+```
+uvicorn web.app:app
+```
+
+Setelah itu buka `http://127.0.0.1:8000`. Peladen memuat BGE-M3 satu kali saat dinyalakan, jadi tunggu sampai status pada halaman menunjukkan siap.
+
+Antarmuka baris perintah:
+
+```
+python main.py
+```
+
+Perintah yang tersedia adalah `/reset`, `/profil`, `/bantuan`, dan `exit`.
+
+## Pengujian
+
+```
+pytest
+npm install
+node tests/uji_layar_pemuatan.js
+node tests/uji_penanda_sumber.js
+node tests/uji_peraga_gerakan.js
+```
+
+Pengujian berjalan tanpa kunci API karena pemanggilan model bahasa diganti fungsi tiruan. Pada versi ini pytest menjalankan 119 kasus uji, dan ketiga skrip jsdom memeriksa 44 pernyataan.
+
+## Evaluasi
+
+```
+python -m evaluation.run_eval
+python -m evaluation.run_dialogue_eval
+```
+
+`run_eval.py` menjalankan dua belas skenario pada tiga lengan, yaitu rag, context_only, dan baseline, lalu menilai Faithfulness dan ResponseGroundedness dengan RAGAs 0.3.9. Satu putaran penuh membutuhkan sekitar dua ratus pemanggilan model, dengan jeda 30 detik antarpemanggilan. Hasil disimpan setiap kali satu skenario selesai, dan skenario yang sudah tuntas tidak diulang selama kodenya belum berubah. Bila kuota harian habis di tengah jalan, jalankan perintah yang sama setelah kuota pulih.
+
+`run_dialogue_eval.py` mengukur ketepatan Dialogue Analyzer pada enam belas kasus percakapan berlabel dengan total 32 giliran.
+
+Hasil yang tersimpan di `evaluation/results/` (putaran 27 September 2026):
+
+| Lengan | Konteks | Instruksi grounding | Faithfulness | Groundedness |
+|---|---|---|---|---|
+| rag | ya | ya | 0,3194 | 0,8750 |
+| context_only | ya | tidak | 0,1981 | 0,7708 |
+| baseline | tidak | tidak | 0,0402 | 0,4167 |
+
+Model penilai sama dengan model penyusun, yaitu Gemini 3.1 Flash Lite, sehingga skor tersebut merupakan evaluasi diri dan berpotensi bias. Evaluasi percakapan menghasilkan 224 dari 224 slot benar.
+
+## Konfigurasi
+
+Seluruh parameter ada di `src/config.py`, antara lain model bahasa, ukuran potongan, jumlah dokumen tambahan, temperature dan seed tiap modul, serta lengan evaluasi. Model cadangan `gemini-3.6-flash` hanya dipakai aplikasi web, sedangkan skrip evaluasi mematikannya. Daftar model yang tersedia untuk kunci API yang dipakai dapat dilihat dengan `python -m scripts.daftar_model`.
+
+## API
+
+| Metode | Alamat | Fungsi |
 |---|---|---|
-| Dialogue Analyzer | `generator.py::analyze_dialogue` | Ekstrak tujuan, riwayat cedera, level dari pesan bebas user jadi JSON terstruktur |
-| Retrieval | `retriever.py::Retriever.retrieve` | Embed query user, cari top-k chunk relevan di ChromaDB |
-| Plan Generator | `generator.py::generate_plan` | Susun rencana latihan, grounded ke hasil retrieval (bukan pengetahuan bebas LLM) |
-| Compliance Checker | `generator.py::check_compliance` | Validasi rencana nggak melanggar constraint (misal cedera) user |
-| Baseline Non-RAG | `generator.py::generate_plan_baseline_non_rag` | Versi tanpa retrieval, buat pembanding evaluasi faithfulness/groundedness |
+| GET | `/` | Halaman utama |
+| POST | `/api/chat` | Satu giliran percakapan |
+| POST | `/api/reset` | Memulai sesi baru |
+| POST | `/api/feedback` | Menyimpan umpan balik |
+| GET | `/api/feedback/summary` | Ringkasan umpan balik |
+| GET | `/api/ulasan` | Ulasan yang disetujui pemiliknya |
+| GET | `/api/health` | Status kesiapan peladen |
+| GET | `/api/knowledge-base` | Ringkasan isi basis pengetahuan |
+| GET | `/api/katalog-gerakan` | Ringkasan katalog gerakan |
 
-## Evaluasi Faithfulness & Groundedness (RAG vs Baseline)
+## Sumber data
 
-Buat bagian "Evaluasi Faithfulness dan Groundedness terhadap Baseline
-Non-Retrieval" di metodologimu, jalankan:
+Basis pengetahuan berisi sembilan artikel ilmiah open access berbahasa Inggris.
 
-```bash
-python3 -m evaluation.run_eval
-```
+| Berkas | Topik |
+|---|---|
+| `american_college_of_sports_medicine_position.21.pdf` | Prinsip preskripsi latihan beban (dokumen inti) |
+| `ijerph-19-12710.pdf` | Cedera umum di pusat kebugaran |
+| `fbioe-13-1560597.pdf` | Nyeri bahu |
+| `s13102-025-01297-x.pdf` | Nyeri lutut |
+| `fresc-6-1641054.pdf` | Nyeri lutut |
+| `jcm-10-03968-v2.pdf` | Nyeri siku |
+| `journal.pone.0262023.pdf` | Cedera pergelangan kaki |
+| `s10926-023-10124-4.pdf` | Nyeri punggung bawah |
+| `s11332-026-01650-8.pdf` | Perbedaan respons latihan antara laki-laki dan perempuan |
 
-Ini otomatis:
-1. Jalankan 12 skenario user (`evaluation/scenarios.py`) lewat sistem RAG
-   DAN baseline non-retrieval, pakai profil yang persis sama di keduanya.
-2. Hitung skor **Faithfulness** dan **ResponseGroundedness** (dari
-   `ragas.metrics`) untuk kedua jawaban, dinilai terhadap konteks yang SAMA
-   (hasil retrieval RAG) -- biar perbandingannya adil dan bermakna secara
-   metodologis (baseline sendiri nggak punya "konteks", jadi dites terhadap
-   literatur yang sama yang RAG pakai).
-3. Cetak ringkasan skor rata-rata RAG vs baseline ke terminal.
-4. Simpan hasil lengkap ke `evaluation/results/`:
-   - `ragas_eval_results.json` (semua detail: plan lengkap, sumber, skor)
-   - `ragas_eval_summary.csv` (ringkasan siap ditempel ke lampiran skripsi)
+Gambar dan data kelompok otot pada katalog gerakan diambil dari [free-exercise-db](https://github.com/yuhonas/free-exercise-db), yang mencantumkan lisensi Unlicense menurut pernyataan pengunggahnya. Nama, alias, langkah pelaksanaan, dan poin kunci berbahasa Indonesia ditulis sendiri di `scripts/metadata_gerakan.py`.
 
-**Perkiraan biaya API:** tiap skenario butuh ~9-10 panggilan Gemini
-(dialogue analyzer + plan generator RAG + plan generator baseline +
-compliance checker + 2 metrik RAGAs x 2 sistem). Untuk 12 skenario, total
-~110 panggilan -- perhatikan quota harian Gemini kamu (lihat bagian
-Troubleshooting di bawah kalau kena rate limit di tengah jalan).
+## Batasan
 
-Mau nambah/ubah skenario ujinya? Edit langsung `evaluation/scenarios.py`,
-formatnya list of dict dengan field `id` dan `message`. Tulis tiap pesan
-skenario selengkap mungkin (sebut tujuan, frekuensi, level, DAN status
-cedera sekaligus) supaya dialogue analyzer bisa langsung isi semua slot
-wajib dalam 1 giliran -- kalau ada skenario yang statusnya nggak
-"rencana_siap" dalam 1 giliran, script bakal kasih warning di log.
+- FitWise tidak menggantikan tenaga medis atau fisioterapis. Riwayat cedera dipakai sebagai batasan keamanan, bukan sebagai diagnosis.
+- Basis pengetahuan belum memuat dokumen tentang cedera pergelangan tangan dan leher.
+- Ilustrasi gerakan juga dapat muncul untuk gerakan yang disebut perlu dihindari.
+- Balasan singkat yang berisi pembenaran sekaligus koreksi, misalnya "oke tapi 4 hari", masih dianggap sebagai konfirmasi.
 
-## Troubleshooting umum
+## Penulis
 
-- **`ModuleNotFoundError: No module named 'src'`** → pastikan run dari
-  root folder project (`rag-project/`), bukan dari dalam `src/`.
-- **Download BGE-M3 lambat/gagal** → cek koneksi internet, atau coba set
-  `HF_ENDPOINT=https://hf-mirror.com` sebagai env var kalau ada kendala
-  akses HuggingFace dari Indonesia.
-- **Gemini API error 429 (rate limit)** → tier gratis ada limit request/menit,
-  tambahkan `time.sleep()` kalau testing banyak query sekaligus.
+Fablius Maxleon, Fakultas Teknologi Informasi, Universitas Tarumanagara. Dosen pembimbing: Tri Sutrisno.

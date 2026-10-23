@@ -1,6 +1,6 @@
-// Uji perilaku penanda sumber pada index.html memakai jsdom.
-// Jalankan: npm install jsdom && node tests/uji_penanda_sumber.js
-// Uji ini terpisah dari pytest karena menguji perilaku DOM, bukan kode Python.
+
+
+
 const fs = require("fs");
 let JSDOM;
 try {
@@ -11,8 +11,8 @@ try {
 }
 
 const berkas = require("path").join(__dirname, "..", "web", "static", "app.js");
-// Ambil hanya fungsi yang diuji, tanpa menjalankan skrip halaman penuh
-// (skrip itu memanggil fetch ke server yang tidak ada di lingkungan uji).
+
+
 const blok = fs.readFileSync(berkas, "utf8");
 function ambil(nama) {
   const awal = blok.indexOf(`function ${nama}(`);
@@ -34,7 +34,7 @@ global.window = window;
 global.document = window.document;
 window.Element.prototype.scrollIntoView = function () { this.dataset.digulir = "ya"; };
 
-const konteks = [ambil("escapeHtml"), ambil("renderMarkers"), ambil("sorotSumber")].join("\n");
+const konteks = [ambil("escapeHtml"), ambil("renderSatuPenanda"), ambil("renderMarkers"), ambil("sorotSumber")].join("\n");
 const skrip = window.document.createElement("script");
 skrip.textContent = konteks + `
   window.renderMarkers = renderMarkers;
@@ -54,7 +54,7 @@ function cek(nama, syarat) {
   else { console.log("  GAGAL " + nama); gagal++; }
 }
 
-// --- Susun satu giliran percakapan lengkap: teks + panel jejak ---
+
 const citations = [
   { marker: "S1", number: 1, source: "acsm_guidelines.pdf", valid: true },
   { marker: "S2", number: 2, source: "cedera_bahu.pdf", valid: true },
@@ -74,7 +74,7 @@ jejak.innerHTML = `<summary>Lihat dokumen</summary><div class="trace-body">
 turn.appendChild(jejak);
 doc.getElementById("log").appendChild(turn);
 
-// --- Pemeriksaan ---
+
 const tombolS1 = turn.querySelector('button.cite[data-marker="S1"]');
 cek("penanda sah dirender sebagai <button>", !!tombolS1);
 cek("tombol punya aria-label berisi nama berkas",
@@ -101,10 +101,17 @@ cek("sorotan berpindah ke S2",
     jejak.querySelector('.doc[data-marker="S2"]').classList.contains("disorot"));
 cek("sorotan lama pada S1 dilepas", !docS1.classList.contains("disorot"));
 
-// XSS: nama berkas berbahaya tidak boleh lolos ke HTML
+
 const jahat = [{ marker: "S1", source: '"><img src=x onerror=alert(1)>', valid: true }];
 const keluaran = window.renderMarkers("Uji [S1].", jahat);
 cek("nama sumber berbahaya di-escape", !keluaran.includes("<img"));
+
+const gabungan = window.renderMarkers("Latih bahu dengan hati-hati [S1, S2].", [
+  { marker: "S1", source: "a.pdf", valid: true },
+  { marker: "S2", source: "b.pdf", valid: true },
+]);
+cek("penanda gabungan dipecah menjadi dua tombol",
+    (gabungan.match(/<button/g) || []).length === 2 && !gabungan.includes("[S"));
 
 console.log(gagal === 0 ? "\nSemua lolos." : `\n${gagal} gagal.`);
 process.exit(gagal === 0 ? 0 : 1);

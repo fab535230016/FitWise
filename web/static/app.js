@@ -1,5 +1,12 @@
-const FIELDS = ["Tujuan latihan", "Frekuensi per minggu",
-                "Level pengalaman", "Riwayat cedera"];
+const FIELDS = [
+  { label: "Tujuan latihan", wajib: true },
+  { label: "Frekuensi per minggu", wajib: true },
+  { label: "Level pengalaman", wajib: true },
+  { label: "Riwayat cedera", wajib: true },
+  { label: "Usia", wajib: true },
+  { label: "Jenis kelamin", wajib: false },
+  { label: "Berat badan", wajib: false }
+];
 
 const log = document.getElementById("log");
 
@@ -20,17 +27,21 @@ let sessionId = null;
 let busy = false;
 
 const EMPTY = "(belum diisi)";
+const TIDAK_DISEBUT = "(tidak disebutkan)";
 
 function renderProfile(rows) {
-  const data = rows || FIELDS.map(label => ({ label, value: EMPTY }));
-  const filled = data.filter(r => r.value !== EMPTY).length;
+  const data = rows || FIELDS.map(f => ({ label: f.label, value: EMPTY, wajib: f.wajib }));
 
-  progressEl.innerHTML = data
+  const wajib = data.filter(r => r.wajib !== false);
+  const filled = wajib.filter(r => r.value !== EMPTY).length;
+
+  progressEl.innerHTML = wajib
     .map((r, i) => `<div class="seg${i < filled ? " filled" : ""}"></div>`).join("");
-  progressLabel.textContent = `${filled} dari ${data.length} informasi terisi`;
+  progressLabel.textContent = `${filled} dari ${wajib.length} informasi wajib terisi`;
 
   profileEl.innerHTML = data.map(row => {
-    const empty = row.value === EMPTY ? " empty" : "";
+    const kosong = row.value === EMPTY || row.value === TIDAK_DISEBUT;
+    const empty = kosong ? " empty" : "";
     return `<div class="field"><span class="k">${escapeHtml(row.label)}</span>` +
            `<span class="v${empty}">${escapeHtml(row.value)}</span></div>`;
   }).join("");
@@ -42,21 +53,24 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+function renderSatuPenanda(n, map) {
+  const info = map["S" + n];
+  if (!info || !info.valid) {
+    return `<span class="cite unknown" title="Sumber tidak dikenali"
+                  aria-label="Sumber S${n} tidak dikenali">S${n}</span>`;
+  }
+  const label = escapeHtml(info.source);
+
+  return `<button type="button" class="cite" data-marker="S${n}"
+                  title="${label}" aria-label="Lihat sumber S${n}: ${label}"
+          >S${n}</button>`;
+}
+
 function renderMarkers(text, citations) {
   const map = {};
   (citations || []).forEach(c => { map[c.marker] = c; });
-  return escapeHtml(text).replace(/\[S(\d{1,2})\]/g, (whole, n) => {
-    const info = map["S" + n];
-    if (!info || !info.valid) {
-      return `<span class="cite unknown" title="Sumber tidak dikenali"
-                    aria-label="Sumber S${n} tidak dikenali">S${n}</span>`;
-    }
-    const label = escapeHtml(info.source);
-
-    return `<button type="button" class="cite" data-marker="S${n}"
-                    title="${label}" aria-label="Lihat sumber S${n}: ${label}"
-            >S${n}</button>`;
-  });
+  return escapeHtml(text).replace(/\[S\d{1,2}(?:\s*,\s*S?\d{1,2})*\]/g, whole =>
+    (whole.match(/\d{1,2}/g) || []).map(n => renderSatuPenanda(n, map)).join(" "));
 }
 
 function sorotSumber(tombol) {
@@ -403,13 +417,19 @@ function addFeedback(turn, data) {
       <button class="fb" data-rating="tidak_berguna" type="button">Belum berguna</button>
     </div>
     <div class="fb-reason">
-      <input type="text" placeholder="Alasannya (boleh dikosongkan)" maxlength="500">
+      <input type="text" class="fb-alasan" placeholder="Alasannya (boleh dikosongkan)" maxlength="500">
       <button class="fb" data-send="1" type="button">Kirim</button>
-    </div>`;
+    </div>
+    <label class="fb-izin">
+      <input type="checkbox" class="fb-tampil">
+      <span>Tampilkan alasanku di bagian Ulasan Pengguna, tanpa identitas</span>
+    </label>`;
 
   let picked = null;
   const reason = box.querySelector(".fb-reason");
-  const reasonInput = box.querySelector("input");
+  const reasonInput = box.querySelector(".fb-alasan");
+  const izin = box.querySelector(".fb-izin");
+  const tampilInput = box.querySelector(".fb-tampil");
 
   box.querySelectorAll(".fb[data-rating]").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -418,22 +438,30 @@ function addFeedback(turn, data) {
          .forEach(b => b.classList.remove("picked"));
       btn.classList.add("picked");
       reason.classList.add("show");
+      izin.classList.add("show");
       reasonInput.focus();
     });
   });
 
   async function submit() {
     if (!picked) return;
+    const alasan = reasonInput.value.trim();
+    const tampil = tampilInput.checked && alasan.length > 0;
     try {
-      await post("/api/feedback", {
+      const res = await post("/api/feedback", {
         session_id: sessionId,
         rating: picked,
-        reason: reasonInput.value,
+        reason: alasan,
         profile: Object.fromEntries((data.profile || []).map(r => [r.label, r.value])),
         sources: data.sources || [],
-        plan_excerpt: (data.plan || "").slice(0, 300)
+        plan_excerpt: (data.plan || "").slice(0, 300),
+        tampilkan: tampil
       });
-      box.innerHTML = `<div class="fb-done">Terima kasih, masukanmu sudah tercatat.</div>`;
+      if (!res.ok) throw new Error("masukan ditolak peladen");
+      box.innerHTML = tampil
+        ? `<div class="fb-done">Terima kasih, ulasanmu sudah tampil di bagian <a href="#ulasan">Ulasan Pengguna</a>.</div>`
+        : `<div class="fb-done">Terima kasih, masukanmu sudah tercatat.</div>`;
+      muatUlasan();
     } catch (e) {
       box.innerHTML = `<div class="q">Gagal mengirim masukan. Coba lagi nanti.</div>`;
     }
@@ -482,7 +510,7 @@ function addTyping() {
   return wrap;
 }
 
-const BATAS_WAKTU_MS = 90000;
+const BATAS_WAKTU_MS = 180000;
 
 async function post(url, payload) {
 
@@ -584,8 +612,8 @@ form.addEventListener("submit", async (event) => {
   } catch (e) {
     typing.remove();
     const pesan = e.name === "AbortError"
-      ? "Server tidak membalas dalam 90 detik. Rencanamu mungkin masih diproses — " +
-        "tunggu sebentar lalu kirim ulang pesanmu."
+      ? "Server tidak membalas dalam 3 menit. Biasanya ini karena layanan model " +
+        "sedang sibuk atau kuota harian habis. Tunggu sebentar lalu kirim ulang pesanmu."
       : "Gagal menghubungi server. Pastikan server masih jalan, lalu coba lagi.";
     addTurn("FitWise", pesan, "error");
   } finally {
@@ -629,6 +657,14 @@ async function muatBasisPengetahuan() {
     const data = await (await fetch("/api/knowledge-base")).json();
     if (!data.documents) throw new Error("belum siap");
 
+    const isiStat = (id, nilai) => {
+      const el = document.getElementById(id);
+      if (el) { el.dataset.nilai = String(nilai); el.textContent = nilai; }
+    };
+    isiStat("statDokumen", data.total_documents);
+    isiStat("statPotongan", data.total_chunks.toLocaleString("id-ID"));
+    isiStat("statKarakter", Math.round(data.total_characters / 1000) + "rb");
+
     angka.innerHTML = [
       [data.total_documents, "dokumen ilmiah"],
       [data.total_chunks.toLocaleString("id-ID"), "potongan terindeks"],
@@ -652,6 +688,72 @@ async function muatBasisPengetahuan() {
 }
 
 muatBasisPengetahuan();
+
+const ULASAN_PER_HALAMAN = 6;
+const FORMAT_TANGGAL_ULASAN = new Intl.DateTimeFormat("id-ID", {
+  day: "numeric", month: "short", year: "numeric"
+});
+let ulasanTermuat = 0;
+
+function kartuUlasan(u) {
+  const berguna = u.rating === "berguna";
+  const tanggalSah = /^\d{4}-\d{2}-\d{2}$/.test(u.tanggal || "");
+  const tanggal = tanggalSah
+    ? `<time datetime="${u.tanggal}">${FORMAT_TANGGAL_ULASAN.format(new Date(u.tanggal + "T00:00:00"))}</time>`
+    : "";
+  const konteks = Object.values(u.konteks || {}).map(escapeHtml).join(" · ");
+  return `<article class="ulasan-kartu">
+      <div class="ulasan-kepala">
+        <span class="ulasan-nilai ${berguna ? "berguna" : "belum"}">${berguna ? "Berguna" : "Belum berguna"}</span>
+        ${tanggal}
+      </div>
+      <blockquote>${escapeHtml(u.alasan)}</blockquote>
+      ${konteks ? `<div class="ulasan-konteks">${konteks}</div>` : ""}
+    </article>`;
+}
+
+async function muatUlasan(tambah = false) {
+  const ringkasan = document.getElementById("ulasanRingkasan");
+  const daftar = document.getElementById("ulasanDaftar");
+  const tombol = document.getElementById("ulasanLagi");
+  if (!ringkasan || !daftar || !tombol) return;
+
+  const lewati = tambah ? ulasanTermuat : 0;
+  try {
+    const res = await fetch(`/api/ulasan?batas=${ULASAN_PER_HALAMAN}&lewati=${lewati}`);
+    const data = await res.json();
+    if (!res.ok || !data.ringkasan) throw new Error("belum siap");
+
+    const r = data.ringkasan;
+    const persen = r.proporsi_berguna === null ? "–" : Math.round(r.proporsi_berguna * 100) + "%";
+    ringkasan.innerHTML = [
+      [r.total.toLocaleString("id-ID"), "penilaian masuk"],
+      [persen, "menilai berguna"],
+      [data.jumlah_ulasan.toLocaleString("id-ID"), "ulasan ditampilkan"]
+    ].map(([n, l]) =>
+      `<div class="ulasan-angka"><div class="nilai">${n}</div><div class="label">${l}</div></div>`
+    ).join("");
+
+    const kartu = data.ulasan.map(kartuUlasan).join("");
+    if (tambah) {
+      daftar.insertAdjacentHTML("beforeend", kartu);
+    } else {
+      daftar.innerHTML = kartu || `<div class="ulasan-kosong">Belum ada ulasan yang ditampilkan.
+        Susun rencanamu, lalu beri penilaian di akhir rencana.</div>`;
+    }
+    ulasanTermuat = lewati + data.ulasan.length;
+    tombol.hidden = ulasanTermuat >= data.jumlah_ulasan;
+  } catch (e) {
+    if (!tambah) {
+      ringkasan.innerHTML = "";
+      daftar.innerHTML = `<div class="ulasan-kosong">Ulasan tersedia setelah sistem siap.</div>`;
+    }
+    tombol.hidden = true;
+  }
+}
+
+document.getElementById("ulasanLagi")?.addEventListener("click", () => muatUlasan(true));
+muatUlasan();
 
 (function () {
   var kotak = document.getElementById('mulaiCepat'), isian = document.getElementById('input');
@@ -711,6 +813,7 @@ function animasiAngka(el) {
   const awal = performance.now();
 
   function langkah(sekarang) {
+    if (el.dataset.nilai) { el.textContent = el.dataset.nilai; return; }
     const bagian = Math.min((sekarang - awal) / durasi, 1);
 
     const mulus = 1 - Math.pow(1 - bagian, 3);
